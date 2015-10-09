@@ -1,0 +1,44 @@
+/**
+* Created by successive on 9/10/15.
+**/
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="dolphin-webapp-dashboard">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-material elevation="1">
+      <h2 class="page-title">Card 1</h2>
+      <p>This is the card 1 section</p>
+    </paper-material>
+    <paper-material elevation="1">
+      <h2 class="page-title">Card 2</h2>
+      <p>This is the card 2 section</p>
+    </paper-material>
+
+    <paper-material elevation="1" class="paper-font-body2">
+      <h2 class="page-title">Card 3</h2>
+      <p>This is the card 3 section</p>
+    </paper-material>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'dolphin-webapp-dashboard',
+
+        properties: {
+
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
