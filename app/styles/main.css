@@ -12,3 +12,34 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
 }
+paper-fab {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 35px;
+  margin-bottom: 35px;
+  z-index: 900;
+  background: #99c75f;
+}
+paper-material {
+  border-radius: 2px;
+  height: 100%;
+  padding: 16px 0 16px 0;
+  /*width: calc(98.66% - 16px);*/
+  margin: 16px auto;
+  background: white;
+}
+.content-list{
+  padding-left: 30px;
+}
+.paperMenu{
+  float: right;
+  background-color: white;
+}
+.paper-menu-button-0 paper-material.paper-menu-button {
+  background-color: white;
+}
+paper-tabs{
+  background: #99c75f;
+}

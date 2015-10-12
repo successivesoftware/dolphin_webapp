@@ -1,0 +1,97 @@
+/**
+* Created by successive on 9/10/15.
+**/
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
+
+
+<dom-module id="dolphin-webapp-reports">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-fab {
+        /*position: absolute;*/
+        background: #99c75f;
+      }
+      paper-header-panel{
+        padding-top: 30px;
+      }
+      .paper-header {
+        height: auto;
+        font-size: 16px;
+        line-height: 36px;
+        padding: 0 10px;
+        /*color: white;*/
+        background: gainsboro;
+        transition: height 0.2s;
+      }
+      .avatar{border: 2px solid #c7b89e;}
+      .avatar,.avatar img{
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 30px; /* Saf3+, Chrome */
+        border-radius: 30px; /* Opera 10.5, IE 9 */
+        /*-moz-border-radius: 30px;  Disabled for FF1+ */
+      }
+      paper-menu{
+
+      }
+    </style>
+    <paper-tabs selected="{{selected}}">
+      <paper-tab>Calls</paper-tab>
+      <paper-tab>Users</paper-tab>
+      <paper-tab>SLAs</paper-tab>
+    </paper-tabs>
+
+    <iron-pages selected="{{selected}}">
+      <div>
+        <paper-header-panel class="blue">
+          <div class="paper-header">Today</div>
+        </paper-header-panel>
+        <paper-material elevation="1" class="content-list">
+          <core-layout-grid>
+            <div>
+              <div class="avatar"   ><img src="../../images/female.png"></div>
+            </div>
+            <div>
+              from: Driver: 261- Arshad
+            </div>
+            <div>
+              to: DriverConnect- Driver to Customer
+            </div>
+            <div>
+              ans: DriverConnect- Driver to Customer
+            </div>
+            <div>
+              transferred to: DriverConnect- Driver to Customer
+            </div>
+          </core-layout-grid>
+
+        </paper-material>
+      </div>
+      <div>Page 2</div>
+      <div>Page 3</div>
+    </iron-pages>
+
+    <paper-fab icon="search" elavation="4" ></paper-fab>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'dolphin-webapp-reports',
+
+        properties: {
+
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

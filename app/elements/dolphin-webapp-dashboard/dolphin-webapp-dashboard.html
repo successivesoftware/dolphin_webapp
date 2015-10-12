@@ -4,6 +4,8 @@
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../../styles/app-theme.html">
+
 <dom-module id="dolphin-webapp-dashboard">
   <template>
     <style is="custom-style" include="shared-styles"></style>
@@ -11,20 +13,52 @@
       :host {
         display: block;
       }
+      /*paper-fab {*/
+        /*/!*position: absolute;*!/*/
+        /*background: #99c75f;*/
+      /*}*/
+      paper-menu{
+
+      }
     </style>
-    <paper-material elevation="1">
+    <paper-material elevation="1" class="content-list">
+      <paper-menu-button class="paperMenu">
+        <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
+        <paper-menu class="dropdown-content">
+          <paper-item>Option1</paper-item>
+          <paper-item>Option2</paper-item>
+          <paper-item>option3</paper-item>
+        </paper-menu>
+      </paper-menu-button>
       <h2 class="page-title">Card 1</h2>
       <p>This is the card 1 section</p>
     </paper-material>
-    <paper-material elevation="1">
+    <paper-material elevation="1" class="content-list">
+      <paper-menu-button class="paperMenu">
+        <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
+        <paper-menu class="dropdown-content">
+          <paper-item>Option1</paper-item>
+          <paper-item>Option2</paper-item>
+          <paper-item>option3</paper-item>
+        </paper-menu>
+      </paper-menu-button>
       <h2 class="page-title">Card 2</h2>
       <p>This is the card 2 section</p>
     </paper-material>
 
-    <paper-material elevation="1" class="paper-font-body2">
+    <paper-material elevation="1" class="content-list">
+      <paper-menu-button class="paperMenu">
+        <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
+        <paper-menu class="dropdown-content">
+          <paper-item>Option1</paper-item>
+          <paper-item>Option2</paper-item>
+          <paper-item>option3</paper-item>
+        </paper-menu>
+      </paper-menu-button>
       <h2 class="page-title">Card 3</h2>
       <p>This is the card 3 section</p>
     </paper-material>
+    <paper-fab icon="add" elavation="4" ></paper-fab>
   </template>
 
   <script>
