@@ -1,0 +1,146 @@
+/**
+* Created by successive on 9/10/15.
+**/
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
+<dom-module id="dolphin-webapp-call-details">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-fab {
+        /*position: absolute;*/
+        background: #99c75f;
+      }
+
+      paper-header-panel {
+        padding-top: 30px;
+      }
+
+      .paper-header {
+        height: auto;
+        font-size: 16px;
+        line-height: 36px;
+        padding: 0 10px;
+        /*color: white;*/
+        background: gainsboro;
+        transition: height 0.2s;
+      }
+
+      .avatar {
+        border: 2px solid #c7b89e;
+      }
+
+      .avatar, .avatar img {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 30px; /* Saf3+, Chrome */
+        border-radius: 30px; /* Opera 10.5, IE 9 */
+        /*-moz-border-radius: 30px;  Disabled for FF1+ */
+      }
+
+      paper-menu {
+
+      }
+    </style>
+
+    <bs-container>
+      <bs-row>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+        <bs-col md="1">bs-col md="1"</bs-col>
+      </bs-row>
+
+      <bs-row>
+        <bs-col md="8">bs-col md="8"</bs-col>
+        <bs-col md="4">bs-col md="4"</bs-col>
+      </bs-row>
+
+      <bs-row>
+        <bs-col md="4">bs-col md="4"</bs-col>
+        <bs-col md="4">bs-col md="4"</bs-col>
+        <bs-col md="4">bs-col md="4"</bs-col>
+      </bs-row>
+
+      <bs-row>
+        <bs-col md="6">bs-col md="6"</bs-col>
+        <bs-col md="6">bs-col md="6"</bs-col>
+      </bs-row>
+
+      <bs-row>
+        <bs-col md="12">bs-col md="12"</bs-col>
+      </bs-row>
+
+    </bs-container>
+    <div class="content">
+    <pre>
+
+      &lt;bs-row&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
+      &lt;/bs-row&gt;
+
+      &lt;bs-row&gt;
+        &lt;bs-col md="8"&gt;.bs-col-md-8&lt;/bs-col&gt;
+        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
+      &lt;/bs-row&gt;
+
+      &lt;bs-row&gt;
+        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
+        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
+        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
+      &lt;/bs-row&gt;
+
+      &lt;bs-row&gt;
+        &lt;bs-col md="6"&gt;.bs-col-md-6&lt;/bs-col&gt;
+        &lt;bs-col md="6"&gt;.bs-col-md-6&lt;/bs-col&gt;
+      &lt;bs-row&gt;
+
+      &lt;bs-row&gt;
+        &lt;bs-col md="12"&gt;.bs-col-md-12&lt;/bs-col&gt;
+      &lt;bs-row&gt;
+
+    </pre>
+
+    </div>
+    <paper-fab icon="search" elavation="4"></paper-fab>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'dolphin-webapp-call-details',
+
+        properties: {},
+        ready: function () {
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

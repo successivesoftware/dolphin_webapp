@@ -13,13 +13,16 @@
       :host {
         display: block;
       }
+
       paper-fab {
         /*position: absolute;*/
         background: #99c75f;
       }
-      paper-header-panel{
+
+      paper-header-panel {
         padding-top: 30px;
       }
+
       .paper-header {
         height: auto;
         font-size: 16px;
@@ -29,15 +32,20 @@
         background: gainsboro;
         transition: height 0.2s;
       }
-      .avatar{border: 2px solid #c7b89e;}
-      .avatar,.avatar img{
+
+      .avatar {
+        border: 2px solid #c7b89e;
+      }
+
+      .avatar, .avatar img {
         width: 50px;
         height: 50px;
         -webkit-border-radius: 30px; /* Saf3+, Chrome */
         border-radius: 30px; /* Opera 10.5, IE 9 */
         /*-moz-border-radius: 30px;  Disabled for FF1+ */
       }
-      paper-menu{
+
+      paper-menu {
 
       }
     </style>
@@ -53,31 +61,92 @@
           <div class="paper-header">Today</div>
         </paper-header-panel>
         <paper-material elevation="1" class="content-list">
-          <core-layout-grid>
-            <div>
-              <div class="avatar"   ><img src="../../images/female.png"></div>
+          <iron-grid>
+            <div class="m2 s3">
+              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
             </div>
-            <div>
-              from: Driver: 261- Arshad
+            <div class="m8 s6">
+              <div class="m4 s12">
+                from: Driver: 261- Arshad
+              </div>
+              <div class="m4 s12">
+                to: DriverConnect- Driver to Customer
+              </div>
+              <div class="m4 s12">
+                ans: DriverConnect- Driver to Customer
+              </div>
+              <div class="m4">
+                transferred to: DriverConnect- Driver to Customer
+              </div>
             </div>
-            <div>
-              to: DriverConnect- Driver to Customer
+            <div class="m2 s3">
+                <span>12 Sep 15:23
+              2m 32s</span>
             </div>
-            <div>
-              ans: DriverConnect- Driver to Customer
-            </div>
-            <div>
-              transferred to: DriverConnect- Driver to Customer
-            </div>
-          </core-layout-grid>
 
+          </iron-grid>
+          <br>
+          <iron-grid>
+            <div class="m2 s3">
+              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+            </div>
+            <div class="m8 s6">
+              <div class="m4 s12">
+                from: Driver: 261- Arshad
+              </div>
+              <div class="m4 s12">
+                to: DriverConnect- Driver to Customer
+              </div>
+              <div class="m4 s12">
+                ans: DriverConnect- Driver to Customer
+              </div>
+              <div class="m4">
+                transferred to: DriverConnect- Driver to Customer
+              </div>
+            </div>
+            <div class="m2 s3">
+                <span>12 Sep 15:23
+              2m 32s</span>
+            </div>
+
+          </iron-grid>
         </paper-material>
+        <paper-header-panel class="blue">
+          <div class="paper-header">Yesterday</div>
+        </paper-header-panel>
+        <paper-material elevation="1" class="content-list">
+            <iron-grid>
+              <div class="m2 s3">
+                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+              </div>
+              <div class="m8 s6">
+                <div class="m6 l4 s12">
+                  from: Driver: 261- Arshad
+                </div>
+                <div class="m6 l4 s12">
+                  to: DriverConnect- Driver to Customer
+                </div>
+                <div class="m12 l4 s12">
+                  ans: DriverConnect- Driver to Customer
+                </div>
+                <div class="m4">
+                  transferred to: DriverConnect- Driver to Customer
+                </div>
+              </div>
+              <div class="m2 s3">
+                <span>12 Sep 15:23
+              2m 32s</span>
+              </div>
+
+            </iron-grid>
+        </paper-material>
+
       </div>
       <div>Page 2</div>
       <div>Page 3</div>
     </iron-pages>
 
-    <paper-fab icon="search" elavation="4" ></paper-fab>
+    <paper-fab icon="search" elavation="4"></paper-fab>
   </template>
 
   <script>
@@ -87,8 +156,13 @@
       Polymer({
         is: 'dolphin-webapp-reports',
 
-        properties: {
-
+        properties: {},
+        ready: function () {
+          this.layout = [[1, 1, 1, 1],
+            [2, 3, 3, 2]];
+        },
+        callDetails: function (e) {
+          window.location.href = '/#!/reports/call/213234';
         }
       });
     })();

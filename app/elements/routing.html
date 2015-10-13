@@ -40,6 +40,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'reports';
     });
 
+    page('/reports/call/:id', scrollToTop, function(data) {
+      app.route = 'call-details';
+      app.params = data.params;
+    });
     // add #! before urls
     page({
       hashbang: true
