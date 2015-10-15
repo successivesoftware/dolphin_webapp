@@ -1,0 +1,13 @@
+{
+  "firstName": "test",
+  "lastName": "one",
+  "userName": "test1",
+  "password": "123456789",
+  "email": "test@gmail.com",
+  "contactNo": "9676864665",
+  "address": "E29",
+  "city": "Noida",
+  "state": "Uttar Pradesh",
+  "country": "India",
+  "zip": "123456"
+}

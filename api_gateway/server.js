@@ -3,6 +3,7 @@ var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var bodyParser   = require('body-parser');
 var path         = require("path");
+var fs           = require('fs');
 var app          = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,8 +29,21 @@ router.use(function(req, res, next) {
 router.get('/', function(req, res) {
   res.json({ message: 'Any Kind of get request' });
 });
+router.get('/user', function(req, res) {
+  fs.readFile('files/users.json', 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(data);
+    res.json(data);
+  });
+});
 
 router.route('/test')
+  .post(function(req, res) {
+    res.json({ message: 'Post Testing Echo' });
+});
+router.route('/auth')
   .post(function(req, res) {
     res.json({ message: 'Post Testing Echo' });
 });

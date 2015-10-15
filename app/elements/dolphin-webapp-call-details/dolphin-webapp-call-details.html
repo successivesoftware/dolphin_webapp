@@ -11,7 +11,13 @@
       :host {
         display: block;
       }
-
+      .transfers {
+        border-radius: 2px;
+        height: 100%;
+        padding: 16px 0 16px 0;
+        /*width: calc(98.66% - 16px);*/
+        margin: 16px 3%;;
+      }
       paper-fab {
         /*position: absolute;*/
         background: #99c75f;
@@ -47,86 +53,102 @@
 
       }
     </style>
-
-    <bs-container>
-      <bs-row>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-        <bs-col md="1">bs-col md="1"</bs-col>
-      </bs-row>
-
-      <bs-row>
-        <bs-col md="8">bs-col md="8"</bs-col>
-        <bs-col md="4">bs-col md="4"</bs-col>
-      </bs-row>
-
-      <bs-row>
-        <bs-col md="4">bs-col md="4"</bs-col>
-        <bs-col md="4">bs-col md="4"</bs-col>
-        <bs-col md="4">bs-col md="4"</bs-col>
-      </bs-row>
-
-      <bs-row>
-        <bs-col md="6">bs-col md="6"</bs-col>
-        <bs-col md="6">bs-col md="6"</bs-col>
-      </bs-row>
-
-      <bs-row>
-        <bs-col md="12">bs-col md="12"</bs-col>
-      </bs-row>
-
-    </bs-container>
-    <div class="content">
-    <pre>
-
-      &lt;bs-row&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-        &lt;bs-col md="1"&gt;.bs-col-md-1&lt;/bs-col&gt;
-      &lt;/bs-row&gt;
-
-      &lt;bs-row&gt;
-        &lt;bs-col md="8"&gt;.bs-col-md-8&lt;/bs-col&gt;
-        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
-      &lt;/bs-row&gt;
-
-      &lt;bs-row&gt;
-        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
-        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
-        &lt;bs-col md="4"&gt;.bs-col-md-4&lt;/bs-col&gt;
-      &lt;/bs-row&gt;
-
-      &lt;bs-row&gt;
-        &lt;bs-col md="6"&gt;.bs-col-md-6&lt;/bs-col&gt;
-        &lt;bs-col md="6"&gt;.bs-col-md-6&lt;/bs-col&gt;
-      &lt;bs-row&gt;
-
-      &lt;bs-row&gt;
-        &lt;bs-col md="12"&gt;.bs-col-md-12&lt;/bs-col&gt;
-      &lt;bs-row&gt;
-
-    </pre>
-
-    </div>
-    <paper-fab icon="search" elavation="4"></paper-fab>
+    <paper-material elevation="1" class="content-list">
+      <iron-grid>
+        <div class="s3">
+          <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+        </div>
+        <div class="s9">
+          <div class="s12">
+            Driver: 261- Arshad
+          </div>
+          <div class="m4 s12 text-muted">
+            From
+          </div>
+        </div>
+      </iron-grid>
+      <br>
+      <iron-grid>
+        <div class="s3">
+          <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+        </div>
+        <div class="s9">
+          <div class="s12">
+            DriverConnect- Driver to Customer
+          </div>
+          <div class="m4 s12 text-muted">
+            To
+          </div>
+        </div>
+      </iron-grid>
+      <br>
+      <iron-grid>
+        <div class="s3">
+          <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+        </div>
+        <div class="s9">
+          <div class="s12">
+            DriverConnect- Driver to Customer
+          </div>
+          <div class="m4 s12 text-muted">
+            Answered By
+          </div>
+        </div>
+      </iron-grid>
+      <br>
+      <paper-material elevation="1" class="content-list">
+        <iron-grid>
+          <div class="s7">
+            <h3>Call Details</h3>
+            <div>Received: 12:22:34</div><br>
+            <div>Answered: 12:43:34</div><br>
+            <div>Ended: 14:23:34</div><br>
+            <div>Queuing: 14:23:34</div><br>
+            <div>Duration: 03:23:34</div><br>
+          </div>
+          <div class="s5">
+            <h4>12 Sep 2015</h4>
+            <div>Answer Time: 10s</div><br>
+            <div>Duration: 3m 23s</div><br>
+          </div>
+          <div class="m7 s12">
+            <h5>Recording</h5>
+            <paper-audio-player src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+          </div>
+        </iron-grid>
+      </paper-material>
+      <h2>Transfers</h2>
+      <paper-material class="transfers" elevation="2">
+        <iron-grid>
+          <div class="s3">
+            <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+          </div>
+          <div class="s9">
+            <h3>Customer Name</h3>
+          </div>
+        </iron-grid>
+        <br>
+        <iron-grid>
+          <div class="s7">
+            <h3>Call Details</h3>
+            <div>Received: 12:22:34</div><br>
+            <div>Answered: 12:43:34</div><br>
+            <div>Ended: 14:23:34</div><br>
+            <div>Queuing: 14:23:34</div><br>
+            <div>Duration: 03:23:34</div><br>
+          </div>
+          <div class="s5">
+            <h4>12 Sep 2015</h4>
+            <div>Answer Time: 10s</div><br>
+            <div>Duration: 3m 23s</div><br>
+          </div>
+          <div class="m7 s12">
+            <h5>Recording</h5>
+            <paper-audio-player src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+          </div>
+        </iron-grid>
+      </paper-material>
+    </paper-material>
   </template>
 
   <script>

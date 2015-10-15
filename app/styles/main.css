@@ -32,6 +32,7 @@ paper-material {
 }
 .content-list{
   padding-left: 30px;
+  padding-right: 30px;
 }
 .paperMenu{
   float: right;
@@ -42,4 +43,7 @@ paper-material {
 }
 paper-tabs{
   background: #99c75f;
+}
+.text-muted {
+  color: #777;
 }

@@ -57,7 +57,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // Scale middleContainer appName
     //Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', appName);
   });
-
   // Close drawer after menu item is selected if drawerPanel is narrow
   app.onDataRouteClick = function() {
     var drawerPanel = document.querySelector('#paperDrawerPanel');

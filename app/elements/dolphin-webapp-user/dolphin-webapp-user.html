@@ -1,0 +1,80 @@
+/**
+* Created by successive on 9/10/15.
+**/
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
+<dom-module id="dolphin-webapp-user">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+      .transfers {
+        border-radius: 2px;
+        height: 100%;
+        padding: 16px 0 16px 0;
+        /*width: calc(98.66% - 16px);*/
+        margin: 16px 3%;;
+      }
+      paper-fab {
+        /*position: absolute;*/
+        background: #99c75f;
+      }
+
+      paper-header-panel {
+        padding-top: 30px;
+      }
+
+      .paper-header {
+        height: auto;
+        font-size: 16px;
+        line-height: 36px;
+        padding: 0 10px;
+        /*color: white;*/
+        background: gainsboro;
+        transition: height 0.2s;
+      }
+
+      .avatar {
+        border: 2px solid #c7b89e;
+      }
+
+      .avatar, .avatar img {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 30px; /* Saf3+, Chrome */
+        border-radius: 30px; /* Opera 10.5, IE 9 */
+        /*-moz-border-radius: 30px;  Disabled for FF1+ */
+      }
+
+      paper-menu {
+
+      }
+    </style>
+    <paper-material elevation="1" class="content-list">
+      <iron-ajax
+        auto
+        url="http://localhost:9000/user"
+        handle-as="json"
+        on-response="handleResponse"
+        debounce-duration="300"></iron-ajax>
+    </paper-material>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'dolphin-webapp-user',
+
+        properties: {},
+        ready: function () {
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
