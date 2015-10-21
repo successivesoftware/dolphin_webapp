@@ -638,131 +638,18 @@
             </div>
           </template>
         </paper-material>
-
+        <a href="/search"><paper-fab icon="search" elavation="4"></paper-fab></a>
       </div>
 
 
 
       <div>
-        <div id="container">
-          <div id="thread" class="layout horizontal">
-            <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-            <div class="flex layout horizontal">
-              <header class="layout vertical flex">
-            <span class="layout horizontal center snippet justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-              <span class="name">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-              <time class="layout vertical flex">12 Sep 15:23
-                2m 32s
-              </time>
-            </span>
-                <span class="subject">Subject</span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted"><i class="name">transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-              </header>
-            </div>
-          </div>
-        </div>
       </div>
 
 
       <div>
-        <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
-        <template is="dom-if" if="{{queryMatches}}">
-          <div>
-            <div class="layout horizontal border">
-              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-              <div class="flex layout horizontal">
-                <header class="layout vertical flex">
-            <span class="layout horizontal center justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <time>12 Sep 15:23
-                2m 32s
-              </time>
-            </span>
-                  <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-                  <span class="name">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-            <span id="" class="layout horizontal center justified">
-              <span class="snippet flex"><i class="name">transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                </header>
-              </div>
-            </div>
-          </div>
-        </template>
-        <template is="dom-if" if="{{!queryMatches}}">
-          <div id="">
-            <div id="" class="layout horizontal border">
-              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-              <div class="flex layout horizontal">
-                <header class="layout vertical flex">
-            <span class="layout horizontal center snippet justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-              <span class="name">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-              <time>12 Sep 15:23
-                2m 32s
-              </time>
-            </span>
-                  <span class="subject">Subject</span>
-            <span id="lastline" class="layout horizontal center justified">
-              <span class="snippet flex"><i class="name">transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                </header>
-              </div>
-            </div>
-            <div id="" class="layout horizontal border">
-              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-              <div class="flex layout horizontal">
-                <header class="layout vertical flex">
-            <span class="layout horizontal center snippet justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-              <span class="name">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-              <time>12 Sep 15:23
-                2m 32s
-              </time>
-            </span>
-                  <span class="subject">Subject</span>
-            <span id="lastline" class="layout horizontal center justified">
-              <span class="snippet flex"><i class="name">transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                </header>
-              </div>
-            </div>
-          </div>
-        </template>
-
       </div>
     </iron-pages>
-
-    <paper-fab icon="search" elavation="4"></paper-fab>
   </template>
 
   <script>
@@ -771,7 +658,13 @@
 
       Polymer({
         is: 'dolphin-webapp-reports',
+        properties: {
 
+          selected: {
+            type: Number,
+            value: 0
+          }
+        },
         callDetails: function (e) {
           window.location.href = '/#!/reports/call/213234';
         }

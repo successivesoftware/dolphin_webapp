@@ -12,7 +12,9 @@
     "twbs-grid": "*",
     "iron-grid": "*",
     "paper-audio-player": "~0.0.3",
-    "polymer-cookie": "~0.1.2"
+    "polymer-cookie": "~0.1.2",
+    "polymer-paper-date-picker": "~1.0.3",
+    "paper-time-picker": "~1.0.3"
   },
   "devDependencies": {
     "web-component-tester": "*",

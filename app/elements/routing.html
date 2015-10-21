@@ -74,6 +74,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       backButton.showMenu(false);
       paperToggle.showMenu(true);
     });
+
+    page('/search', scrollToTop, function() {
+      app.route = 'search';
+      mainBar.showMenu(true);
+      backButton.showMenu(false);
+      paperToggle.showMenu(true);
+    });
     // add #! before urls
     page({
       hashbang: true
