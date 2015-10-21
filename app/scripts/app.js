@@ -13,6 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Grab a reference to our auto-binding template
   // and give it some initial binding values
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
+  checkAuthStatus();
   var app = document.querySelector('#app');
 
   app.displayInstalledToast = function() {
@@ -30,6 +31,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
+    //var mainBar = document.querySelector('#mainBar');
+    //mainBar.showMenu(true);
     // imports are loaded and elements have been registered
   });
 
@@ -70,4 +73,67 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     document.getElementById('mainContainer').scrollTop = 0;
   };
 
+
+
 })(document);
+
+function clickHandler(e) {
+  if (!e.target.hasAttribute('data-dialog')) {
+    return;
+  }
+  var id = e.target.getAttribute('data-dialog');
+  var dialog = document.getElementById(id);
+  if (dialog) {
+    dialog.toggle();
+    e.target.toggleAttribute && e.target.toggleAttribute('data-dialog-opened', dialog.opened);
+  }
+}
+
+
+function createCookie(name,value,days) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+  }
+  else var expires = "";
+  document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+
+function eraseCookie(name) {
+  createCookie(name,"",-1);
+}
+
+function checkCookie(name)
+{
+  return readCookie(name) != null;
+}
+
+function logoutUser(e) {
+  createCookie('userid',"",-1);
+  var loginPath = window.location.origin+'/login.html?logout=true';
+  window.location.replace(loginPath);
+}
+
+function checkAuthStatus(){
+
+  if(readCookie('userid')!=null && readCookie('userid')!='undefined'){
+    // continue the flow
+  } else {
+    var loginPath = window.location.origin+'/login.html?logout=true';
+    window.location.replace(loginPath);
+  }
+}
+
+

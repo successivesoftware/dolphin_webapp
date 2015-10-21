@@ -1,0 +1,60 @@
+/**
+* Created by successive on 9/10/15.
+**/
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../styles/app-theme.html">
+<dom-module id="custom-back-button">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+
+      :host {
+        display: block;
+      }
+      paper-menu {
+
+      }
+      .left{
+        left:2800%
+      }
+      paper-icon-button {
+        padding: 0px;
+      }
+      @media (min-width: 0) and (max-width: 480px){
+        .left{
+          left:450%
+        }
+      }
+    </style>
+    <div hidden="{{show}}">
+      <paper-icon-button icon="icons:arrow-back" on-click="backButton" class=""></paper-icon-button>
+    </div>
+
+
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'custom-back-button',
+
+        properties: {
+          show: {
+            type: Boolean,
+            value: true
+          }
+        },
+        showMenu: function(value){
+          this.show = value;
+        },
+        backButton: function(){
+          window.history.back();
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

@@ -1,0 +1,44 @@
+/**
+* Created by successive on 9/10/15.
+**/
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../styles/app-theme.html">
+<dom-module id="custom-toggle-button">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+
+      :host {
+        display: block;
+      }
+      paper-menu {
+
+      }
+    </style>
+    <div hidden="{{show}}">
+      <paper-icon-button  icon="menu" paper-drawer-toggle></paper-icon-button>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'custom-toggle-button',
+
+        properties: {
+          show: {
+            type: Boolean,
+            value: false
+          }
+        },
+        showMenu: function(value){
+          this.show = value;
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

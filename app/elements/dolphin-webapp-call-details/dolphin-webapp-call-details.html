@@ -10,14 +10,9 @@
     <style>
       :host {
         display: block;
+        font-size: .75em;
       }
-      .transfers {
-        border-radius: 2px;
-        height: 100%;
-        padding: 16px 0 16px 0;
-        /*width: calc(98.66% - 16px);*/
-        margin: 16px 3%;;
-      }
+
       paper-fab {
         /*position: absolute;*/
         background: #99c75f;
@@ -49,106 +44,454 @@
         /*-moz-border-radius: 30px;  Disabled for FF1+ */
       }
 
+      .daySeparator {
+        padding-top: 0px;
+      }
+
       paper-menu {
 
       }
+
+
+      :host(:focus) {
+        z-index: 1;
+        position: relative;
+      }
+
+      :host(.shrink) {
+        max-height: 0;
+      }
+
+      :host([selected]) #thread {
+        background-color: #eee;
+      }
+
+      :host([narrow]) #actionicons {
+        display: none;
+      }
+
+      :host([archived][undo]) #archived {
+        opacity: 1;
+        transition: opacity 200ms ease-in-out 400ms;
+      }
+
+      #container {
+        position: relative;
+        z-index: 0;
+      }
+
+      #thread {
+        background-color: #fafafa;
+        padding: 16px;
+        border-bottom: 1px solid #e0e0e0;
+        will-change: transform, opacity;
+      }
+
+      #lastline,
+      #actionicons,
+      time {
+        color: #9e9e9e;
+      }
+
+      .messagecount {
+        color: #9e9e9e;
+        margin-left: 5px;
+      }
+
+      header {
+        margin-left: 16px;
+        font-size: 14px;
+      }
+
+      header[unread] .name,
+      header[unread] .subject,
+      header[unread] time {
+        font-weight: 500;
+      }
+
+      header[unread] time {
+        color: var(--paper-light-blue-500);
+      }
+
+      header span.name {
+        font-size: 1.17em;
+      }
+
+      header span.subject {
+        margin: 6px 0;
+      }
+
+      header span.snippet,
+      header span.subject,
+      header span.name {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 90%;
+      }
+
+      header span.name {
+        max-width: 100%;
+      }
+
+      time {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+      }
+
+      #star {
+        cursor: pointer;
+      }
+
+      iron-icon[starred] {
+        color: var(--paper-yellow-700);
+      }
+
+      .undo {
+      @apply(- -gmail-undo-action);
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      #archived {
+        color: white;
+        z-index: -1;
+        opacity: 0;
+        will-change: opacity;
+      }
+
+      #archived > * {
+        padding: 16px;
+      }
+
+      .labels label {
+        font-size: 10px;
+        background-color: #bdbdbd;
+        padding: 3px 5px;
+        color: #fff;
+        border-radius: 2px;
+        margin-right: 5px;
+      }
+      .border {
+        padding: 16px;
+      }
+      .content {
+        margin-top: -2px;
+        padding: 0px;
+      }
+      .right {
+        text-align: right;
+        padding-left: 20px;
+      }
+      .snippet {
+        line-height: 25px;
+      }
+      .callDetails {
+        margin: 16px;
+        padding-top: 0px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .right-content{
+        align-items: flex-end;
+      }
+      .left-content{
+        align-items: flex-start;
+      }
+      .left-align{
+        text-align: left;
+      }
+      .right-align{
+        text-align: right;
+      }
+      .pt10{
+        padding-top:10px;
+      }
+      .pl0 {
+        padding-left:0px;
+      }
+      .center-align {
+        align-self: center;
+      }
+      h3 {
+        padding-bottom: 5%;
+      }
+      .offscreen {
+      @apply(- -swipeable-transition);
+      }
+
+      .offscreen.right {
+      @apply(- -swipeable-pos-right);
+      }
+
+      .fade {
+      @apply(- -swipeable-fade);
+      }
+
+      .swiping {
+      @apply(- -swipeable-swiping);
+      }
+
+      .snapback {
+      @apply(- -swipeable-snapback);
+      }
+
+      label.pink {
+      @apply(- -label-pink);
+      }
+
+      label.orange {
+      @apply(- -label-orange);
+      }
+
+      label.green {
+      @apply(- -label-green);
+      }
+
+      label.blue {
+      @apply(- -label-blue);
+      }
+
+      label.yellow {
+      @apply(- -label-yellow);
+      }
+
+      label.teal {
+      @apply(- -label-teal);
+      }
+
+      label.purple {
+      @apply(- -label-purple);
+      }
+      @media (min-width: 993px){
+        :host {
+          display: block;
+          font-size: 1em;
+        }
+        header span.name {
+          font-size: 1.5em;
+        }
+      }
     </style>
-    <paper-material elevation="1" class="content-list">
-      <iron-grid>
-        <div class="s3">
+    <paper-material elevation="1" class="content">
+      <div>
+        <div class="layout horizontal content-list border">
           <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-        </div>
-        <div class="s9">
-          <div class="s12">
-            Driver: 261- Arshad
+          <div class="flex layout vertical flex">
+            <header class="layout vertical flex">
+                    <span class="layout vertical  justified">
+                      <span class="name snippet">
+                       <b>Driver: 261- Arshad</b>
+                      </span>
+                      <span class="snippet">
+                        <span>Arshad Khan</span> <span class=" text-muted">From</span>
+                      </span>
+                      <span class="snippet">
+                       <span class=" text-muted">From</span>
+                      </span>
+                    </span>
+            </header>
           </div>
-          <div class="m4 s12 text-muted">
-            From
           </div>
-        </div>
-      </iron-grid>
-      <br>
-      <iron-grid>
-        <div class="s3">
-          <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-        </div>
-        <div class="s9">
-          <div class="s12">
-            DriverConnect- Driver to Customer
-          </div>
-          <div class="m4 s12 text-muted">
-            To
-          </div>
-        </div>
-      </iron-grid>
-      <br>
-      <iron-grid>
-        <div class="s3">
-          <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-        </div>
-        <div class="s9">
-          <div class="s12">
-            DriverConnect- Driver to Customer
-          </div>
-          <div class="m4 s12 text-muted">
-            Answered By
-          </div>
-        </div>
-      </iron-grid>
-      <br>
-      <paper-material elevation="1" class="content-list">
-        <iron-grid>
-          <div class="s7">
-            <h3>Call Details</h3>
-            <div>Received: 12:22:34</div><br>
-            <div>Answered: 12:43:34</div><br>
-            <div>Ended: 14:23:34</div><br>
-            <div>Queuing: 14:23:34</div><br>
-            <div>Duration: 03:23:34</div><br>
-          </div>
-          <div class="s5">
-            <h4>12 Sep 2015</h4>
-            <div>Answer Time: 10s</div><br>
-            <div>Duration: 3m 23s</div><br>
-          </div>
-          <div class="m7 s12">
-            <h5>Recording</h5>
-            <paper-audio-player src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
-          </div>
-        </iron-grid>
-      </paper-material>
-      <h2>Transfers</h2>
-      <paper-material class="transfers" elevation="2">
-        <iron-grid>
-          <div class="s3">
+          <div class="layout horizontal content-list border">
             <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+            <div class="flex layout vertical flex">
+              <header class="layout vertical flex">
+                    <span class="layout vertical  justified">
+                      <span class="name snippet">
+                       <b> DriverConnect- Driver to Customer</b>
+                      </span>
+                      <span class="snippet">
+                        <span>Customer One</span>
+                      </span>
+                      <span class="snippet">
+                       <span class=" text-muted">To</span>
+                      </span>
+                    </span>
+              </header>
+            </div>
+            </div>
+            <div class="layout horizontal content-list border">
+              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+              <div class="flex layout vertical flex">
+                <header class="layout vertical flex">
+                    <span class="layout vertical  justified">
+                      <span class="name snippet">
+                       <b> DriverConnect- Driver to Customer</b>
+                      </span>
+                      <span class="snippet">
+                        <span>Customer Two</span>
+                      </span>
+                      <span class="snippet">
+                       <span class=" text-muted">Answered by</span>
+                      </span>
+                    </span>
+                </header>
+              </div>
+              </div>
+        </div>
+      <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
+      <iron-media-query query="(min-width: 622px) and (max-width: 992px)" query-matches="{{queryMatches1}}"></iron-media-query>
+      <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
+      <paper-material elevation="3" class="callDetails">
+        <div class="layout horizontal">
+          <div class="flex layout vertical left-content">
+            <h2>Call Details</h2>
+            <div class="layout horizontal  flex center-align">
+                    <span class="layout vertical  right-align ">
+                      <span class="snippet">
+                       <span>Received: </span>
+                      </span>
+                      <span class="snippet">
+                        <span >Answered: </span>
+                      </span>
+                       <span class="snippet">
+                        <span >Ended: </span>
+                      </span>
+                      <span class="snippet">
+                        <span >Queuing: </span>
+                      </span>
+                    </span>
+              <span class="layout vertical  left-align ">
+                      <span class="snippet">
+                     <span>&nbsp;12:22:34</span>
+                      </span>
+                      <span class="snippet">
+                         <span>&nbsp;12:22:34</span>
+                      </span>
+                       <span class="snippet">
+                       <span >&nbsp;12:22:34</span>
+                      </span>
+                      <span class="snippet">
+                        <span>&nbsp;12:22:34</span>
+                      </span>
+                    </span>
+            </div>
+            <template is="dom-if" if="{{queryMatches2}}">
+              <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+            </template>
           </div>
-          <div class="s9">
-            <h3>Customer Name</h3>
+          <div class="flex layout vertical flex right-content">
+            <h3>12th Sep 2015</h3>
+            <div class="layout horizontal  flex center-align">
+                    <span class="layout vertical  right-align ">
+                      <span class="snippet">
+                       <span>Answer time: </span>
+                      </span>
+                      <span class="snippet">
+                        <span >Duration: </span>
+                      </span>
+                    </span>
+              <span class="layout vertical  left-align ">
+                      <span class="snippet">
+                     <span>&nbsp;10s</span>
+                      </span>
+                      <span class="snippet">
+                         <span>&nbsp;3m 23s</span>
+                      </span>
+                    </span>
+            </div>
           </div>
-        </iron-grid>
-        <br>
-        <iron-grid>
-          <div class="s7">
-            <h3>Call Details</h3>
-            <div>Received: 12:22:34</div><br>
-            <div>Answered: 12:43:34</div><br>
-            <div>Ended: 14:23:34</div><br>
-            <div>Queuing: 14:23:34</div><br>
-            <div>Duration: 03:23:34</div><br>
-          </div>
-          <div class="s5">
-            <h4>12 Sep 2015</h4>
-            <div>Answer Time: 10s</div><br>
-            <div>Duration: 3m 23s</div><br>
-          </div>
-          <div class="m7 s12">
-            <h5>Recording</h5>
-            <paper-audio-player src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
-          </div>
-        </iron-grid>
+        </div>
+        <template is="dom-if" if="{{queryMatches}}">
+          <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+        </template>
+        <template is="dom-if" if="{{queryMatches1}}">
+          <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+        </template>
+        </paper-material>
+      <paper-material elevation="3" class="callDetails">
+        <div class="layout horizontal">
+          <div class="flex layout vertical left-content">
+            <h2>Transfers</h2>
+            </div>
+        </div>
+          <paper-material elevation="3" class="callDetails">
+            <div class="layout horizontal border flex pl0">
+              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+              <header class="layout vertical flex">
+                <header class="layout vertical flex">
+                    <span class="layout vertical  justified">
+                      <span class="name snippet">
+                       <b>Customer: Jane</b>
+                      </span>
+                      <span class="snippet">
+                        <span>Jane Terry</span>
+                      </span>
+                    </span>
+                </header>
+              </header>
+
+              </div>
+            <div class="layout horizontal">
+              <div class="flex layout vertical left-content">
+                <h2>Call Details</h2>
+                <div class="layout horizontal center-align flex">
+                    <span class="layout vertical  right-align ">
+                      <span class="snippet">
+                       <span>Received: </span>
+                      </span>
+                      <span class="snippet">
+                        <span >Answered: </span>
+                      </span>
+                       <span class="snippet">
+                        <span >Ended: </span>
+                      </span>
+                      <span class="snippet">
+                        <span >Queuing: </span>
+                      </span>
+                    </span>
+              <span class="layout vertical  left-align ">
+                      <span class="snippet">
+                     <span>&nbsp;12:22:34</span>
+                      </span>
+                      <span class="snippet">
+                         <span>&nbsp;12:22:34</span>
+                      </span>
+                       <span class="snippet">
+                       <span >&nbsp;12:22:34</span>
+                      </span>
+                      <span class="snippet">
+                        <span>&nbsp;12:22:34</span>
+                      </span>
+                    </span>
+                </div>
+                <template is="dom-if" if="{{queryMatches2}}">
+                  <paper-audio-player src="../../audio/dummy.mp3" class="pt10" title="Recording" color="#99c75f"></paper-audio-player>
+                </template>
+              </div>
+              <div class="flex layout vertical flex right-content">
+                <h3>12th Sep 2015</h3>
+                <div class="layout horizontal center-align flex">
+                    <span class="layout vertical  right-align ">
+                      <span class="snippet">
+                       <span>Answer time: </span>
+                      </span>
+                      <span class="snippet">
+                        <span >Duration: </span>
+                      </span>
+                    </span>
+              <span class="layout vertical  left-align ">
+                      <span class="snippet">
+                     <span>&nbsp;10s</span>
+                      </span>
+                      <span class="snippet">
+                         <span>&nbsp;3m 23s</span>
+                      </span>
+                    </span>
+                </div>
+              </div>
+            </div>
+            <template is="dom-if" if="{{queryMatches}}">
+              <paper-audio-player src="../../audio/dummy.mp3" class="pt10" title="Recording" color="#99c75f"></paper-audio-player>
+            </template>
+            <template is="dom-if" if="{{queryMatches1}}">
+              <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+            </template>
+          </paper-material>
       </paper-material>
-    </paper-material>
+        </paper-material>
   </template>
 
   <script>

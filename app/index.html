@@ -69,7 +69,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Toolbar -->
         <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title"><img src="images/app.png" width="222" height="66"></span>
+          <!--<span class="paper-font-title"><img src="images/images.jpg" width="222" height="66"></span>-->
         </paper-toolbar>
 
         <!-- Drawer Content -->
@@ -96,32 +96,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Main Toolbar -->
         <paper-toolbar id="mainToolbar" class="small">
-          <paper-icon-button id="paperToggle"  icon="menu" paper-drawer-toggle></paper-icon-button>
-          <paper-icon-button hidden icon="icons:arrow-back"></paper-icon-button>
+          <custom-toggle-button id="paperToggle" paper-drawer-toggle></custom-toggle-button>
+          <custom-back-button id="back-button"></custom-back-button>
           <span class="flex"></span>
-
-          <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
-          <paper-icon-button icon="search"></paper-icon-button>
-          <paper-menu-button class="demo">
-            <paper-icon-button icon="icons:more-vert" class="dropdown-trigger"></paper-icon-button>
-            <paper-menu class="dropdown-content">
-              <paper-item>Help</paper-item>
-              <paper-item>ShowLogs</paper-item>
-            </paper-menu>
-          </paper-menu-button>
-          <!--<paper-icon-button icon="icons:arrow-back"></paper-icon-button>-->
-
-          <!-- Application name -->
-          <div class="middle middle-container center horizontal layout">
-            <div class="app-name">Dolphin Webapp</div>
-          </div>
-
           <!-- Application sub title -->
           <!--<div class="bottom bottom-container center horizontal layout">-->
             <!--<div class="bottom-title paper-font-subhead"></div>-->
           <!--</div>-->
-
+          <a data-route="login" href="javascript:void(0)" onclick="logoutUser()" title="Logout" style="text-decoration:none;color:white;">
+            <paper-icon-button icon="power-settings-new"></paper-icon-button>
+          </a>
+          <custom-menu-button id="mainBar"></custom-menu-button>
+          <div class="middle middle-container center horizontal layout">
+            <div class="app-name">Dolphin Webapp</div>
+          </div>
         </paper-toolbar>
 
         <!-- Main Content -->
@@ -135,11 +123,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </section>
 
             <section data-route="users">
-              <paper-material elevation="1">
-                <h2 class="page-title">Users</h2>
-                <p>This is the users section</p>
-                <a href="/users/Rob">Rob</a>
-              </paper-material>
+              <dolphin-webapp-user></dolphin-webapp-user>
             </section>
 
             <section data-route="user-info">
@@ -156,6 +140,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </section>
             <section data-route="call-details">
               <dolphin-webapp-call-details></dolphin-webapp-call-details>
+            </section>
+            <section data-route="help">
+              <dolphin-webapp-help></dolphin-webapp-help>
+            </section>
+            <section data-route="logs">
+              <dolphin-webapp-logs></dolphin-webapp-logs>
             </section>
           </iron-pages>
         </div>

@@ -11,7 +11,8 @@
     "core-layout-grid": "Polymer/core-layout-grid#~0.5.6",
     "twbs-grid": "*",
     "iron-grid": "*",
-    "paper-audio-player": "~0.0.3"
+    "paper-audio-player": "~0.0.3",
+    "polymer-cookie": "~0.1.2"
   },
   "devDependencies": {
     "web-component-tester": "*",

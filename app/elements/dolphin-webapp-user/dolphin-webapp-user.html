@@ -54,12 +54,27 @@
       }
     </style>
     <paper-material elevation="1" class="content-list">
+      <paper-material elevation="1">
+        <h2 class="page-title">Users</h2>
+        <p>This is the users section</p>
+        <a href="/users/Rob">Rob</a>
+      </paper-material>
+      <!--<iron-ajax auto-->
+                 <!--id="test"-->
+                 <!--url="https://www.googleapis.com/youtube/v3/search"-->
+                 <!--params='{"part":"snippet", "q":"polymer", "key": "AIzaSyAuecFZ9xJXbGDkQYWBmYrtzOGJD-iDIgI", "type": "video"}'-->
+                 <!--handle-as="json"-->
+                 <!--last-response="{{ajaxResponse}}">-->
+
+      <!--</iron-ajax>-->
+      <paper-button on-click="_handle">Click Me</paper-button>
       <iron-ajax
         auto
-        url="http://localhost:9000/user"
+        id="test"
+        url="http://localhost:9000/api/user"
         handle-as="json"
-        on-response="handleResponse"
-        debounce-duration="300"></iron-ajax>
+        last-response="{{ajaxResponse}}"
+        ></iron-ajax>
     </paper-material>
   </template>
 
@@ -72,6 +87,11 @@
 
         properties: {},
         ready: function () {
+
+        },
+        _handle: function(e){
+          var data = document.getElementById('test');
+          console.log(data.lastResponse);
         }
       });
     })();

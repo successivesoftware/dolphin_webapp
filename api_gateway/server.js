@@ -37,15 +37,48 @@ router.get('/user', function(req, res) {
     console.log(data);
     res.json(data);
   });
+
+
 });
 
 router.route('/test')
   .post(function(req, res) {
-    res.json({ message: 'Post Testing Echo' });
+    var username = req.body.username;
+    var password = req.body.password;
+    fs.readFile('files/users.json', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      if(username == data.username) {
+        if(password == data.password){
+          res.send(data);
+        } else {
+          res.status(400).send({message: 'Sorry username is not found'})
+        }
+      } else {
+        res.status(400).send({message: 'Sorry password does not match'})
+      }
+    });
 });
 router.route('/auth')
   .post(function(req, res) {
-    res.json({ message: 'Post Testing Echo' });
+    var username = req.body.username;
+    var password = req.body.password;
+    fs.readFile('files/users.json', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      data = JSON.parse(data);
+      if(username == data.userName) {
+        if(password == data.password){
+          res.send(data);
+        } else {
+          res.status(400).send({message: 'Sorry username is not found'})
+        }
+      } else {
+        res.status(400).send({message: 'Sorry password does not match'})
+      }
+    });
 });
 
 // Multiple record (query 'kind' allowed)
