@@ -1,0 +1,458 @@
+/**
+* Created by successive on 9/10/15.
+**/
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
+<!--<link rel="import" href="../../../bower_components/polymer-paper-date-picker/paper-date-picker.css">-->
+<!--<link rel="import" href="../../../bower_components/polymer-paper-date-picker/paper-calendar.css">-->
+<!--<link rel="import" href="../../../bower_components/paper-time-picker/paper-time-picker.css">-->
+<!--<link rel="import" href="../../../bower_components/paper-time-picker/paper-clock-selector.css">-->
+
+
+<dom-module id="date-time">
+  <template id="scope">
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+
+      }
+
+      paper-fab {
+        /*position: absolute;*/
+        background: #99c75f;
+      }
+
+      paper-header-panel {
+        padding-top: 30px;
+      }
+
+      .paper-header {
+        height: auto;
+        font-size: 16px;
+        line-height: 36px;
+        padding: 0 10px;
+        /*color: white;*/
+        background: gainsboro;
+        transition: height 0.2s;
+      }
+
+      .avatar {
+        border: 2px solid #c7b89e;
+      }
+
+      .avatar, .avatar img {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 30px; /* Saf3+, Chrome */
+        border-radius: 30px; /* Opera 10.5, IE 9 */
+        /*-moz-border-radius: 30px;  Disabled for FF1+ */
+      }
+
+      .daySeparator {
+        padding-top: 0px;
+      }
+
+      paper-menu {
+
+      }
+
+      :host(:focus) {
+        z-index: 1;
+        position: relative;
+      }
+
+      :host(.shrink) {
+        max-height: 0;
+      }
+
+      :host([selected]) #thread {
+        background-color: #eee;
+      }
+
+      :host([narrow]) #actionicons {
+        display: none;
+      }
+
+      :host([archived][undo]) #archived {
+        opacity: 1;
+        transition: opacity 200ms ease-in-out 400ms;
+      }
+
+      #container {
+        position: relative;
+        z-index: 0;
+      }
+
+      #thread {
+        background-color: #fafafa;
+        padding: 16px;
+        border-bottom: 1px solid #e0e0e0;
+        will-change: transform, opacity;
+      }
+
+      #lastline,
+      #actionicons,
+      time {
+        color: #3a393a;
+      }
+
+      .messagecount {
+        color: #9e9e9e;
+        margin-left: 5px;
+      }
+
+      header {
+        margin-left: 16px;
+        font-size: 14px;
+      }
+
+      header[unread] .name,
+      header[unread] .subject,
+      header[unread] time {
+        font-weight: 500;
+      }
+
+      header[unread] time {
+        color: var(--paper-light-blue-500);
+      }
+
+      header span.name {
+        font-size: 18px;
+      }
+
+      header span.subject {
+        margin: 6px 0;
+      }
+
+      header span.snippet,
+      header span.subject,
+      header span.name {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 90%;
+      }
+
+      header span.name {
+        max-width: 100%;
+      }
+
+      time {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+      }
+
+      #star {
+        cursor: pointer;
+      }
+
+      iron-icon[starred] {
+        color: var(--paper-yellow-700);
+      }
+
+      .undo {
+      @apply(- -gmail-undo-action);
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      #archived {
+        color: white;
+        z-index: -1;
+        opacity: 0;
+        will-change: opacity;
+      }
+
+      #archived > * {
+        padding: 16px;
+      }
+
+      .labels label {
+        font-size: 10px;
+        background-color: #bdbdbd;
+        padding: 3px 5px;
+        color: #fff;
+        border-radius: 2px;
+        margin-right: 5px;
+      }
+
+      .border {
+        border-bottom: 1px solid gainsboro;
+        padding: 16px;
+      }
+
+      .content {
+        margin-top: -2px;
+        padding: 0px;
+      }
+
+      .right {
+        text-align: right;
+        padding-left: 20px;
+      }
+
+      .snippet {
+        line-height: 25px;
+      }
+
+      .test {
+        left: 2em;
+      }
+
+      .content-box {
+        padding: 16px;
+      }
+
+      .mr2 {
+        margin-right: 2em;
+      }
+
+      .mt-1 {
+        margin-top: -1em;
+      }
+      .mt2 {
+        margin-top: 2em;
+      }
+      .l1 {
+        left: 1em;
+      }
+      .ml {
+        margin-left: -.7em;
+      }
+      .offscreen {
+      @apply(- -swipeable-transition);
+      }
+
+      .offscreen.right {
+      @apply(- -swipeable-pos-right);
+      }
+
+      .fade {
+      @apply(- -swipeable-fade);
+      }
+
+      .swiping {
+      @apply(- -swipeable-swiping);
+      }
+
+      .snapback {
+      @apply(- -swipeable-snapback);
+      }
+
+      label.pink {
+      @apply(- -label-pink);
+      }
+
+      label.orange {
+      @apply(- -label-orange);
+      }
+
+      label.green {
+      @apply(- -label-green);
+      }
+
+      label.blue {
+      @apply(- -label-blue);
+      }
+
+      label.yellow {
+      @apply(- -label-yellow);
+      }
+
+      label.teal {
+      @apply(- -label-teal);
+      }
+
+      label.purple {
+      @apply(- -label-purple);
+      }
+
+
+    </style>
+        <paper-radio-group class="mt2 ml" selected="anyDate" id="dateRadioButton">
+          <paper-radio-button name="anyDate">Any Date</paper-radio-button>
+          <paper-radio-button name="specifiedDate">Specified Date</paper-radio-button>
+        </paper-radio-group>
+        <paper-dialog id="dialog" class="paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+          <paper-date-picker id="picker" responsive-width="655px"></paper-date-picker>
+          <div class="buttons">
+            <paper-button dialog-dismiss role="button">Cancel</paper-button>
+            <paper-button dialog-confirm role="button">OK</paper-button>
+          </div>
+        </paper-dialog>
+        <paper-dialog id="timeDialogBasic" class="paper-time-picker-dialog" modal>
+          <paper-time-picker id="timePickerBasic" time="[[time]]"></paper-time-picker>
+          <div class="buttons">
+            <paper-button dialog-dismiss>CANCEL</paper-button>
+            <paper-button dialog-confirm on-tap="timeSelected">OK</paper-button>
+          </div>
+        </paper-dialog>
+        <div  class="layout vertical">
+          <div class="layout vertical">
+            <span class="mt2 text-muted">FROM</span>
+            <span class="layout horizontal mt-1">
+              <span class="mr2"><paper-input  disabled="{{disableDate}}" on-tap="showFromDate" value="{{dateFormat(fromDate, 'ddd MMM DD YYYY')}}" placeholder="{{dateFormat(fromDate, 'LL')}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
+              <span class="mr2"><paper-input disabled="{{disableTime}}" on-tap="showFromTime" value="{{fromTime}}" placeholder="{{fromTime}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
+            </span>
+          </div>
+          <div class="layout vertical">
+            <span class="mt2 text-muted">TO</span>
+            <span class="layout horizontal mt-1">
+              <span class="mr2"><paper-input  disabled="{{disableDate}}" on-tap="showFromDate" value="{{dateFormat(toDate, 'ddd MMM DD YYYY')}}" placeholder="{{dateFormat(toDate, 'LL')}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
+              <span class="mr2 "><paper-input disabled="{{disableTime}}" on-tap="showFromTime" value="{{toTime}}" placeholder="{{toTime}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
+            </span>
+          </div>
+          <div class="layout vertical">
+            <paper-checkbox disabled="{{disableCheck}}" class="mt2" id="allDay"><span class="text-muted">ALL DAY</span></paper-checkbox>
+          </div>
+          <!--<paper-input  on-tap="showDialog" ></paper-input>-->
+          <!--<paper-input  on-tap="showTimeDialogBasic" ></paper-input>-->
+        </div>
+
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'date-time',
+        properties: {
+          flagDate:{
+            type: Boolean,
+            value: false
+          },
+          flagTime:{
+            type: Boolean,
+            value: false
+          },
+          toDate: {
+            type: Date,
+            value: new Date()
+          },
+          fromDate: {
+            type: Date,
+            value: new Date()
+          },
+          toTime: {
+            type: String
+          },
+          fromTime: {
+            type: String
+          },
+          disableTime: {
+            type: Boolean,
+            value: true
+          },
+          disableDate: {
+            type: Boolean,
+            value: true
+          },
+          disableCheck: {
+            type: Boolean,
+            value: true
+          }
+        },
+
+        ready: function(){
+          this.dateFormat = this.$.picker.dateFormat;
+          this.toTime = this.timeFormat();
+          this.fromTime = this.timeFormat();
+        },
+        dateFormat: function(date, format) {
+          if (!date) {
+            return '';
+          }
+          return moment(date).format(format);
+        },
+        timeFormat: function(){
+          return moment(new Date()).format('LT');
+        },
+        showFromDate: function(){
+          this.flagDate = false;
+          this.showDialog();
+        },
+        showToDate: function(){
+          this.flagDate = true;
+          this.showDialog();
+        },
+        showFromTime: function(){
+          this.flagTime = false;
+          this.showTimeDialogBasic();
+        },
+        showToTime: function(){
+          this.flagTime = true;
+          this.showTimeDialogBasic();
+        },
+        showDialog: function () {
+          this.$.dialog.toggle();
+        },
+        showTimeDialog: function () {
+          this.$.timeDialog.toggle();
+        },
+        showTimeDialogBasic: function () {
+          this.$.timeDialogBasic.toggle();
+        },
+        timeSelected : function() {
+          if(this.flagTime){
+            this.toTime = this.$.timePickerBasic.time;
+          } else {
+            this.fromTime = this.$.timePickerBasic.time;
+          }
+//          console.log(this.$.timePickerBasic.time);
+//        scope.time = scope.$.picker.time;
+        },
+        dismissDialog : function(event) {
+          if (event.detail.confirmed) {
+            if(this.flagDate){
+              this.toDate = this.$.picker.date;
+            } else {
+              this.fromDate = this.$.picker.date;
+            }
+          }
+        }
+      });
+    })();
+    document.addEventListener('paper-radio-group-changed', function(){
+      var elem1 = document.querySelector('#basicSearch');
+      var elem2 = document.querySelector('#advanceSearch');
+      toggleData(elem1);
+      toggleData(elem2);
+    });
+    var toggleData = function (elem){
+      var dateRadioButton = elem.querySelector('#dateRadioButton');
+      if(dateRadioButton.selected == 'specifiedDate'){
+        elem.disableTime = false;
+        elem.disableDate = false;
+        elem.disableCheck = false;
+      } else {
+        elem.disableTime = true;
+        elem.disableDate = true;
+        elem.disableCheck = true;
+      }
+    };
+    document.addEventListener('iron-change', function(){
+      var elem1 = document.querySelector('#basicSearch');
+      var elem2 = document.querySelector('#advanceSearch');
+     toggleCheck(elem1);
+     toggleCheck(elem2);
+    });
+    var toggleCheck = function(elem){
+      var allDay = elem.querySelector('#allDay');
+      if(allDay.checked){
+        elem.disableTime = true;
+      } else {
+        elem.disableTime = false;
+      }
+    };
+    //    document.addEventListener('WebComponentsReady', function() {
+    //      var scope = document.querySelector('#date-time');
+    //      console.log(scope);
+    //      scope.dateFormat = scope.$.picker.dateFormat;
+    //    });
+  </script>
+
+</dom-module>

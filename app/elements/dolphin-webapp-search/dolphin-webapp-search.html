@@ -11,13 +11,13 @@
 
 
 <dom-module id="dolphin-webapp-search">
-  <template>
+  <template id="scope">
     <style is="custom-style" include="shared-styles"></style>
     <style>
       :host {
         display: block;
 
-       }
+      }
 
       paper-fab {
         /*position: absolute;*/
@@ -57,7 +57,6 @@
       paper-menu {
 
       }
-
 
       :host(:focus) {
         z-index: 1;
@@ -179,23 +178,46 @@
         border-radius: 2px;
         margin-right: 5px;
       }
+
       .border {
         border-bottom: 1px solid gainsboro;
         padding: 16px;
       }
+
       .content {
         margin-top: -2px;
         padding: 0px;
       }
+
       .right {
         text-align: right;
         padding-left: 20px;
       }
+
       .snippet {
         line-height: 25px;
       }
+
       .test {
         left: 2em;
+      }
+
+      .content-box {
+        padding: 16px;
+      }
+
+      .mr2 {
+        margin-right: 2em;
+      }
+
+      .mt-1 {
+        margin-top: -1em;
+      }
+      .mt2 {
+        margin-top: 2em;
+      }
+      .l1 {
+        left: 1em;
       }
       .offscreen {
       @apply(- -swipeable-transition);
@@ -253,53 +275,25 @@
     </paper-tabs>
 
     <iron-pages selected="{{selected}}">
-      <div>
-        <paper-input label="Search" type="search"
-                     placeholder="Search for calls" autosave="test" results="5">
+      <div class="content-box">
+        <paper-input class="test" type="search" placeholder="Search for calls"
+                      autosave="test" results="5">
         </paper-input>
-        <paper-radio-group selected="anyDate">
-          <paper-radio-button name="anyDate">Any Date</paper-radio-button>
-          <paper-radio-button name="specifiedDate">Specified Date</paper-radio-button>
-        </paper-radio-group>
-        <paper-dialog id="dialog" class="paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
-          <paper-date-picker id="picker" responsive-width="655px"></paper-date-picker>
-          <div class="buttons">
-            <paper-button dialog-dismiss role="button">Cancel</paper-button>
-            <paper-button dialog-confirm role="button">OK</paper-button>
-          </div>
-        </paper-dialog>
-        <paper-dialog id="timeDialogBasic" class="paper-time-picker-dialog" modal>
-          <paper-time-picker id="timePickerBasic" time="[[time]]"></paper-time-picker>
-          <div class="buttons">
-            <paper-button dialog-dismiss>CANCEL</paper-button>
-            <paper-button dialog-confirm on-tap="timeSelected">OK</paper-button>
-          </div>
-        </paper-dialog>
-        <div>
-          <paper-button class="btn" on-tap="showDialog" raised>Change Date</paper-button>
-          <paper-button class="btn" on-tap="showTimeDialogBasic" raised>Change Time</paper-button>
-        </div>
-        <a href="/report"><paper-fab icon="done" elavation="4"></paper-fab></a>
+        <date-time id="basicSearch"></date-time>
+        <a href="/report">
+          <paper-fab icon="done" elavation="4"></paper-fab>
+        </a>
       </div>
 
-      <div>
+      <div class="content-box">
         <paper-input label="From"></paper-input>
         <paper-input label="To"></paper-input>
         <paper-input label="Answered by"></paper-input>
         <paper-input label="Transferred to"></paper-input>
-        <paper-radio-group selected="anyDate">
-          <paper-radio-button name="anyDate">Any Date</paper-radio-button>
-          <paper-radio-button name="specifiedDate">Specified Date</paper-radio-button>
-        </paper-radio-group>
-        <paper-button class="btn" on-tap="showTimeDialog" raised>Change Time</paper-button>
-        <paper-dialog id="timeDialog" class="paper-time-picker-dialog" modal>
-          <paper-time-picker id="timePicker" time="[[time]]"></paper-time-picker>
-          <div class="buttons">
-            <paper-button dialog-dismiss>CANCEL</paper-button>
-            <paper-button dialog-confirm on-tap="timeSelected">OK</paper-button>
-          </div>
-        </paper-dialog>
-        <a href="/report"><paper-fab icon="done" elavation="4"></paper-fab></a>
+        <date-time id="advanceSearch"></date-time>
+        <a href="/report">
+          <paper-fab icon="done" elavation="4"></paper-fab>
+        </a>
       </div>
 
     </iron-pages>
@@ -312,26 +306,102 @@
       Polymer({
         is: 'dolphin-webapp-search',
         properties: {
-
           selected: {
             type: Number,
             value: 0
           }
+
         },
-        callDetails: function (e) {
-          window.location.href = '/#!/reports/call/213234';
-        },
-      showDialog : function() {
-        this.$.dialog.toggle();
-      },
-        showTimeDialog : function() {
-        this.$.timeDialog.toggle();
-      },
-        showTimeDialogBasic : function() {
-          this.$.timeDialogBasic.toggle();
+        ready: function(){
+//          var elem = this.querySelectorAll('paper-input');
+//          for( var i=0; i< elem.length; i++){
+//            elem[i].style.left = "2em";
+//          }
         }
+//        dateFormat: function(date, format) {
+//          if (!date) {
+//            return '';
+//          }
+//          return moment(date).format(format);
+//        },
+//        timeFormat: function(){
+//          return moment(new Date()).format('LT');
+//        },
+//        callDetails: function (e) {
+//          window.location.href = '/#!/reports/call/213234';
+//        },
+//        showFromDate: function(){
+//          this.flagDate = false;
+//          this.showDialog();
+//        },
+//        showToDate: function(){
+//          this.flagDate = true;
+//          this.showDialog();
+//        },
+//        showFromTime: function(){
+//          this.flagTime = false;
+//          this.showTimeDialogBasic();
+//        },
+//        showToTime: function(){
+//          this.flagTime = true;
+//          this.showTimeDialogBasic();
+//        },
+//        showDialog: function () {
+//          this.$.dialog.toggle();
+//        },
+//        showTimeDialog: function () {
+//          this.$.timeDialog.toggle();
+//        },
+//        showTimeDialogBasic: function () {
+//          this.$.timeDialogBasic.toggle();
+//        },
+//        timeSelected : function() {
+//          if(this.flagTime){
+//            this.toTime = this.$.timePickerBasic.time;
+//          } else {
+//            this.fromTime = this.$.timePickerBasic.time;
+//          }
+////          console.log(this.$.timePickerBasic.time);
+////        scope.time = scope.$.picker.time;
+//      },
+//      dismissDialog : function(event) {
+//        if (event.detail.confirmed) {
+//          if(this.flagDate){
+//            this.toDate = this.$.picker.date;
+//          } else {
+//            this.fromDate = this.$.picker.date;
+//          }
+//        }
+//      }
       });
     })();
+//    document.addEventListener('paper-radio-group-changed', function(){
+//      var dateRadioButton = document.querySelector('#dateRadioButton');
+//      var elem = document.querySelector('dolphin-webapp-search');
+//      if(dateRadioButton.selected == 'specifiedDate'){
+//        elem.disableTime = false;
+//        elem.disableDate = false;
+//        elem.disableCheck = false;
+//      } else {
+//        elem.disableTime = true;
+//        elem.disableDate = true;
+//        elem.disableCheck = true;
+//      }
+//    });
+//    document.addEventListener('iron-change', function(){
+//      var allDay = document.querySelector('#allDay');
+//      var elem = document.querySelector('dolphin-webapp-search');
+//      if(allDay.checked){
+//        elem.disableTime = true;
+//      } else {
+//        elem.disableTime = false;
+//      }
+//    });
+//    document.addEventListener('WebComponentsReady', function() {
+//      var scope = document.querySelector('#dolphin-webapp-search');
+//      console.log(scope);
+//      scope.dateFormat = scope.$.picker.dateFormat;
+//    });
   </script>
 
 </dom-module>
