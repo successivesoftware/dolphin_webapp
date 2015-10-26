@@ -1065,6 +1065,7 @@
             }
           }
           this.reportsToday = reportsToday;
+          console.log(reportsToday);
           this.reportsYesterday = reportsYesterday;
           this.reportsThisMonth = reportsThisMonth;
           this.reportsLastMonth = reportsLastMonth;
@@ -1077,7 +1078,7 @@
           if (!date) {
             return '';
           }
-          return moment(date).format(format);
+          return moment(moment.utc(date)).format(format);
         },
         timeFormat: function(callDuration){
           callDuration = callDuration.split(':');
