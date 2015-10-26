@@ -84,8 +84,20 @@ router.route('/auth')
 // Multiple record (query 'kind' allowed)
 router.route('/:database/v2/:table')
   .get(function(req, res) {
-    res.json({ message: 'Get/Database/V2/Table' });
+    var database = req.params.database;
+    var table = req.params.table;
+    var kind = req.query.kind;
+    var maxResult = req.query.maxResults;
+    fs.readFile('files/reports.json', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      data = JSON.parse(data);
+      data.length = 25;
+      res.jsonp(data);
+    });
    })
+//res.status(400).send({message: 'Sorry password does not match'})
   .post(function(req, res) {
     res.json({ message: 'Post/Database/V2/Table' });
    })

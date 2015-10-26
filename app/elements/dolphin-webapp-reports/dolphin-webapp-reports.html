@@ -53,7 +53,6 @@
 
       }
 
-
       :host(:focus) {
         z-index: 1;
         position: relative;
@@ -174,21 +173,35 @@
         border-radius: 2px;
         margin-right: 5px;
       }
+
       .border {
         border-bottom: 1px solid gainsboro;
         padding: 16px;
       }
+
       .content {
         margin-top: -2px;
         padding: 0px;
       }
+
       .right {
         text-align: right;
         padding-left: 20px;
       }
+
       .snippet {
         line-height: 25px;
       }
+
+      .no-decoration {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .no-decoration div:hover, div:focus {
+        background: #c6f1ff;
+      }
+
       .offscreen {
       @apply(- -swipeable-transition);
       }
@@ -238,6 +251,7 @@
       }
 
     </style>
+
     <paper-tabs selected="{{selected}}">
       <paper-tab>Calls</paper-tab>
       <paper-tab>Users</paper-tab>
@@ -246,401 +260,736 @@
 
     <iron-pages selected="{{selected}}">
       <div>
-        <paper-header-panel class="blue">
-          <div class="paper-header">Today</div>
-        </paper-header-panel>
-        <paper-material elevation="3"  class="content">
-          <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
-          <iron-media-query query="(min-width: 622px) and (max-width: 992px)" query-matches="{{queryMatches1}}"></iron-media-query>
-          <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
-          <template is="dom-if" if="{{queryMatches}}">
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
+        <iron-ajax
+          auto
+          id="login"
+          url="http://localhost:9000/api/reporting/v2/telephony"
+          params='{"kind":"callRecords", "maxResults":"{{maxNumber}}", "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl"}'
+          method="GET"
+          on-response="handleResponse"
+          content-type="application/json"
+          handle-as="json"
+          on-error="handleError"
+          last-response="{{ajaxResponse}}"></iron-ajax>
+        <template is="dom-if" if="{{reportsToday.length}}">
+
+          <paper-header-panel class="blue">
+            <div class="paper-header">Today</div>
+          </paper-header-panel>
+          <paper-material elevation="3" class="content">
+            <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
+            <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
+                              query-matches="{{queryMatches1}}"></iron-media-query>
+            <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
+            <template is="dom-repeat" items="{{reportsToday}}" as="reports">
+              <template is="dom-if" if="{{queryMatches}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
               <span class="name">
-                <b>from:</b> Driver: 261- Arshad
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
               </span>
             </span>
                   <span class="name snippet">
-                <b>to:</b> DriverConnect- Driver to Customer
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
               </span>
                   <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
               </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
+
+            </template>
+                        <template is="dom-if" if="{{queryMatches1}}">
+              <div>
+                <a href="/reports/call/213234" class="no-decoration">
+                  <div class="layout horizontal border content-list">
+                    <div class="avatar"><img src="../../images/female.png"></div>
+                    <div class="flex layout horizontal">
+                      <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
               <span class="name">
-                <b>from:</b> Driver: 261- Arshad
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+              <span class="name">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
               </span>
             </span>
                   <span class="name snippet">
-                <b>to:</b> DriverConnect- Driver to Customer
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
               </span>
-                  <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
-                </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
+                        <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                        </template>
+                      </header>
+                    </div>
+                    <div class="layout vertical right">
+                      <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                      </time>
+                      <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                      <br>
+                      <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                    </div>
+                  </div>
+                </a>
               </div>
-            </div>
-          </template>
-          <template is="dom-if" if="{{queryMatches1}}">
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
-                </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-            <span class="layout horizontal center snippet justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
-                </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
-              </div>
-            </div>
-          </template>
-          <template is="dom-if" if="{{queryMatches2}}">
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
+            </template>
+            <template is="dom-if" if="{{queryMatches2}}">
+              <div>
+                <a href="/reports/call/213234" class="no-decoration">
+                  <div class="layout horizontal border content-list">
+                    <div class="avatar"><img src="../../images/female.png"></div>
+                    <div class="flex layout horizontal">
+                      <header class="layout vertical flex">
                     <span class="snippet layout horizontal center justified">
                       <span class="name">
-                        <b>from:</b> Driver: 261- Arshad
+                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
                       </span>
                       <span class="name">
-                        <b>to:</b> DriverConnect- Driver to Customer
+                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
                       </span>
                       <span class="name">
-                        <b>ans:</b> DriverConnect- Driver to Customer
+                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
                       </span>
                     </span>
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-                    </span>
-                  </header>
-                </div>
-                &nbsp;
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
 
-              </div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-                    <span class="layout horizontal snippet center justified">
-                      <span class="name">
-                        <b>from:</b> Driver: 261- Arshad
-                      </span>
-                      <span class="name">
-                        <b>to:</b> DriverConnect- Driver to Customer
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> DriverConnect- Driver to Customer
-                      </span>
-                    </span>
+                        <template is="dom-if" if="{{reports.transfers.length}}">
                     <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
                     </span>
-                  </header>
-                </div>
-                &nbsp;
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
+                        </template>
+                      </header>
+                    </div>
+                    &nbsp;
+                    <div class="layout vertical right">
+                      <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                      </time>
+                      <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                      <br>
+                      <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                    </div>
 
+                  </div>
+                </a>
               </div>
-            </div>
-          </template>
-        </paper-material>
-        <paper-header-panel class="daySeparator">
-          <div class="paper-header">Yesterday</div>
-        </paper-header-panel>
-        <paper-material class="content" elevation="3">
-          <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
-          <iron-media-query query="(min-width: 622px) and (max-width: 992px)" query-matches="{{queryMatches1}}"></iron-media-query>
-          <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
-          <template is="dom-if" if="{{queryMatches}}">
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
+            </template>
+            </template>
+          </paper-material>
+
+        </template>
+        <template is="dom-if" if="{{reportsYesterday.length}}">
+
+          <paper-header-panel class="daySeparator">
+            <div class="paper-header">Yesterday</div>
+          </paper-header-panel>
+          <paper-material elevation="3" class="content">
+            <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
+            <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
+                              query-matches="{{queryMatches1}}"></iron-media-query>
+            <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
+            <template is="dom-repeat" items="{{reportsYesterday}}" as="reports">
+              <template is="dom-if" if="{{queryMatches}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
               <span class="name">
-                <b>from:</b> Driver: 261- Arshad
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
               </span>
             </span>
                   <span class="name snippet">
-                <b>to:</b> DriverConnect- Driver to Customer
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
               </span>
                   <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
               </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
-                </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-                  <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
-                </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
-              </div>
-            </div>
-          </template>
-          <template is="dom-if" if="{{queryMatches1}}">
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
-                </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-            <span class="layout snippet horizontal center justified">
-              <span class="name">
-                <b>from:</b> Driver: 261- Arshad
-              </span>
-              <span class="name">
-                <b>to:</b> DriverConnect- Driver to Customer
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> DriverConnect- Driver to Customer
-              </span>
-            <span class="layout horizontal center justified">
-              <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
-            </span>
-                  </header>
-                </div>
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
-                </div>
-              </div>
-            </div>
-          </template>
-          <template is="dom-if" if="{{queryMatches2}}">
-            <div >
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-                    <span class="layout horizontal snippet center justified">
-                      <span class="name">
-                        <b>from:</b> Driver: 261- Arshad
-                      </span>
-                      <span class="name">
-                        <b>to:</b> DriverConnect- Driver to Customer
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> DriverConnect- Driver to Customer
-                      </span>
-                    </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
                     <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
                     </span>
-                  </header>
-                </div>
-                &nbsp;
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
+                          </template>
+
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
                 </div>
 
-              </div>
-              <div class="layout horizontal border content-list">
-                <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-                <div class="flex layout horizontal">
-                  <header class="layout vertical flex">
-                    <span class="layout horizontal snippet center justified">
-                      <span class="name">
-                        <b>from:</b> Driver: 261- Arshad
-                      </span>
-                      <span class="name">
-                        <b>to:</b> DriverConnect- Driver to Customer
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> DriverConnect- Driver to Customer
-                      </span>
-                    </span>
+              </template>
+              <template is="dom-if" if="{{queryMatches1}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+            <span class="layout horizontal snippet center justified">
+              <span class="name">
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+              <span class="name">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+              </span>
+            </span>
+                  <span class="name snippet">
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+              </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
                     <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to: DriverConnect- Driver to Customer</i></span>
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
                     </span>
-                  </header>
+                          </template>
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-                &nbsp;
-                <div class="layout vertical right">
-                  <time>12 Sep
-                  </time>
-                  <time>15:23</time>
-                  <br>
-                  <time> 2m 32s</time>
+              </template>
+              <template is="dom-if" if="{{queryMatches2}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+                    <span class="snippet layout horizontal center justified">
+                      <span class="name">
+                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                      </span>
+                    </span>
+
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+                        </header>
+                      </div>
+                      &nbsp;
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+
+                    </div>
+                  </a>
+                </div>
+              </template>
+            </template>
+          </paper-material>
+
+        </template>
+        <template is="dom-if" if="{{reportsThisMonth.length}}">
+
+          <paper-header-panel class="daySeparator">
+            <div class="paper-header">This Month</div>
+          </paper-header-panel>
+          <paper-material elevation="3" class="content">
+            <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
+            <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
+                              query-matches="{{queryMatches1}}"></iron-media-query>
+            <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
+            <template is="dom-repeat" items="{{reportsThisMonth}}" as="reports">
+              <template is="dom-if" if="{{queryMatches}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+            <span class="layout horizontal snippet center justified">
+              <span class="name">
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+            </span>
+                  <span class="name snippet">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+              </span>
+                  <span class="name snippet">
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+              </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
                 </div>
 
-              </div>
-            </div>
-          </template>
-        </paper-material>
-        <a href="/search"><paper-fab icon="search" elavation="4"></paper-fab></a>
+              </template>
+              <template is="dom-if" if="{{queryMatches1}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+            <span class="layout horizontal snippet center justified">
+              <span class="name">
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+              <span class="name">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+              </span>
+            </span>
+                  <span class="name snippet">
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+              </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </template>
+              <template is="dom-if" if="{{queryMatches2}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+                    <span class="snippet layout horizontal center justified">
+                      <span class="name">
+                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                      </span>
+                    </span>
+
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+                        </header>
+                      </div>
+                      &nbsp;
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+
+                    </div>
+                  </a>
+                </div>
+              </template>
+            </template>
+          </paper-material>
+
+        </template>
+        <template is="dom-if" if="{{reportsLastMonth.length}}">
+
+          <paper-header-panel class="daySeparator">
+            <div class="paper-header">Last Month</div>
+          </paper-header-panel>
+          <paper-material elevation="3" class="content">
+            <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
+            <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
+                              query-matches="{{queryMatches1}}"></iron-media-query>
+            <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
+            <template is="dom-repeat" items="{{reportsLastMonth}}" as="reports">
+              <template is="dom-if" if="{{queryMatches}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+            <span class="layout horizontal snippet center justified">
+              <span class="name">
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+            </span>
+                  <span class="name snippet">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+              </span>
+                  <span class="name snippet">
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+              </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+              </template>
+              <template is="dom-if" if="{{queryMatches1}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+            <span class="layout horizontal snippet center justified">
+              <span class="name">
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+              <span class="name">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+              </span>
+            </span>
+                  <span class="name snippet">
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+              </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </template>
+              <template is="dom-if" if="{{queryMatches2}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+                    <span class="snippet layout horizontal center justified">
+                      <span class="name">
+                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                      </span>
+                    </span>
+
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+                        </header>
+                      </div>
+                      &nbsp;
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+
+                    </div>
+                  </a>
+                </div>
+              </template>
+            </template>
+          </paper-material>
+
+        </template>
+        <template is="dom-if" if="{{reportsOlder.length}}">
+
+          <paper-header-panel class="daySeparator">
+            <div class="paper-header">Older</div>
+          </paper-header-panel>
+          <paper-material elevation="3" class="content">
+            <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
+            <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
+                              query-matches="{{queryMatches1}}"></iron-media-query>
+            <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
+            <template is="dom-repeat" items="{{reportsOlder}}" as="reports">
+              <template is="dom-if" if="{{queryMatches}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+            <span class="layout horizontal snippet center justified">
+              <span class="name">
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+            </span>
+                  <span class="name snippet">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+              </span>
+                  <span class="name snippet">
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+              </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+              </template>
+              <template is="dom-if" if="{{queryMatches1}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+            <span class="layout horizontal snippet center justified">
+              <span class="name">
+                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+              </span>
+              <span class="name">
+                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+              </span>
+            </span>
+                  <span class="name snippet">
+                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+              </span>
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+                        </header>
+                      </div>
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </template>
+              <template is="dom-if" if="{{queryMatches2}}">
+                <div>
+                  <a href="/reports/call/213234" class="no-decoration">
+                    <div class="layout horizontal border content-list">
+                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <div class="flex layout horizontal">
+                        <header class="layout vertical flex">
+                    <span class="snippet layout horizontal center justified">
+                      <span class="name">
+                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                      </span>
+                      <span class="name">
+                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                      </span>
+                    </span>
+
+                          <template is="dom-if" if="{{reports.transfers.length}}">
+                    <span class="layout horizontal center justified">
+                      <span class="snippet flex text-muted name"><i>transferred to:
+                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                          <span>{{transfer.callTo.fullName}}</span>
+                        </template>
+                      </i>
+                      </span>
+                    </span>
+                          </template>
+                        </header>
+                      </div>
+                      &nbsp;
+                      <div class="layout vertical right">
+                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                        </time>
+                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                        <br>
+                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
+                      </div>
+
+                    </div>
+                  </a>
+                </div>
+              </template>
+            </template>
+          </paper-material>
+
+        </template>
+        <a href="/search">
+          <paper-fab icon="search" elavation="4"></paper-fab>
+        </a>
       </div>
-
 
 
       <div>
@@ -663,10 +1012,82 @@
           selected: {
             type: Number,
             value: 0
+          },
+          reports: {
+            type: Array
+          },
+          reportsToday: {
+            type: Array
+          },
+          reportsYesterday: {
+            type: Array
+          },
+          reportsThisMonth: {
+            type: Array
+          },
+          reportsLastMonth: {
+            type: Array
+          },
+          reportsOlder: {
+            type: Array
+          },
+          maxNumber: {
+            type: Number,
+            value: 25
           }
         },
         callDetails: function (e) {
           window.location.href = '/#!/reports/call/213234';
+        },
+        handleResponse: function (request) {
+          this.reports = request.detail.response;
+          var reportsToday = [],
+            reportsYesterday = [],
+            reportsThisMonth = [],
+            reportsLastMonth = [],
+            reportsOlder = [];
+          for (var i = 0; i < this.reports.length; i++) {
+            var report = this.reports[i];
+            var timeReceived = new Date(report.timeReceived);
+            var yesterday = new Date(new Date().setUTCDate((new Date()).getDate() - 1));
+            var month = new Date().getUTCMonth();
+            var year = new Date().getUTCFullYear();
+            if (timeReceived.setUTCHours(0, 0, 0, 0) == (new Date()).setUTCHours(0, 0, 0, 0)) {
+              reportsToday.push(report);
+            } else if (timeReceived.setUTCHours(0, 0, 0, 0) == yesterday.setUTCHours(0, 0, 0, 0)) {
+              reportsYesterday.push(report);
+            } else if ((timeReceived.getUTCMonth() == month) && timeReceived.getUTCFullYear() == year) {
+              reportsThisMonth.push(report);
+            } else if ((timeReceived.getUTCMonth() == (month - 1)) && timeReceived.getUTCFullYear() == year) {
+              reportsLastMonth.push(report);
+            } else {
+              reportsOlder.push(report);
+            }
+          }
+          this.reportsToday = reportsToday;
+          this.reportsYesterday = reportsYesterday;
+          this.reportsThisMonth = reportsThisMonth;
+          this.reportsLastMonth = reportsLastMonth;
+          this.reportsOlder = reportsOlder;
+        },
+        ready: function () {
+
+        },
+        dateFormat: function(date, format) {
+          if (!date) {
+            return '';
+          }
+          return moment(date).format(format);
+        },
+        timeFormat: function(callDuration){
+          callDuration = callDuration.split(':');
+          if(callDuration[0] > 0){
+            return callDuration[0].replace(/^0+/, '') + 'h ' + callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's'
+          } else
+          if(callDuration[0] <= 0 && callDuration[1] <= 0 && callDuration[2] > 0){
+            return callDuration[2].replace(/^0+/, '') + 's'
+          } else
+          return callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's';
         }
       });
     })();
