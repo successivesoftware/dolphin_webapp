@@ -1,0 +1,2706 @@
+[
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876e",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif1",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": "../../audio/dummy.mp3",
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": "../../audio/dummy.mp3"
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "1e900195-35ed-4116-bc6a-e8b516fcf6df",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876g",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876a",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876b",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876c",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876d",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876h",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876i",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876j",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876k",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876l",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876m",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876n",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876o",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876p",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876q",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876r",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876s",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876t",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876u",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876v",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": null
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876w",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": null,
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": "../../audio/dummy.mp3"
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876x",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": "../../audio/dummy.mp3",
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": "../../audio/dummy.mp3"
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876y",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": "../../audio/dummy.mp3",
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": "../../audio/dummy.mp3"
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  },
+  {
+    "_id": "ebc7313e-fb6e-4d08-9bfd-efbf3ff1876z",
+    "kind": "reporting#telephony#callRecords",
+    "domain": "example.com",
+    "creationTime": "2015-06-30T15:05:02Z",
+    "callFrom": {
+      "fullName": "Driver 146 - Hanif",
+      "primaryName": "+441234567890",
+      "thumbnailPhotoUrl": null,
+      "type": "external"
+    },
+    "callTo": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "answeredBy": {
+      "fullName": "DriverConnect - Driver to Customer",
+      "primaryName": "dc_d2c@example.com",
+      "thumbnailPhotoUrl": null,
+      "type": "telephony#ivr#application"
+    },
+    "timeReceived": "2015-06-30T15:02:30+01:00",
+    "timeQueueing": "00:00:00",
+    "timeAnswered": "2015-06-30T15:02:30+01:00",
+    "timeDuration": "00:02:35",
+    "timeCleared": "2015-06-30T15:04:35+01:00",
+    "recordingUri": "../../audio/dummy.mp3",
+    "cost": 0.06,
+    "currency": "GBP",
+    "transfers": [
+      {
+        "callUID": "06835e62-634c-403c-9226-379245acec0b",
+        "callFrom": {
+          "fullName": "Driver 146 - Hanif",
+          "primaryName": "+441234567890",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "callTo": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "answeredBy": {
+          "fullName": "Customer: JOE",
+          "primaryName": "+447654321234",
+          "thumbnailPhotoUrl": null,
+          "type": "external"
+        },
+        "timeReceived": "2015-06-30T15:02:45+01:00",
+        "timeQueueing": "00:00:12",
+        "timeAnswered": "2015-06-30T15:02:57+01:00",
+        "timeDuration": "00:01:38",
+        "timeCleared": "2015-06-30T15:04:35+01:00",
+        "recordingUri": "../../audio/dummy.mp3"
+      }
+    ],
+    "orgUnit": {
+      "orgUnitPath": "/mk",
+      "description": "Milton Keynes"
+    },
+    "logs": [
+      {
+        "type": "dispatchRequest",
+        "value": "GET https://api.xxxxx.com/uk/ivr/customerphone?app_key=123456789&driverphone=%441234567890"
+      },
+      {
+        "type": "dispatchResponse",
+        "value": {
+          "code": "0",
+          "body": {
+            "booking": {
+              "status": "ARRIVED",
+              "customer": {
+                "phone": "+447654321234",
+                "id": "543897",
+                "name": "JOE"
+              },
+              "user_id": "543897",
+              "name": "JOE",
+              "driver": {
+                "phone": "+441234567890",
+                "ref": "146",
+                "id": "4444",
+                "name": "Hanif"
+              },
+              "phone": "+447654321234",
+              "client_id": "19",
+              "id": 579123
+            }
+          },
+          "version": "224",
+          "nonce": null,
+          "warnings": []
+        }
+      }
+    ],
+    "tags": [
+      "543897"
+    ]
+  }
+]

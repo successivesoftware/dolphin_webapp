@@ -108,7 +108,19 @@ router.route('/:database/v2/:table')
 // Single record by id
 router.route('/:database/v2/:table/:id')
   .get(function(req, res) {
-    res.json({ message: 'Get/Database/V2/Table/Id' });
+    var id = req.params.id;
+    fs.readFile('files/callDetails.json', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      data = JSON.parse(data);
+      for( var i=0; i<data.length; i++) {
+        if(data[i]._id == id) {
+          return res.jsonp(data[i]);
+        }
+      }
+      res.jsonp(data[1]);
+    });
   })
   .patch(function(req, res) {
     res.json({ message: 'Patch/Database/V2/Table/Id' });

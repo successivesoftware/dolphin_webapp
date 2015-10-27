@@ -52,7 +52,6 @@
 
       }
 
-
       :host(:focus) {
         z-index: 1;
         position: relative;
@@ -173,50 +172,64 @@
         border-radius: 2px;
         margin-right: 5px;
       }
+
       .border {
         padding: 16px;
       }
+
       .content {
         margin-top: -2px;
         padding: 0px;
       }
+
       .right {
         text-align: right;
         padding-left: 20px;
       }
+
       .snippet {
         line-height: 25px;
       }
+
       .callDetails {
         margin: 16px;
         padding-top: 0px;
         padding-left: 16px;
         padding-right: 16px;
       }
-      .right-content{
+
+      .right-content {
         align-items: flex-end;
       }
-      .left-content{
+
+      .left-content {
         align-items: flex-start;
       }
-      .left-align{
+
+      .left-align {
         text-align: left;
       }
-      .right-align{
+
+      .right-align {
         text-align: right;
       }
-      .pt10{
-        padding-top:10px;
+
+      .pt10 {
+        padding-top: 10px;
       }
+
       .pl0 {
-        padding-left:0px;
+        padding-left: 0px;
       }
+
       .center-align {
         align-self: center;
       }
+
       h3 {
         padding-bottom: 5%;
       }
+
       .offscreen {
       @apply(- -swipeable-transition);
       }
@@ -264,28 +277,38 @@
       label.purple {
       @apply(- -label-purple);
       }
-      @media (min-width: 993px){
+
+      @media (min-width: 993px) {
         :host {
           display: block;
           font-size: 1em;
         }
+
         header span.name {
           font-size: 1.5em;
         }
       }
     </style>
+    <iron-ajax
+      id="callDetail"
+      method="GET"
+      on-response="handleResponse"
+      content-type="application/json"
+      handle-as="json"
+      on-error="handleError"
+      last-response="{{ajaxResponse}}"></iron-ajax>
     <paper-material elevation="1" class="content">
       <div>
         <div class="layout horizontal content-list border">
-          <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
+          <div class="avatar"><img src="../../images/female.png"></div>
           <div class="flex layout vertical flex">
             <header class="layout vertical flex">
                     <span class="layout vertical  justified">
                       <span class="name snippet">
-                       <b>Driver: 261- Arshad</b>
+                       <b>{{callRecord.callFrom.fullName}}</b>
                       </span>
                       <span class="snippet">
-                        <span>Arshad Khan</span> <span class=" text-muted">From</span>
+                        <span>{{callRecord.callFrom.primaryName}}</span>
                       </span>
                       <span class="snippet">
                        <span class=" text-muted">From</span>
@@ -293,205 +316,220 @@
                     </span>
             </header>
           </div>
-          </div>
-          <div class="layout horizontal content-list border">
-            <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-            <div class="flex layout vertical flex">
-              <header class="layout vertical flex">
+        </div>
+        <div class="layout horizontal content-list border">
+          <div class="avatar"><img src="../../images/female.png"></div>
+          <div class="flex layout vertical flex">
+            <header class="layout vertical flex">
                     <span class="layout vertical  justified">
                       <span class="name snippet">
-                       <b> DriverConnect- Driver to Customer</b>
+                       <b>{{callRecord.callTo.fullName}}</b>
                       </span>
                       <span class="snippet">
-                        <span>Customer One</span>
+                        <span>{{callRecord.callTo.primaryName}}</span>
                       </span>
                       <span class="snippet">
                        <span class=" text-muted">To</span>
                       </span>
                     </span>
-              </header>
-            </div>
-            </div>
-            <div class="layout horizontal content-list border">
-              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-              <div class="flex layout vertical flex">
-                <header class="layout vertical flex">
+            </header>
+          </div>
+        </div>
+        <div class="layout horizontal content-list border">
+          <div class="avatar"><img src="../../images/female.png"></div>
+          <div class="flex layout vertical flex">
+            <header class="layout vertical flex">
                     <span class="layout vertical  justified">
                       <span class="name snippet">
-                       <b> DriverConnect- Driver to Customer</b>
+                       <b>{{callRecord.answeredBy.fullName}}</b>
                       </span>
                       <span class="snippet">
-                        <span>Customer Two</span>
+                        <span>{{callRecord.answeredBy.primaryName}}</span>
                       </span>
                       <span class="snippet">
                        <span class=" text-muted">Answered by</span>
                       </span>
                     </span>
-                </header>
-              </div>
-              </div>
+            </header>
+          </div>
         </div>
+      </div>
       <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
-      <iron-media-query query="(min-width: 622px) and (max-width: 992px)" query-matches="{{queryMatches1}}"></iron-media-query>
+      <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
+                        query-matches="{{queryMatches1}}"></iron-media-query>
       <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
       <paper-material elevation="3" class="callDetails">
         <div class="layout horizontal">
           <div class="flex layout vertical left-content">
             <h2>Call Details</h2>
+
             <div class="layout horizontal  flex center-align">
                     <span class="layout vertical  right-align ">
                       <span class="snippet">
                        <span>Received: </span>
                       </span>
                       <span class="snippet">
-                        <span >Answered: </span>
+                        <span>Answered: </span>
                       </span>
                        <span class="snippet">
-                        <span >Ended: </span>
+                        <span>Ended: </span>
                       </span>
                       <span class="snippet">
-                        <span >Queuing: </span>
+                        <span>Queuing: </span>
                       </span>
                     </span>
               <span class="layout vertical  left-align ">
                       <span class="snippet">
-                     <span>&nbsp;12:22:34</span>
+                     &nbsp;<span>{{dateFormat(callRecord.timeReceived, 'hh:mm:ss')}}</span>
                       </span>
                       <span class="snippet">
-                         <span>&nbsp;12:22:34</span>
+                         &nbsp;<span>{{dateFormat(callRecord.timeAnswered, 'hh:mm:ss')}}</span>
                       </span>
                        <span class="snippet">
-                       <span >&nbsp;12:22:34</span>
+                       &nbsp;<span>{{dateFormat(callRecord.timeCleared, 'hh:mm:ss')}}</span>
                       </span>
                       <span class="snippet">
-                        <span>&nbsp;12:22:34</span>
+                        &nbsp;<span>{{callRecord.timeQueueing}}</span>
                       </span>
                     </span>
             </div>
             <template is="dom-if" if="{{queryMatches2}}">
-              <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+              <paper-audio-player  class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+                                  color="#99c75f"></paper-audio-player>
             </template>
           </div>
           <div class="flex layout vertical flex right-content">
-            <h3>12th Sep 2015</h3>
+            <h3>{{dateFormat(callRecord.creationTime, 'Do MMM YYYY')}}</h3>
+
             <div class="layout horizontal  flex center-align">
                     <span class="layout vertical  right-align ">
                       <span class="snippet">
                        <span>Answer time: </span>
                       </span>
                       <span class="snippet">
-                        <span >Duration: </span>
+                        <span>Duration: </span>
                       </span>
                     </span>
               <span class="layout vertical  left-align ">
                       <span class="snippet">
-                     <span>&nbsp;10s</span>
+                     &nbsp;<span>{{answeredTime(callRecord.timeReceived, callRecord.timeAnswered)}}</span>
                       </span>
                       <span class="snippet">
-                         <span>&nbsp;3m 23s</span>
+                         &nbsp;<span>{{timeFormat(callRecord.timeDuration)}}</span>
                       </span>
                     </span>
             </div>
           </div>
         </div>
         <template is="dom-if" if="{{queryMatches}}">
-          <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+          <paper-audio-player class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+                              color="#99c75f"></paper-audio-player>
         </template>
         <template is="dom-if" if="{{queryMatches1}}">
-          <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
+          <paper-audio-player class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+                              color="#99c75f"></paper-audio-player>
         </template>
-        </paper-material>
-      <paper-material elevation="3" class="callDetails">
-        <div class="layout horizontal">
-          <div class="flex layout vertical left-content">
-            <h2>Transfers</h2>
+      </paper-material>
+      <template is="dom-if" if="{{callRecord.transfers.length}}">
+        <paper-material elevation="3" class="callDetails">
+          <div class="layout horizontal">
+            <div class="flex layout vertical left-content">
+              <h2>Transfers</h2>
             </div>
-        </div>
-          <paper-material elevation="3" class="callDetails">
-            <div class="layout horizontal border flex pl0">
-              <div class="avatar"><a href="/reports/call/213234"><img src="../../images/female.png"></a></div>
-              <header class="layout vertical flex">
+          </div>
+          <template is="dom-repeat" items="{{callRecord.transfers}}" as="transfer">
+            <paper-material elevation="3" class="callDetails">
+              <div class="layout horizontal border flex pl0">
+                <div class="avatar"><img src="../../images/female.png"></div>
                 <header class="layout vertical flex">
+                  <header class="layout vertical flex">
                     <span class="layout vertical  justified">
                       <span class="name snippet">
-                       <b>Customer: Jane</b>
+                       <b>{{transfer.callTo.fullName}}</b>
                       </span>
                       <span class="snippet">
-                        <span>Jane Terry</span>
+                        <span>{{transfer.callTo.primaryName}}</span>
                       </span>
                     </span>
+                  </header>
                 </header>
-              </header>
 
               </div>
-            <div class="layout horizontal">
-              <div class="flex layout vertical left-content">
-                <h2>Call Details</h2>
-                <div class="layout horizontal center-align flex">
+              <div class="layout horizontal">
+                <div class="flex layout vertical left-content">
+                  <h2>Call Details</h2>
+
+                  <div class="layout horizontal center-align flex">
                     <span class="layout vertical  right-align ">
                       <span class="snippet">
                        <span>Received: </span>
                       </span>
                       <span class="snippet">
-                        <span >Answered: </span>
+                        <span>Answered: </span>
                       </span>
                        <span class="snippet">
-                        <span >Ended: </span>
+                        <span>Ended: </span>
                       </span>
                       <span class="snippet">
-                        <span >Queuing: </span>
+                        <span>Queuing: </span>
                       </span>
                     </span>
               <span class="layout vertical  left-align ">
                       <span class="snippet">
-                     <span>&nbsp;12:22:34</span>
+                     &nbsp;<span>{{dateFormat(transfer.timeReceived, 'hh:mm:ss')}}</span>
                       </span>
                       <span class="snippet">
-                         <span>&nbsp;12:22:34</span>
+                         &nbsp;<span>{{dateFormat(transfer.timeAnswered, 'hh:mm:ss')}}</span>
                       </span>
                        <span class="snippet">
-                       <span >&nbsp;12:22:34</span>
+                       &nbsp;<span>{{dateFormat(transfer.timeCleared, 'hh:mm:ss')}}</span>
                       </span>
                       <span class="snippet">
-                        <span>&nbsp;12:22:34</span>
+                        &nbsp;<span>{{transfer.timeQueueing}}</span>
                       </span>
                     </span>
+                  </div>
+                  <template is="dom-if" if="{{queryMatches2}}">
+                    <paper-audio-player src="{{transfer.recordingUri}}" class="pt10" title="Recording"
+                                        color="#99c75f"></paper-audio-player>
+                  </template>
                 </div>
-                <template is="dom-if" if="{{queryMatches2}}">
-                  <paper-audio-player src="../../audio/dummy.mp3" class="pt10" title="Recording" color="#99c75f"></paper-audio-player>
-                </template>
-              </div>
-              <div class="flex layout vertical flex right-content">
-                <h3>12th Sep 2015</h3>
-                <div class="layout horizontal center-align flex">
+                <div class="flex layout vertical flex right-content">
+                  <h3>{{dateFormat(callRecord.creationTime, 'Do MMM YYYY')}}</h3>
+
+                  <div class="layout horizontal center-align flex">
                     <span class="layout vertical  right-align ">
                       <span class="snippet">
                        <span>Answer time: </span>
                       </span>
                       <span class="snippet">
-                        <span >Duration: </span>
+                        <span>Duration: </span>
                       </span>
                     </span>
               <span class="layout vertical  left-align ">
                       <span class="snippet">
-                     <span>&nbsp;10s</span>
+                     &nbsp;<span>{{answeredTime(transfer.timeReceived, transfer.timeAnswered)}}</span>
                       </span>
                       <span class="snippet">
-                         <span>&nbsp;3m 23s</span>
+                         &nbsp;<span>{{timeFormat(transfer.timeDuration)}}</span>
                       </span>
                     </span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <template is="dom-if" if="{{queryMatches}}">
-              <paper-audio-player src="../../audio/dummy.mp3" class="pt10" title="Recording" color="#99c75f"></paper-audio-player>
-            </template>
-            <template is="dom-if" if="{{queryMatches1}}">
-              <paper-audio-player class="pt10" src="../../audio/dummy.mp3" title="Recording" color="#99c75f"></paper-audio-player>
-            </template>
-          </paper-material>
-      </paper-material>
+              <template is="dom-if" if="{{queryMatches}}">
+                <paper-audio-player src="{{transfer.recordingUri}}" class="pt10" title="Recording"
+                                    color="#99c75f"></paper-audio-player>
+              </template>
+              <template is="dom-if" if="{{queryMatches1}}">
+                <paper-audio-player class="pt10" src="{{transfer.recordingUri}}" title="Recording"
+                                    color="#99c75f"></paper-audio-player>
+              </template>
+            </paper-material>
+          </template>
         </paper-material>
+      </template>
+    </paper-material>
   </template>
 
   <script>
@@ -501,11 +539,64 @@
       Polymer({
         is: 'dolphin-webapp-call-details',
 
-        properties: {},
+        properties: {
+          id: {
+            type: String
+          },
+          callRecord: {
+            type: Object
+          }
+        },
         ready: function () {
+
+        },
+        handleResponse: function (request) {
+          this.callRecord = request.detail.response;
+        },
+        dateFormat: function (date, format) {
+          if (!date) {
+            return '';
+          }
+          return moment(moment.utc(date)).format(format);
+        },
+        timeFormat: function (callDuration) {
+          callDuration = callDuration.split(':');
+          if (callDuration[0] > 0) {
+            return callDuration[0].replace(/^0+/, '') + 'h ' + callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's'
+          } else if (callDuration[0] <= 0 && callDuration[1] <= 0 && callDuration[2] > 0) {
+            return callDuration[2].replace(/^0+/, '') + 's'
+          } else
+            return callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's';
+        },
+        answeredTime: function (timeReceived, timeAnswered) {
+          var a = moment(timeReceived);
+          var b = moment(timeAnswered);
+          var time = b.diff(a)/1000;
+          var h, m, s;
+          h = Math.floor(time / 3600);
+          time = time % 3600;
+          m = Math.floor(time / 60);
+          s = time % 60;
+          if (h > 0) {
+            return h + 'h' + m + 'm' + s + 's';
+          } else if (h <= 0 && m > 0) {
+            return m + 'm' + s + 's';
+          } else {
+            return s + 's';
+          }
+        },
+        test: function() {
+          var ajaxRequest = this.querySelector('#callDetail');
+          this.id = app.params.id;
+          ajaxRequest.url = 'http://localhost:9000/api/reporting/v2/telephony/' + this.id;
+          ajaxRequest.generateRequest();
         }
       });
     })();
+    addEventListener('WebComponentsReady', function () {
+      var data = document.querySelector('dolphin-webapp-call-details');
+      data.test();
+    })
   </script>
 
 </dom-module>

@@ -201,7 +201,9 @@
       .no-decoration div:hover, div:focus {
         background: #c6f1ff;
       }
-
+      .separator{
+        padding-top:30px;
+      }
       .offscreen {
       @apply(- -swipeable-transition);
       }
@@ -271,9 +273,10 @@
           handle-as="json"
           on-error="handleError"
           last-response="{{ajaxResponse}}"></iron-ajax>
+        <div class="separator"></div>
         <template is="dom-if" if="{{reportsToday.length}}">
 
-          <paper-header-panel class="blue">
+          <paper-header-panel class="daySeparator">
             <div class="paper-header">Today</div>
           </paper-header-panel>
           <paper-material elevation="3" class="content">
@@ -284,7 +287,7 @@
             <template is="dom-repeat" items="{{reportsToday}}" as="reports">
               <template is="dom-if" if="{{queryMatches}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -327,7 +330,7 @@
             </template>
                         <template is="dom-if" if="{{queryMatches1}}">
               <div>
-                <a href="/reports/call/213234" class="no-decoration">
+                <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                   <div class="layout horizontal border content-list">
                     <div class="avatar"><img src="../../images/female.png"></div>
                     <div class="flex layout horizontal">
@@ -368,7 +371,7 @@
             </template>
             <template is="dom-if" if="{{queryMatches2}}">
               <div>
-                <a href="/reports/call/213234" class="no-decoration">
+                <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                   <div class="layout horizontal border content-list">
                     <div class="avatar"><img src="../../images/female.png"></div>
                     <div class="flex layout horizontal">
@@ -427,7 +430,7 @@
             <template is="dom-repeat" items="{{reportsYesterday}}" as="reports">
               <template is="dom-if" if="{{queryMatches}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -470,7 +473,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches1}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -511,7 +514,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches2}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -570,7 +573,7 @@
             <template is="dom-repeat" items="{{reportsThisMonth}}" as="reports">
               <template is="dom-if" if="{{queryMatches}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -613,7 +616,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches1}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -654,7 +657,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches2}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -713,7 +716,7 @@
             <template is="dom-repeat" items="{{reportsLastMonth}}" as="reports">
               <template is="dom-if" if="{{queryMatches}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -756,7 +759,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches1}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -797,7 +800,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches2}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -856,7 +859,7 @@
             <template is="dom-repeat" items="{{reportsOlder}}" as="reports">
               <template is="dom-if" if="{{queryMatches}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -899,7 +902,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches1}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -940,7 +943,7 @@
               </template>
               <template is="dom-if" if="{{queryMatches2}}">
                 <div>
-                  <a href="/reports/call/213234" class="no-decoration">
+                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
                       <div class="avatar"><img src="../../images/female.png"></div>
                       <div class="flex layout horizontal">
@@ -1036,8 +1039,8 @@
             value: 25
           }
         },
-        callDetails: function (e) {
-          window.location.href = '/#!/reports/call/213234';
+        callDetails: function (id) {
+          window.location.href = '/#!/reports/call/' + id;
         },
         handleResponse: function (request) {
           this.reports = request.detail.response;
@@ -1089,6 +1092,9 @@
             return callDuration[2].replace(/^0+/, '') + 's'
           } else
           return callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's';
+        },
+        computeUrl: function(id) {
+          return '/reports/call/' + id ;
         }
       });
     })();
