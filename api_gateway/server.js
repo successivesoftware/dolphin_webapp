@@ -88,6 +88,7 @@ router.route('/:database/v2/:table')
     var table = req.params.table;
     var kind = req.query.kind;
     var maxResult = req.query.maxResults;
+    console.log(req.query);
     fs.readFile('files/reports.json', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);

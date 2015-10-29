@@ -263,10 +263,8 @@
     <iron-pages selected="{{selected}}">
       <div>
         <iron-ajax
-          auto
-          id="login"
+          id="callRecords"
           url="http://localhost:9000/api/reporting/v2/telephony"
-          params='{"kind":"callRecords", "maxResults":"{{maxNumber}}", "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl"}'
           method="GET"
           on-response="handleResponse"
           content-type="application/json"
@@ -289,7 +287,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -332,7 +334,11 @@
               <div>
                 <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                   <div class="layout horizontal border content-list">
-                    <div class="avatar"><img src="../../images/female.png"></div>
+                    <profile-img
+                      src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                      letter="[[reports.callFrom.fullName.0]]"
+                      ></profile-img>
+                    <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                     <div class="flex layout horizontal">
                       <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -373,7 +379,11 @@
               <div>
                 <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                   <div class="layout horizontal border content-list">
-                    <div class="avatar"><img src="../../images/female.png"></div>
+                    <profile-img
+                      src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                      letter="[[reports.callFrom.fullName.0]]"
+                      ></profile-img>
+                    <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                     <div class="flex layout horizontal">
                       <header class="layout vertical flex">
                     <span class="snippet layout horizontal center justified">
@@ -432,7 +442,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -475,7 +489,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -516,7 +534,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
                     <span class="snippet layout horizontal center justified">
@@ -575,7 +597,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -618,7 +644,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -659,7 +689,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
                     <span class="snippet layout horizontal center justified">
@@ -718,7 +752,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -761,7 +799,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -802,7 +844,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
                     <span class="snippet layout horizontal center justified">
@@ -861,7 +907,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -904,7 +954,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
             <span class="layout horizontal snippet center justified">
@@ -945,7 +999,11 @@
                 <div>
                   <a href="{{computeUrl(reports._id)}}" class="no-decoration">
                     <div class="layout horizontal border content-list">
-                      <div class="avatar"><img src="../../images/female.png"></div>
+                      <profile-img
+                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                        letter="[[reports.callFrom.fullName.0]]"
+                        ></profile-img>
+                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                       <div class="flex layout horizontal">
                         <header class="layout vertical flex">
                     <span class="snippet layout horizontal center justified">
@@ -1037,7 +1095,16 @@
           maxNumber: {
             type: Number,
             value: 25
+          },
+          query: {
+            type: String,
+            value: null
+          },
+          search: {
+            type: String,
+            value: null
           }
+
         },
         callDetails: function (id) {
           window.location.href = '/#!/reports/call/' + id;
@@ -1068,14 +1135,15 @@
             }
           }
           this.reportsToday = reportsToday;
-          console.log(reportsToday);
           this.reportsYesterday = reportsYesterday;
           this.reportsThisMonth = reportsThisMonth;
           this.reportsLastMonth = reportsLastMonth;
           this.reportsOlder = reportsOlder;
         },
         ready: function () {
-
+          var ajaxRequest = this.querySelector('#callRecords');
+          ajaxRequest.params = {"kind":"callRecords", "maxResults":this.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl", "query": this.query , "search": this.search};
+          ajaxRequest.generateRequest();
         },
         dateFormat: function(date, format) {
           if (!date) {
@@ -1095,6 +1163,8 @@
         },
         computeUrl: function(id) {
           return '/reports/call/' + id ;
+        },
+        getNumber: function(){
         }
       });
     })();

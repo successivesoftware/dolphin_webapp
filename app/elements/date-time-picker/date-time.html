@@ -213,15 +213,27 @@
       .mt-1 {
         margin-top: -1em;
       }
+
       .mt2 {
         margin-top: 2em;
       }
+
       .l1 {
         left: 1em;
       }
+
       .ml {
         margin-left: -.7em;
       }
+
+      paper-toast {
+        position: absolute;
+        bottom: 6em;
+        left: 5em;
+        background: #99c75f;
+        color: black;
+      }
+
       .offscreen {
       @apply(- -swipeable-transition);
       }
@@ -270,48 +282,84 @@
       @apply(- -label-purple);
       }
 
+      @media (max-width: 621px) {
+        paper-toast {
+          left: 1em;
+        }
+      }
+
+      @media (min-width: 622px) and (max-width: 992px) {
+        paper-toast {
+          bottom: 0;
+        }
+      }
 
     </style>
-        <paper-radio-group class="mt2 ml" selected="anyDate" id="dateRadioButton">
-          <paper-radio-button name="anyDate">Any Date</paper-radio-button>
-          <paper-radio-button name="specifiedDate">Specified Date</paper-radio-button>
-        </paper-radio-group>
-        <paper-dialog id="dialog" class="paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
-          <paper-date-picker id="picker" responsive-width="655px"></paper-date-picker>
-          <div class="buttons">
-            <paper-button dialog-dismiss role="button">Cancel</paper-button>
-            <paper-button dialog-confirm role="button">OK</paper-button>
-          </div>
-        </paper-dialog>
-        <paper-dialog id="timeDialogBasic" class="paper-time-picker-dialog" modal>
-          <paper-time-picker id="timePickerBasic" time="[[time]]"></paper-time-picker>
-          <div class="buttons">
-            <paper-button dialog-dismiss>CANCEL</paper-button>
-            <paper-button dialog-confirm on-tap="timeSelected">OK</paper-button>
-          </div>
-        </paper-dialog>
-        <div  class="layout vertical">
-          <div class="layout vertical">
-            <span class="mt2 text-muted">FROM</span>
+    <paper-radio-group class="mt2 ml" selected="anyDate" id="dateRadioButton">
+      <paper-radio-button name="anyDate">Any Date</paper-radio-button>
+      <paper-radio-button name="specifiedDate">Specified Date</paper-radio-button>
+    </paper-radio-group>
+    <paper-dialog id="dialogFrom" class="paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+      <paper-date-picker id="pickerFrom" responsive-width="655px" max-date="{{maxDateFrom}}"></paper-date-picker>
+      <div class="buttons">
+        <paper-button dialog-dismiss role="button">Cancel</paper-button>
+        <paper-button dialog-confirm role="button">OK</paper-button>
+      </div>
+    </paper-dialog>
+    <paper-dialog id="dialogTo" class="paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+      <paper-date-picker id="pickerTo" responsive-width="655px" max-date="{{maxDateTo}}"></paper-date-picker>
+      <div class="buttons">
+        <paper-button dialog-dismiss role="button">Cancel</paper-button>
+        <paper-button dialog-confirm role="button">OK</paper-button>
+      </div>
+    </paper-dialog>
+    <paper-dialog id="timeDialogBasic" class="paper-time-picker-dialog" modal>
+      <paper-time-picker id="timePickerBasic" time="[[time]]"></paper-time-picker>
+      <div class="buttons">
+        <paper-button dialog-dismiss>CANCEL</paper-button>
+        <paper-button dialog-confirm on-tap="timeSelected">OK</paper-button>
+      </div>
+    </paper-dialog>
+    <div class="layout vertical">
+      <div class="layout vertical">
+        <span class="mt2 text-muted">FROM</span>
             <span class="layout horizontal mt-1">
-              <span class="mr2"><paper-input  disabled="{{disableDate}}" on-tap="showFromDate" value="{{dateFormat(fromDate, 'ddd MMM DD YYYY')}}" placeholder="{{dateFormat(fromDate, 'LL')}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
-              <span class="mr2"><paper-input disabled="{{disableTime}}" on-tap="showFromTime" value="{{fromTime}}" placeholder="{{fromTime}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
+              <span class="mr2"><paper-input disabled="{{disableDate}}" on-tap="showFromDate"
+                                             value="{{dateFormat(fromDate, 'ddd MMM DD YYYY')}}"
+                                             placeholder="{{dateFormat(fromDate, 'LL')}}">
+                <paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button>
+              </paper-input></span>
+              <span class="mr2"><paper-input disabled="{{disableTime}}" on-tap="showFromTime" value="{{fromTime}}"
+                                             placeholder="{{fromTime}}">
+                <paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button>
+              </paper-input></span>
             </span>
-          </div>
-          <div class="layout vertical">
-            <span class="mt2 text-muted">TO</span>
+      </div>
+      <div class="layout vertical">
+        <span class="mt2 text-muted">TO</span>
             <span class="layout horizontal mt-1">
-              <span class="mr2"><paper-input  disabled="{{disableDate}}" on-tap="showFromDate" value="{{dateFormat(toDate, 'ddd MMM DD YYYY')}}" placeholder="{{dateFormat(toDate, 'LL')}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
-              <span class="mr2 "><paper-input disabled="{{disableTime}}" on-tap="showFromTime" value="{{toTime}}" placeholder="{{toTime}}"><paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button></paper-input></span>
+              <span class="mr2"><paper-input disabled="{{disableDate}}" on-tap="showToDate"
+                                             value="{{dateFormat(toDate, 'ddd MMM DD YYYY')}}"
+                                             placeholder="{{dateFormat(toDate, 'LL')}}">
+                <paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button>
+              </paper-input></span>
+              <span class="mr2 "><paper-input disabled="{{disableTime}}" on-tap="showToTime" value="{{toTime}}"
+                                              placeholder="{{toTime}}">
+                <paper-icon-button suffix class="l1" icon="icons:arrow-drop-down"></paper-icon-button>
+              </paper-input></span>
             </span>
-          </div>
-          <div class="layout vertical">
-            <paper-checkbox disabled="{{disableCheck}}" class="mt2" id="allDay"><span class="text-muted">ALL DAY</span></paper-checkbox>
-          </div>
-          <!--<paper-input  on-tap="showDialog" ></paper-input>-->
-          <!--<paper-input  on-tap="showTimeDialogBasic" ></paper-input>-->
-        </div>
-
+      </div>
+      <div class="layout vertical">
+        <paper-checkbox disabled="{{disableCheck}}" class="mt2" id="allDay"><span class="text-muted">ALL DAY</span>
+        </paper-checkbox>
+      </div>
+      <!--<paper-input  on-tap="showDialog" ></paper-input>-->
+      <!--<paper-input  on-tap="showTimeDialogBasic" ></paper-input>-->
+    </div>
+    <paper-toast id="toast1" text="Sorry! Date cannot exceed today's date."></paper-toast>
+    <paper-toast id="toast2" text="Sorry! From date can not exceed To date."></paper-toast>
+    <paper-toast id="toast3" text="Sorry! You can not exceed today's time."></paper-toast>
+    <paper-toast id="toast4" text="Sorry! From time can not exceed To time."></paper-toast>
   </template>
 
   <script>
@@ -321,11 +369,11 @@
       Polymer({
         is: 'date-time',
         properties: {
-          flagDate:{
+          flagDate: {
             type: Boolean,
             value: false
           },
-          flagTime:{
+          flagTime: {
             type: Boolean,
             value: false
           },
@@ -338,10 +386,12 @@
             value: new Date()
           },
           toTime: {
-            type: String
+            type: String,
+            value: '12:00 AM'
           },
           fromTime: {
-            type: String
+            type: String,
+            value: '12:00 AM'
           },
           disableTime: {
             type: Boolean,
@@ -354,77 +404,121 @@
           disableCheck: {
             type: Boolean,
             value: true
+          },
+          maxDateTo: {
+            type: Date,
+            value: new Date()
+          },
+          maxDateFrom: {
+            type: Date
           }
         },
 
-        ready: function(){
-          this.dateFormat = this.$.picker.dateFormat;
-          this.toTime = this.timeFormat();
-          this.fromTime = this.timeFormat();
+        ready: function () {
+          this.dateFormat = this.$.pickerFrom.dateFormat;
+//          this.toTime = this.timeFormat();
+//          this.fromTime = this.timeFormat();
+          this.maxDateFrom = this.toDate;
         },
-        dateFormat: function(date, format) {
+        dateFormat: function (date, format) {
           if (!date) {
             return '';
           }
           return moment(date).format(format);
         },
-        timeFormat: function(){
+        timeFormat: function () {
           return moment(new Date()).format('LT');
         },
-        showFromDate: function(){
+        showFromDate: function () {
           this.flagDate = false;
-          this.showDialog();
+          this.$.dialogFrom.toggle();
         },
-        showToDate: function(){
+        showToDate: function () {
           this.flagDate = true;
-          this.showDialog();
+          this.$.dialogTo.toggle();
         },
-        showFromTime: function(){
+        showFromTime: function () {
           this.flagTime = false;
           this.showTimeDialogBasic();
         },
-        showToTime: function(){
+        showToTime: function () {
           this.flagTime = true;
           this.showTimeDialogBasic();
         },
-        showDialog: function () {
-          this.$.dialog.toggle();
-        },
+//        showDialog: function () {
+//          this.$.dialog.toggle();
+//        },
         showTimeDialog: function () {
           this.$.timeDialog.toggle();
         },
         showTimeDialogBasic: function () {
           this.$.timeDialogBasic.toggle();
         },
-        timeSelected : function() {
-          if(this.flagTime){
-            this.toTime = this.$.timePickerBasic.time;
+        timeSelected: function () {
+          var toTime;
+          var fromTime;
+          if (this.flagTime) {
+            toTime = moment(this.toDate).format('ddd MMM DD YYYY').toString() + ' ' + this.$.timePickerBasic.time;
+            toTime = new Date(toTime);
+            fromTime = moment(this.fromDate).format('ddd MMM DD YYYY').toString() + ' ' + this.fromTime;
+            fromTime = new Date(fromTime);
+            if (moment(toTime).isAfter(moment(new Date()))) {
+              this.querySelector('#toast3').show();
+            } else if (moment(fromTime).isAfter(moment(toTime))) {
+              this.querySelector('#toast4').show();
+              this.toTime = this.fromTime;
+            } else {
+              this.toTime = this.$.timePickerBasic.time;
+            }
           } else {
-            this.fromTime = this.$.timePickerBasic.time;
+            toTime = moment(this.toDate).format('ddd MMM DD YYYY').toString() + ' ' + this.toTime;
+            toTime = new Date(toTime);
+            fromTime = moment(this.fromDate).format('ddd MMM DD YYYY').toString() + ' ' + this.$.timePickerBasic.time;
+            fromTime = new Date(fromTime);
+            if (moment(fromTime).isAfter(moment(toTime))) {
+              this.querySelector('#toast4').show();
+              this.fromTime = this.toTime;
+            } else {
+              this.fromTime = this.$.timePickerBasic.time;
+            }
+
           }
 //          console.log(this.$.timePickerBasic.time);
 //        scope.time = scope.$.picker.time;
         },
-        dismissDialog : function(event) {
+        dismissDialog: function (event) {
           if (event.detail.confirmed) {
-            if(this.flagDate){
-              this.toDate = this.$.picker.date;
+            if (this.flagDate) {
+              if (moment(this.$.pickerTo.date).isAfter(moment(new Date()))) {
+                this.querySelector('#toast1').show();
+              } else if (moment(this.fromDate).isAfter(moment(this.$.pickerTo.date))) {
+                this.querySelector('#toast2').show();
+                this.toDate = this.fromDate;
+              } else {
+                this.toDate = this.$.pickerTo.date;
+              }
             } else {
-              this.fromDate = this.$.picker.date;
+              if (moment(this.$.pickerFrom.date).isAfter(moment(this.toDate))) {
+                this.querySelector('#toast2').show();
+                this.fromDate = this.toDate;
+              } else {
+                this.fromDate = this.$.pickerFrom.date;
+              }
             }
+            toggleCheck(this);
           }
         }
       });
     })();
-    document.addEventListener('paper-radio-group-changed', function(){
+    document.addEventListener('paper-radio-group-changed', function () {
       var elem1 = document.querySelector('#basicSearch');
       var elem2 = document.querySelector('#advanceSearch');
       toggleData(elem1);
       toggleData(elem2);
     });
-    var toggleData = function (elem){
+    var toggleData = function (elem) {
       var dateRadioButton = elem.querySelector('#dateRadioButton');
-      if(dateRadioButton.selected == 'specifiedDate'){
+      if (dateRadioButton.selected == 'specifiedDate') {
         elem.disableTime = false;
         elem.disableDate = false;
         elem.disableCheck = false;
@@ -434,15 +528,19 @@
         elem.disableCheck = true;
       }
     };
-    document.addEventListener('iron-change', function(){
+    document.addEventListener('iron-change', function () {
       var elem1 = document.querySelector('#basicSearch');
       var elem2 = document.querySelector('#advanceSearch');
-     toggleCheck(elem1);
-     toggleCheck(elem2);
+      toggleCheck(elem1);
+      toggleCheck(elem2);
     });
-    var toggleCheck = function(elem){
+    var toggleCheck = function (elem) {
       var allDay = elem.querySelector('#allDay');
-      if(allDay.checked){
+      if (allDay.checked) {
+        elem.toDate = elem.fromDate;
+        elem.toDate = moment(elem.toDate).add(1, 'days');
+        elem.toTime = '12:00 AM';
+        elem.fromTime = '12:00 AM';
         elem.disableTime = true;
       } else {
         elem.disableTime = false;

@@ -300,7 +300,12 @@
     <paper-material elevation="1" class="content">
       <div>
         <div class="layout horizontal content-list border">
-          <div class="avatar"><img src="../../images/female.png"></div>
+          <profile-img id="profileimage"
+                       src="[[callRecord.callFrom.thumbnailPhotoUrl]]"
+                       letter="[[callRecord.callFrom.fullName.0]]"
+                       selected="[[selected]]"
+                      ></profile-img>
+          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
           <div class="flex layout vertical flex">
             <header class="layout vertical flex">
                     <span class="layout vertical  justified">
@@ -318,7 +323,12 @@
           </div>
         </div>
         <div class="layout horizontal content-list border">
-          <div class="avatar"><img src="../../images/female.png"></div>
+          <profile-img
+                       src="[[callRecord.callTo.thumbnailPhotoUrl]]"
+                       letter="[[callRecord.callTo.fullName.0]]"
+                       selected="[[selected]]"
+            ></profile-img>
+          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
           <div class="flex layout vertical flex">
             <header class="layout vertical flex">
                     <span class="layout vertical  justified">
@@ -336,7 +346,12 @@
           </div>
         </div>
         <div class="layout horizontal content-list border">
-          <div class="avatar"><img src="../../images/female.png"></div>
+          <profile-img id=""
+                       src="[[callRecord.answeredBy.thumbnailPhotoUrl]]"
+                       letter="[[callRecord.answeredBy.fullName.0]]"
+                       selected="[[selected]]"
+            ></profile-img>
+          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
           <div class="flex layout vertical flex">
             <header class="layout vertical flex">
                     <span class="layout vertical  justified">
@@ -394,7 +409,7 @@
                     </span>
             </div>
             <template is="dom-if" if="{{queryMatches2}}">
-              <paper-audio-player  class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+              <paper-audio-player hidden$="{{!callRecord.recordingUri}}"  class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
                                   color="#99c75f"></paper-audio-player>
             </template>
           </div>
@@ -422,11 +437,11 @@
           </div>
         </div>
         <template is="dom-if" if="{{queryMatches}}">
-          <paper-audio-player class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+          <paper-audio-player hidden$="{{!callRecord.recordingUri}}" class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
                               color="#99c75f"></paper-audio-player>
         </template>
         <template is="dom-if" if="{{queryMatches1}}">
-          <paper-audio-player class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+          <paper-audio-player hidden$="{{!callRecord.recordingUri}}" class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
                               color="#99c75f"></paper-audio-player>
         </template>
       </paper-material>
@@ -440,7 +455,12 @@
           <template is="dom-repeat" items="{{callRecord.transfers}}" as="transfer">
             <paper-material elevation="3" class="callDetails">
               <div class="layout horizontal border flex pl0">
-                <div class="avatar"><img src="../../images/female.png"></div>
+                <profile-img
+                  src="[[transfer.callTo.thumbnailPhotoUrl]]"
+                  letter="[[transfer.callTo.fullName.0]]"
+                  selected="[[selected]]"
+                  ></profile-img>
+                <!--<div class="avatar"><img src="../../images/female.png"></div>-->
                 <header class="layout vertical flex">
                   <header class="layout vertical flex">
                     <span class="layout vertical  justified">
@@ -490,8 +510,10 @@
                     </span>
                   </div>
                   <template is="dom-if" if="{{queryMatches2}}">
-                    <paper-audio-player src="{{transfer.recordingUri}}" class="pt10" title="Recording"
-                                        color="#99c75f"></paper-audio-player>
+                      <paper-audio-player hidden$="{{!transfer.recordingUri}}" src="{{transfer.recordingUri}}" class="pt10" title="Recording"
+                                          color="#99c75f"></paper-audio-player>
+
+
                   </template>
                 </div>
                 <div class="flex layout vertical flex right-content">
@@ -518,11 +540,11 @@
                 </div>
               </div>
               <template is="dom-if" if="{{queryMatches}}">
-                <paper-audio-player src="{{transfer.recordingUri}}" class="pt10" title="Recording"
+                <paper-audio-player hidden$="{{!transfer.recordingUri}}" src="{{transfer.recordingUri}}" class="pt10" title="Recording"
                                     color="#99c75f"></paper-audio-player>
               </template>
               <template is="dom-if" if="{{queryMatches1}}">
-                <paper-audio-player class="pt10" src="{{transfer.recordingUri}}" title="Recording"
+                <paper-audio-player hidden$="{{!transfer.recordingUri}}" class="pt10" src="{{transfer.recordingUri}}" title="Recording"
                                     color="#99c75f"></paper-audio-player>
               </template>
             </paper-material>
@@ -585,18 +607,17 @@
             return s + 's';
           }
         },
-        test: function() {
-          var ajaxRequest = this.querySelector('#callDetail');
-          this.id = app.params.id;
-          ajaxRequest.url = 'http://localhost:9000/api/reporting/v2/telephony/' + this.id;
+        test: function(id) {
+          var ajaxRequest = document.querySelector('#callDetail');
+          ajaxRequest.url = 'http://localhost:9000/api/reporting/v2/telephony/' + id;
           ajaxRequest.generateRequest();
         }
       });
     })();
-    addEventListener('WebComponentsReady', function () {
-      var data = document.querySelector('dolphin-webapp-call-details');
-      data.test();
-    })
+//    addEventListener('WebComponentsReady', function () {
+//      var data = document.querySelector('dolphin-webapp-call-details');
+//      data.test();
+//    })
   </script>
 
 </dom-module>

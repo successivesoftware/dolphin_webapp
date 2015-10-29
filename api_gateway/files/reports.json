@@ -4,8 +4,8 @@
     "timeReceived": "2015-10-26T15:12:34+01:00",
     "callDuration": "00:00:45",
     "callFrom": {
-      "fullName": "Driver 123 - Jason",
-      "thumbnailPhotoUrl": null
+      "fullName": "Driver 146 - Jason",
+      "thumbnailPhotoUrl": "../../images/female.png"
     },
     "callTo": {
       "fullName": "DriverConnect - Driver to Customer"
@@ -26,7 +26,7 @@
     "timeReceived": "2015-10-26T20:15:12+01:00",
     "callDuration": "00:01:37",
     "callFrom": {
-      "fullName": "Driver 146 - Gavin",
+      "fullName": "Gavin",
       "thumbnailPhotoUrl": null
     },
     "callTo": {
@@ -48,7 +48,7 @@
     "timeReceived": "2015-10-25T15:12:34+01:00",
     "callDuration": "00:02:45",
     "callFrom": {
-      "fullName": "Driver 123 - Jason",
+      "fullName": "Jason",
       "thumbnailPhotoUrl": null
     },
     "callTo": {

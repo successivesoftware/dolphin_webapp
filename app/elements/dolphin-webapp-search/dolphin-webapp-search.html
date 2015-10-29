@@ -276,13 +276,14 @@
 
     <iron-pages selected="{{selected}}">
       <div class="content-box">
-        <paper-input class="test" type="search" placeholder="Search for calls"
+        <paper-input class="test" id="search" type="search" placeholder="Search for calls"
                       autosave="test" results="5">
         </paper-input>
         <date-time id="basicSearch"></date-time>
-        <a href="/report">
-          <paper-fab icon="done" elavation="4"></paper-fab>
+        <a data-route="reports" href="/reports">
+          <paper-fab icon="done" elavation="4" on-tap="doneBasic"></paper-fab>
         </a>
+
       </div>
 
       <div class="content-box">
@@ -291,12 +292,11 @@
         <paper-input label="Answered by"></paper-input>
         <paper-input label="Transferred to"></paper-input>
         <date-time id="advanceSearch"></date-time>
-        <a href="/report">
-          <paper-fab icon="done" elavation="4"></paper-fab>
-        </a>
+          <paper-fab icon="done" on-tap="doneAdvance" elavation="4"></paper-fab>
       </div>
 
     </iron-pages>
+    <!--<paper-toast id="toast1" text="Your draft has been discarded."></paper-toast>-->
   </template>
 
   <script>
@@ -312,96 +312,40 @@
           }
 
         },
-        ready: function(){
-//          var elem = this.querySelectorAll('paper-input');
-//          for( var i=0; i< elem.length; i++){
-//            elem[i].style.left = "2em";
-//          }
+        ready: function() {
+        },
+        doneBasic: function(){
+          var query, search;
+          search = document.querySelector('#search').value;
+          var basic = document.querySelector('#basicSearch');
+          if(basic.disableDate){
+            query = '';
+          } else {
+            this.getDateTime(basic);
+            console.log(basic.toDate);
+            console.log(basic.fromDate);
+          }
+        },
+        getDateTime: function(element){
+          var toDate = new Date(moment(element.toDate).format('ddd MMM DD YYYY').toString() + ' ' + element.toTime);
+          var fromDate = new Date(moment(element.fromDate).format('ddd MMM DD YYYY').toString() + ' ' + element.fromTime);
+          element.toDate = toDate.toISOString();
+          element.fromDate = fromDate.toISOString();
+        },
+        doneAdvance: function(){
+          var advance = document.querySelector('#advanceSearch');
+        },
+        setData: function(query, search){
+          var callRecords = document.querySelector('#reports');
+          var ajaxRequest = document.querySelector('#callRecords');
+          callRecords.query =query;
+          callRecords.search = search;
+          ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl", "query": callRecords.query , "search": callRecords.search};
+          ajaxRequest.generateRequest();
         }
-//        dateFormat: function(date, format) {
-//          if (!date) {
-//            return '';
-//          }
-//          return moment(date).format(format);
-//        },
-//        timeFormat: function(){
-//          return moment(new Date()).format('LT');
-//        },
-//        callDetails: function (e) {
-//          window.location.href = '/#!/reports/call/213234';
-//        },
-//        showFromDate: function(){
-//          this.flagDate = false;
-//          this.showDialog();
-//        },
-//        showToDate: function(){
-//          this.flagDate = true;
-//          this.showDialog();
-//        },
-//        showFromTime: function(){
-//          this.flagTime = false;
-//          this.showTimeDialogBasic();
-//        },
-//        showToTime: function(){
-//          this.flagTime = true;
-//          this.showTimeDialogBasic();
-//        },
-//        showDialog: function () {
-//          this.$.dialog.toggle();
-//        },
-//        showTimeDialog: function () {
-//          this.$.timeDialog.toggle();
-//        },
-//        showTimeDialogBasic: function () {
-//          this.$.timeDialogBasic.toggle();
-//        },
-//        timeSelected : function() {
-//          if(this.flagTime){
-//            this.toTime = this.$.timePickerBasic.time;
-//          } else {
-//            this.fromTime = this.$.timePickerBasic.time;
-//          }
-////          console.log(this.$.timePickerBasic.time);
-////        scope.time = scope.$.picker.time;
-//      },
-//      dismissDialog : function(event) {
-//        if (event.detail.confirmed) {
-//          if(this.flagDate){
-//            this.toDate = this.$.picker.date;
-//          } else {
-//            this.fromDate = this.$.picker.date;
-//          }
-//        }
-//      }
       });
     })();
-//    document.addEventListener('paper-radio-group-changed', function(){
-//      var dateRadioButton = document.querySelector('#dateRadioButton');
-//      var elem = document.querySelector('dolphin-webapp-search');
-//      if(dateRadioButton.selected == 'specifiedDate'){
-//        elem.disableTime = false;
-//        elem.disableDate = false;
-//        elem.disableCheck = false;
-//      } else {
-//        elem.disableTime = true;
-//        elem.disableDate = true;
-//        elem.disableCheck = true;
-//      }
-//    });
-//    document.addEventListener('iron-change', function(){
-//      var allDay = document.querySelector('#allDay');
-//      var elem = document.querySelector('dolphin-webapp-search');
-//      if(allDay.checked){
-//        elem.disableTime = true;
-//      } else {
-//        elem.disableTime = false;
-//      }
-//    });
-//    document.addEventListener('WebComponentsReady', function() {
-//      var scope = document.querySelector('#dolphin-webapp-search');
-//      console.log(scope);
-//      scope.dateFormat = scope.$.picker.dateFormat;
-//    });
+
   </script>
 
 </dom-module>
