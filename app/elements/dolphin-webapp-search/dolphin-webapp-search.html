@@ -287,10 +287,10 @@
       </div>
 
       <div class="content-box">
-        <paper-input label="From"></paper-input>
-        <paper-input label="To"></paper-input>
-        <paper-input label="Answered by"></paper-input>
-        <paper-input label="Transferred to"></paper-input>
+        <paper-input label="From" id="from"></paper-input>
+        <paper-input label="To" id="to"></paper-input>
+        <paper-input label="Answered by" id="answeredBy"></paper-input>
+        <paper-input label="Transferred to" id="transferredTo"></paper-input>
         <date-time id="advanceSearch"></date-time>
           <paper-fab icon="done" on-tap="doneAdvance" elavation="4"></paper-fab>
       </div>
@@ -322,25 +322,42 @@
             query = '';
           } else {
             this.getDateTime(basic);
-            console.log(basic.toDate);
-            console.log(basic.fromDate);
+            query = 'callReceived[' + basic.fromDate + ':' + basic.toDate + ']';
           }
+          this.setData(query, search);
         },
         getDateTime: function(element){
-          var toDate = new Date(moment(element.toDate).format('ddd MMM DD YYYY').toString() + ' ' + element.toTime);
-          var fromDate = new Date(moment(element.fromDate).format('ddd MMM DD YYYY').toString() + ' ' + element.fromTime);
-          element.toDate = toDate.toISOString();
-          element.fromDate = fromDate.toISOString();
+          var toDate = moment(element.toDate).format('ddd MMM DD YYYY').toString() + ' ' + element.toTime;
+          var fromDate = moment(element.fromDate).format('ddd MMM DD YYYY').toString() + ' ' + element.fromTime;
+          element.toDate = moment(toDate).format();
+          element.fromDate = moment(fromDate).format();
         },
         doneAdvance: function(){
+          var query;
+          var from = document.querySelector('#from').value,
+              to = document.querySelector('#to').value,
+              answeredBy = document.querySelector('#answeredBy').value,
+              transferredTo = document.querySelector('#transferredTo').value;
           var advance = document.querySelector('#advanceSearch');
+          if(advance.disableDate){
+            query = 'callFrom:' + from + ' callTo:' + to + ' answeredBy:' + answeredBy + ' transfers:' + transferredTo;
+          } else {
+            this.getDateTime(advance);
+            query = 'callReceived[' + advance.fromDate + ' : ' + advance.toDate + ']' +
+              ' callFrom:' + from + ' callTo:' + to + ' answeredBy:' + answeredBy + ' transfers:' + transferredTo;
+          }
+          this.setData(query, search);
         },
         setData: function(query, search){
           var callRecords = document.querySelector('#reports');
           var ajaxRequest = document.querySelector('#callRecords');
-          callRecords.query =query;
-          callRecords.search = search;
-          ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl", "query": callRecords.query , "search": callRecords.search};
+          if(search != null && query != '') {
+            ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl", "query": query , "search": search};
+          } else if(search != null && query == ''){
+            ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl","search": search};
+          } else if(search == null){
+            ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl","query": query};
+          }
           ajaxRequest.generateRequest();
         }
       });

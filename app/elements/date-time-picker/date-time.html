@@ -445,9 +445,9 @@
           this.flagTime = true;
           this.showTimeDialogBasic();
         },
-//        showDialog: function () {
-//          this.$.dialog.toggle();
-//        },
+        showDialog: function () {
+          this.$.dialog.toggle();
+        },
         showTimeDialog: function () {
           this.$.timeDialog.toggle();
         },
@@ -541,6 +541,8 @@
         elem.toDate = moment(elem.toDate).add(1, 'days');
         elem.toTime = '12:00 AM';
         elem.fromTime = '12:00 AM';
+        elem.disableTime = true;
+      } else if(elem.disableCheck){
         elem.disableTime = true;
       } else {
         elem.disableTime = false;

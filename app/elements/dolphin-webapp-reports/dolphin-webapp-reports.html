@@ -1095,16 +1095,7 @@
           maxNumber: {
             type: Number,
             value: 25
-          },
-          query: {
-            type: String,
-            value: null
-          },
-          search: {
-            type: String,
-            value: null
           }
-
         },
         callDetails: function (id) {
           window.location.href = '/#!/reports/call/' + id;
@@ -1142,7 +1133,7 @@
         },
         ready: function () {
           var ajaxRequest = this.querySelector('#callRecords');
-          ajaxRequest.params = {"kind":"callRecords", "maxResults":this.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl", "query": this.query , "search": this.search};
+          ajaxRequest.params = {"kind":"callRecords", "maxResults":this.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl"};
           ajaxRequest.generateRequest();
         },
         dateFormat: function(date, format) {
