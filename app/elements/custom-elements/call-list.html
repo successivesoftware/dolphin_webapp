@@ -1,0 +1,449 @@
+/**
+* Created by successive on 15/10/15.
+**/
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
+
+
+<dom-module id="call-list">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-fab {
+        /*position: absolute;*/
+        background: #99c75f;
+      }
+
+      paper-header-panel {
+        padding-top: 30px;
+      }
+
+      .paper-header {
+        height: auto;
+        font-size: 16px;
+        line-height: 36px;
+        padding: 0 10px;
+        /*color: white;*/
+        background: gainsboro;
+        transition: height 0.2s;
+      }
+
+      .avatar {
+        border: 2px solid #c7b89e;
+      }
+
+      .avatar, .avatar img {
+        width: 50px;
+        height: 50px;
+        -webkit-border-radius: 30px; /* Saf3+, Chrome */
+        border-radius: 30px; /* Opera 10.5, IE 9 */
+        /*-moz-border-radius: 30px;  Disabled for FF1+ */
+      }
+
+      .daySeparator {
+        padding-top: 0px;
+      }
+
+      paper-menu {
+
+      }
+
+      :host(:focus) {
+        z-index: 1;
+        position: relative;
+      }
+
+      :host(.shrink) {
+        max-height: 0;
+      }
+
+      :host([selected]) #thread {
+        background-color: #eee;
+      }
+
+      :host([narrow]) #actionicons {
+        display: none;
+      }
+
+      :host([archived][undo]) #archived {
+        opacity: 1;
+        transition: opacity 200ms ease-in-out 400ms;
+      }
+
+      #container {
+        position: relative;
+        z-index: 0;
+      }
+
+      #thread {
+        background-color: #fafafa;
+        padding: 16px;
+        border-bottom: 1px solid #e0e0e0;
+        will-change: transform, opacity;
+      }
+
+      #lastline,
+      #actionicons,
+      time {
+        color: #3a393a;
+      }
+
+      .messagecount {
+        color: #9e9e9e;
+        margin-left: 5px;
+      }
+
+      header {
+        margin-left: 16px;
+        font-size: 14px;
+      }
+
+      header[unread] .name,
+      header[unread] .subject,
+      header[unread] time {
+        font-weight: 500;
+      }
+
+      header[unread] time {
+        color: var(--paper-light-blue-500);
+      }
+
+      header span.name {
+        font-size: 18px;
+      }
+
+      header span.subject {
+        margin: 6px 0;
+      }
+
+      header span.snippet,
+      header span.subject,
+      header span.name {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 90%;
+      }
+
+      header span.name {
+        max-width: 100%;
+      }
+
+      time {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+      }
+
+      #star {
+        cursor: pointer;
+      }
+
+      iron-icon[starred] {
+        color: var(--paper-yellow-700);
+      }
+
+      .undo {
+      @apply(- -gmail-undo-action);
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      #archived {
+        color: white;
+        z-index: -1;
+        opacity: 0;
+        will-change: opacity;
+      }
+
+      #archived > * {
+        padding: 16px;
+      }
+
+      .labels label {
+        font-size: 10px;
+        background-color: #bdbdbd;
+        padding: 3px 5px;
+        color: #fff;
+        border-radius: 2px;
+        margin-right: 5px;
+      }
+
+      .border {
+        border-bottom: 1px solid gainsboro;
+        padding: 16px;
+      }
+
+      .content {
+        margin-top: -2px;
+        padding: 0px;
+      }
+
+      .right {
+        text-align: right;
+        padding-left: 20px;
+      }
+
+      .snippet {
+        line-height: 25px;
+      }
+
+      .no-decoration {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .no-decoration div:hover, div:focus {
+        background: #c6f1ff;
+      }
+
+      .separator {
+        padding-top: 30px;
+      }
+
+      .offscreen {
+      @apply(- -swipeable-transition);
+      }
+
+      .offscreen.right {
+      @apply(- -swipeable-pos-right);
+      }
+
+      .fade {
+      @apply(- -swipeable-fade);
+      }
+
+      .swiping {
+      @apply(- -swipeable-swiping);
+      }
+
+      .snapback {
+      @apply(- -swipeable-snapback);
+      }
+
+      label.pink {
+      @apply(- -label-pink);
+      }
+
+      label.orange {
+      @apply(- -label-orange);
+      }
+
+      label.green {
+      @apply(- -label-green);
+      }
+
+      label.blue {
+      @apply(- -label-blue);
+      }
+
+      label.yellow {
+      @apply(- -label-yellow);
+      }
+
+      label.teal {
+      @apply(- -label-teal);
+      }
+
+      label.purple {
+      @apply(- -label-purple);
+      }
+
+    </style>
+
+    <paper-material elevation="3" class="content">
+      <iron-media-query query="(max-width: 621px)" query-matches="{{queryMatches}}"></iron-media-query>
+      <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
+                        query-matches="{{queryMatches1}}"></iron-media-query>
+      <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
+      <iron-list items="{{reports}}" as="reports">
+        <template>
+          <div>
+            <template is="dom-if" if="{{queryMatches}}">
+              <div>
+                <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                  <div class="layout horizontal border content-list">
+                    <profile-img
+                      src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                      letter="[[reports.callFrom.fullName.0]]"
+                      ></profile-img>
+                    <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                    <div class="flex layout horizontal">
+                      <header class="layout vertical flex">
+                        <span class="layout horizontal snippet center justified">
+                          <span class="name">
+                            <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                          </span>
+                        </span>
+                        <span class="name snippet">
+                          <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                        </span>
+                        <span class="name snippet">
+                          <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                        </span>
+                        <template is="dom-if" if="{{reports.transfers.length}}">
+                          <span class="layout horizontal center justified">
+                            <span class="snippet flex text-muted name"><i>transferred to:
+                              <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                <span>{{transfer.callTo.fullName}}</span>
+                              </template>
+                            </i>
+                            </span>
+                          </span>
+                        </template>
+                      </header>
+                    </div>
+                    <div class="layout vertical right">
+                      <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                      </time>
+                      <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                      <br>
+                      <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </template>
+            <template is="dom-if" if="{{queryMatches1}}">
+              <div>
+                <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                  <div class="layout horizontal border content-list">
+                    <profile-img
+                      src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                      letter="[[reports.callFrom.fullName.0]]"
+                      ></profile-img>
+                    <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                    <div class="flex layout horizontal">
+                      <header class="layout vertical flex">
+                        <span class="layout horizontal snippet center justified">
+                          <span class="name">
+                            <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                          </span>
+                          <span class="name">
+                            <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                          </span>
+                        </span>
+                        <span class="name snippet">
+                          <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                        </span>
+                        <template is="dom-if" if="{{reports.transfers.length}}">
+                          <span class="layout horizontal center justified">
+                            <span class="snippet flex text-muted name"><i>transferred to:
+                              <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                <span>{{transfer.callTo.fullName}}</span>
+                              </template>
+                            </i>
+                            </span>
+                          </span>
+                        </template>
+                      </header>
+                    </div>
+                    <div class="layout vertical right">
+                      <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                      </time>
+                      <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                      <br>
+                      <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </template>
+            <template is="dom-if" if="{{queryMatches2}}">
+              <div>
+                <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                  <div class="layout horizontal border content-list">
+                    <profile-img
+                      src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                      letter="[[reports.callFrom.fullName.0]]"
+                      ></profile-img>
+                    <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                    <div class="flex layout horizontal">
+                      <header class="layout vertical flex">
+                        <span class="snippet layout horizontal center justified">
+                          <span class="name">
+                            <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                          </span>
+                          <span class="name">
+                            <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                          </span>
+                          <span class="name">
+                            <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                          </span>
+                        </span>
+                        <template is="dom-if" if="{{reports.transfers.length}}">
+                          <span class="layout horizontal center justified">
+                            <span class="snippet flex text-muted name"><i>transferred to:
+                              <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                <span>{{transfer.callTo.fullName}}</span>
+                              </template>
+                            </i>
+                            </span>
+                          </span>
+                        </template>
+                      </header>
+                    </div>
+                    &nbsp;
+                    <div class="layout vertical right">
+                      <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                      </time>
+                      <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                      <br>
+                      <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </template>
+          </div>
+        </template>
+      </iron-list>
+    </paper-material>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        is: 'call-list',
+        properties: {
+
+          selected: {
+            type: Number,
+            value: 0
+          },
+          reports: {
+            type: Array
+          }
+        },
+        ready: function () {
+        },
+        dateFormat: function (date, format) {
+          if (!date) {
+            return '';
+          }
+          return moment(moment.utc(date)).format(format);
+        },
+        timeFormat: function (callDuration) {
+          callDuration = callDuration.split(':');
+          if (callDuration[0] > 0) {
+            return callDuration[0].replace(/^0+/, '') + 'h ' + callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's'
+          } else if (callDuration[0] <= 0 && callDuration[1] <= 0 && callDuration[2] > 0) {
+            return callDuration[2].replace(/^0+/, '') + 's'
+          } else
+            return callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's';
+        },
+        computeUrl: function (id) {
+          return '/reports/call/' + id;
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
