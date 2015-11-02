@@ -1,3 +1,8 @@
+/**
+* Created by successive on 20/10/15.
+**/
+
+
 <link rel="import" href="..\..\..\bower_components/polymer/polymer.html">
 <link rel="import" href="..\..\..\bower_components/paper-input/paper-input.html"/>
 <link rel="import" href="..\..\..\bower_components/paper-button/paper-button.html"/>
@@ -20,24 +25,28 @@
         display: block;
         --paper-input-container-focus-color: #00b6b6;
       }
+
       paper-button {
         display: block;
         width: 100%;
         background-color: #00b6b6;
       }
+
       paper-material {
         background-color: white;
         padding: 2em;
         margin: 13em 30em;
       }
-      @media(max-width: 621px){
+
+      @media (max-width: 621px) {
         paper-material {
           background-color: white;
           padding: 2em;
           margin: 15em 2em;
         }
       }
-      @media (min-width: 622px) and (max-width: 992px){
+
+      @media (min-width: 622px) and (max-width: 992px) {
         paper-material {
           background-color: white;
           padding: 2em;
@@ -137,13 +146,6 @@
       var ajax_request = document.getElementById('login');
       ajax_request.body = userdata;
       ajax_request.generateRequest();
-//      var query = this.getQueryParams(document.location.search);
-//      if(user.uid!=null && user.uid!='undefined'){
-//        console.log(this.globals);
-//        this.createCookie("userid",user.uid,1);
-//      } else {
-//        return !statusKnown || !!user;
-//      }
     },
     createCookie: function (name, value, days) {
 
@@ -174,21 +176,13 @@
 
       return params;
     },
-    handleResponse: function(request){
+    handleResponse: function (request) {
       var user = request.detail.response;
       console.log(request.detail.response);
-      this.createCookie("userid",user.userName,1);
+      this.createCookie("userid", user.userName, 1);
     },
-    handleError: function(err){
+    handleError: function (err) {
       alert('Invalid username or password');
     }
   });
-
-  //  function clickHandler(event) {
-  //    Polymer.dom(event).localTarget.parentElement.submit();
-  //  }
-  //  function login(event) {
-  //    console.log('dsfsdfdf');
-  //  }
-
-</script>
+  </script>

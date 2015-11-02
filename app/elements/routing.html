@@ -1,20 +1,12 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <script src="../bower_components/page/page.js"></script>
 <script>
-  window.addEventListener('WebComponentsReady', function() {
+  window.addEventListener('WebComponentsReady', function () {
     var mainBar = document.querySelector('#mainBar');
     var backButton = document.querySelector('#back-button');
     var paperToggle = document.querySelector('#paperToggle');
     var callDetails = document.querySelector('#callDetails');
+    var helpMenu = document.querySelector('#helpMenu');
+    var reports = document.querySelector('#reports');
     // We use Page.js for routing. This is a Micro
     // client-side router inspired by the Express router
     // More info: https://visionmedia.github.io/page.js/
@@ -26,62 +18,77 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     // Routes
-    page('/', scrollToTop, function() {
+    page('/', scrollToTop, function () {
       app.route = 'pages/auth/auth.html';
       app.route = 'dashboard';
-      mainBar.showMenu(true);
-      backButton.showMenu(true);
-      paperToggle.showMenu(false);
+      mainBar.hideMenu(true);
+      backButton.hideMenu(true);
+      helpMenu.hideMenu(true);
+      paperToggle.hideMenu(false);
+      reports.ready();
     });
 
-    page('/users', scrollToTop, function() {
+    page('/users', scrollToTop, function () {
       app.route = 'users';
-      mainBar.showMenu(true);
-      backButton.showMenu(true);
-      paperToggle.showMenu(false);
+      mainBar.hideMenu(true);
+      backButton.hideMenu(true);
+      helpMenu.hideMenu(true);
+      paperToggle.hideMenu(false);
+      reports.ready();
     });
 
-    page('/users/:name', scrollToTop, function(data) {
+    page('/users/:name', scrollToTop, function (data) {
       app.route = 'user-info';
       app.params = data.params;
-      mainBar.showMenu(true);
-      backButton.showMenu(true);
-      paperToggle.showMenu(false);
+      mainBar.hideMenu(true);
+      backButton.hideMenu(true);
+      helpMenu.hideMenu(true);
+      paperToggle.hideMenu(false);
+      reports.ready();
     });
 
-    page('/reports', scrollToTop, function() {
+    page('/reports', scrollToTop, function () {
       app.route = 'reports';
-      mainBar.showMenu(true);
-      backButton.showMenu(true);
-      paperToggle.showMenu(false);
+      mainBar.hideMenu(true);
+      backButton.hideMenu(true);
+      helpMenu.hideMenu(false);
+      paperToggle.hideMenu(false);
     });
 
-    page('/reports/call/:id', scrollToTop, function(data) {
+    page('/reports/call/:id', scrollToTop, function (data) {
       app.route = 'call-details';
       app.params = data.params;
       callDetails.test(data.params.id);
-      mainBar.showMenu(false);
-      backButton.showMenu(false);
-      paperToggle.showMenu(true);
+      mainBar.hideMenu(false);
+      backButton.hideMenu(false);
+      helpMenu.hideMenu(true);
+      paperToggle.hideMenu(true);
+      reports.ready();
     });
-    page('/reports/help', scrollToTop, function(data) {
+    page('/reports/help', scrollToTop, function (data) {
       app.route = 'help';
-      mainBar.showMenu(true);
-      backButton.showMenu(false);
-      paperToggle.showMenu(true);
+      mainBar.hideMenu(true);
+      backButton.hideMenu(false);
+      helpMenu.hideMenu(true);
+      paperToggle.hideMenu(true);
+      reports.ready();
     });
-    page('/reports/logs', scrollToTop, function(data) {
+    page('/reports/logs', scrollToTop, function (data) {
       app.route = 'logs';
-      mainBar.showMenu(true);
-      backButton.showMenu(false);
-      paperToggle.showMenu(true);
+      mainBar.hideMenu(true);
+      backButton.hideMenu(false);
+      helpMenu.hideMenu(true);
+      paperToggle.hideMenu(true);
+      reports.ready();
     });
 
-    page('/search', scrollToTop, function() {
+    page('/search', scrollToTop, function () {
       app.route = 'search';
-      mainBar.showMenu(true);
-      backButton.showMenu(false);
-      paperToggle.showMenu(true);
+      mainBar.hideMenu(true);
+      backButton.hideMenu(false);
+      helpMenu.hideMenu(true);
+      paperToggle.hideMenu(true);
+      reports.ready();
     });
     // add #! before urls
     page({

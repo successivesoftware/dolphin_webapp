@@ -25,28 +25,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </head>
 <body>
 
-  <test-fixture id="basic">
-    <template>
-      <my-greeting></my-greeting>
-    </template>
-  </test-fixture>
+<test-fixture id="basic">
+  <template>
+    <my-greeting></my-greeting>
+  </template>
+</test-fixture>
 
-  <script>
+<script>
 
-    suite('my-greeting tests', function() {
-      var greeting, header;
+  suite('my-greeting tests', function () {
+    var greeting, header;
 
-      setup(function() {
-        greeting = fixture('basic');
-      });
-
-      test('Welcome!', function() {
-        header = greeting.querySelector('h2');
-        assert.equal(header.textContent, 'Welcome!');
-      });
-
+    setup(function () {
+      greeting = fixture('basic');
     });
-  </script>
+
+    test('Welcome!', function () {
+      header = greeting.querySelector('h2');
+      assert.equal(header.textContent, 'Welcome!');
+    });
+
+  });
+</script>
 
 </body>
 </html>

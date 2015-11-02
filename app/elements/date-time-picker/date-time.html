@@ -1,14 +1,9 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 23/10/15.
 **/
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../styles/app-theme.html">
-<!--<link rel="import" href="../../../bower_components/polymer-paper-date-picker/paper-date-picker.css">-->
-<!--<link rel="import" href="../../../bower_components/polymer-paper-date-picker/paper-calendar.css">-->
-<!--<link rel="import" href="../../../bower_components/paper-time-picker/paper-time-picker.css">-->
-<!--<link rel="import" href="../../../bower_components/paper-time-picker/paper-clock-selector.css">-->
-
 
 <dom-module id="date-time">
   <template id="scope">
@@ -537,22 +532,24 @@
     var toggleCheck = function (elem) {
       var allDay = elem.querySelector('#allDay');
       if (allDay.checked) {
-        elem.toDate = elem.fromDate;
-        elem.toDate = moment(elem.toDate).add(1, 'days');
         elem.toTime = '12:00 AM';
         elem.fromTime = '12:00 AM';
+        var toTime = moment(elem.toDate).add(1, 'days').format('ddd MMM DD YYYY').toString() + ' ' + elem.toTime;
+        toTime = new Date(toTime);
+        if (moment(toTime).isAfter(moment(new Date()))) {
+          elem.fromDate = moment(elem.toDate).subtract(1, 'days');
+          elem.querySelector('#toast1').show();
+        } else {
+          elem.toDate = elem.fromDate;
+          elem.toDate = moment(elem.toDate).add(1, 'days');
+        }
         elem.disableTime = true;
-      } else if(elem.disableCheck){
+      } else if (elem.disableCheck) {
         elem.disableTime = true;
       } else {
         elem.disableTime = false;
       }
     };
-    //    document.addEventListener('WebComponentsReady', function() {
-    //      var scope = document.querySelector('#date-time');
-    //      console.log(scope);
-    //      scope.dateFormat = scope.$.picker.dateFormat;
-    //    });
   </script>
 
 </dom-module>

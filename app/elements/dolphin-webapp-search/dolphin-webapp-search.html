@@ -1,14 +1,9 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 21/10/15.
 **/
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../styles/app-theme.html">
-<!--<link rel="import" href="../../../bower_components/polymer-paper-date-picker/paper-date-picker.css">-->
-<!--<link rel="import" href="../../../bower_components/polymer-paper-date-picker/paper-calendar.css">-->
-<!--<link rel="import" href="../../../bower_components/paper-time-picker/paper-time-picker.css">-->
-<!--<link rel="import" href="../../../bower_components/paper-time-picker/paper-clock-selector.css">-->
-
 
 <dom-module id="dolphin-webapp-search">
   <template id="scope">
@@ -213,12 +208,15 @@
       .mt-1 {
         margin-top: -1em;
       }
+
       .mt2 {
         margin-top: 2em;
       }
+
       .l1 {
         left: 1em;
       }
+
       .offscreen {
       @apply(- -swipeable-transition);
       }
@@ -277,7 +275,7 @@
     <iron-pages selected="{{selected}}">
       <div class="content-box">
         <paper-input class="test" id="search" type="search" placeholder="Search for calls"
-                      autosave="test" results="5">
+                     autosave="test" results="5">
         </paper-input>
         <date-time id="basicSearch"></date-time>
         <a data-route="reports" href="/reports">
@@ -292,7 +290,9 @@
         <paper-input label="Answered by" id="answeredBy"></paper-input>
         <paper-input label="Transferred to" id="transferredTo"></paper-input>
         <date-time id="advanceSearch"></date-time>
+        <a data-route="reports" href="/reports">
           <paper-fab icon="done" on-tap="doneAdvance" elavation="4"></paper-fab>
+        </a>
       </div>
 
     </iron-pages>
@@ -312,51 +312,72 @@
           }
 
         },
-        ready: function() {
+        ready: function () {
         },
-        doneBasic: function(){
+        doneBasic: function () {
           var query, search;
           search = document.querySelector('#search').value;
           var basic = document.querySelector('#basicSearch');
-          if(basic.disableDate){
+          if (basic.disableDate) {
             query = '';
           } else {
             this.getDateTime(basic);
             query = 'callReceived[' + basic.fromDate + ':' + basic.toDate + ']';
           }
           this.setData(query, search);
+          document.querySelector('#search').value = '';
         },
-        getDateTime: function(element){
+        getDateTime: function (element) {
           var toDate = moment(element.toDate).format('ddd MMM DD YYYY').toString() + ' ' + element.toTime;
           var fromDate = moment(element.fromDate).format('ddd MMM DD YYYY').toString() + ' ' + element.fromTime;
           element.toDate = moment(toDate).format();
           element.fromDate = moment(fromDate).format();
         },
-        doneAdvance: function(){
+        doneAdvance: function () {
           var query;
           var from = document.querySelector('#from').value,
-              to = document.querySelector('#to').value,
-              answeredBy = document.querySelector('#answeredBy').value,
-              transferredTo = document.querySelector('#transferredTo').value;
+            to = document.querySelector('#to').value,
+            answeredBy = document.querySelector('#answeredBy').value,
+            transferredTo = document.querySelector('#transferredTo').value;
           var advance = document.querySelector('#advanceSearch');
-          if(advance.disableDate){
+          if (advance.disableDate) {
             query = 'callFrom:' + from + ' callTo:' + to + ' answeredBy:' + answeredBy + ' transfers:' + transferredTo;
           } else {
             this.getDateTime(advance);
             query = 'callReceived[' + advance.fromDate + ' : ' + advance.toDate + ']' +
               ' callFrom:' + from + ' callTo:' + to + ' answeredBy:' + answeredBy + ' transfers:' + transferredTo;
           }
-          this.setData(query, search);
+          this.setData(query, null);
+          document.querySelector('#from').value = '';
+          document.querySelector('#to').value = '';
+          document.querySelector('#answeredBy').value = '';
+          document.querySelector('#transferredTo').value = '';
         },
-        setData: function(query, search){
+        setData: function (query, search) {
           var callRecords = document.querySelector('#reports');
           var ajaxRequest = document.querySelector('#callRecords');
-          if(search != null && query != '') {
-            ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl", "query": query , "search": search};
-          } else if(search != null && query == ''){
-            ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl","search": search};
-          } else if(search == null){
-            ajaxRequest.params = {"kind":"callRecords", "maxResults":callRecords.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl","query": query};
+          if (search != null && query != '') {
+            ajaxRequest.params = {
+              "kind": "callRecords",
+              "maxResults": callRecords.maxNumber,
+              "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl",
+              "query": query,
+              "search": search
+            };
+          } else if (search != null && query == '') {
+            ajaxRequest.params = {
+              "kind": "callRecords",
+              "maxResults": callRecords.maxNumber,
+              "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl",
+              "search": search
+            };
+          } else if (search == null) {
+            ajaxRequest.params = {
+              "kind": "callRecords",
+              "maxResults": callRecords.maxNumber,
+              "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl",
+              "query": query
+            };
           }
           ajaxRequest.generateRequest();
         }

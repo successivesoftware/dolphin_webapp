@@ -1,5 +1,5 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 15/10/15.
 **/
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
@@ -201,9 +201,11 @@
       .no-decoration div:hover, div:focus {
         background: #c6f1ff;
       }
-      .separator{
-        padding-top:30px;
+
+      .separator {
+        padding-top: 30px;
       }
+
       .offscreen {
       @apply(- -swipeable-transition);
       }
@@ -282,148 +284,148 @@
             <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
                               query-matches="{{queryMatches1}}"></iron-media-query>
             <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
-            <template is="dom-repeat" items="{{reportsToday}}" as="reports">
-              <template is="dom-if" if="{{queryMatches}}">
+            <iron-list items="{{reportsToday}}" as="reports">
+              <template>
                 <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  <template is="dom-if" if="{{queryMatches}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
+                  </template>
+                  <template is="dom-if" if="{{queryMatches1}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </template>
+                  <template is="dom-if" if="{{queryMatches2}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="snippet layout horizontal center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                                </span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          &nbsp;
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </template>
                 </div>
-
-            </template>
-                        <template is="dom-if" if="{{queryMatches1}}">
-              <div>
-                <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                  <div class="layout horizontal border content-list">
-                    <profile-img
-                      src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                      letter="[[reports.callFrom.fullName.0]]"
-                      ></profile-img>
-                    <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                    <div class="flex layout horizontal">
-                      <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-              <span class="name">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                        <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                        </template>
-                      </header>
-                    </div>
-                    <div class="layout vertical right">
-                      <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                      </time>
-                      <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                      <br>
-                      <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </template>
-            <template is="dom-if" if="{{queryMatches2}}">
-              <div>
-                <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                  <div class="layout horizontal border content-list">
-                    <profile-img
-                      src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                      letter="[[reports.callFrom.fullName.0]]"
-                      ></profile-img>
-                    <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                    <div class="flex layout horizontal">
-                      <header class="layout vertical flex">
-                    <span class="snippet layout horizontal center justified">
-                      <span class="name">
-                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-                      </span>
-                    </span>
-
-                        <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                        </template>
-                      </header>
-                    </div>
-                    &nbsp;
-                    <div class="layout vertical right">
-                      <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                      </time>
-                      <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                      <br>
-                      <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                    </div>
-
-                  </div>
-                </a>
-              </div>
-            </template>
-            </template>
+              </template>
+            </iron-list>
           </paper-material>
 
         </template>
@@ -437,148 +439,148 @@
             <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
                               query-matches="{{queryMatches1}}"></iron-media-query>
             <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
-            <template is="dom-repeat" items="{{reportsYesterday}}" as="reports">
-              <template is="dom-if" if="{{queryMatches}}">
+            <iron-list items="{{reportsYesterday}}" as="reports">
+              <template>
                 <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  <template is="dom-if" if="{{queryMatches}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-
-              </template>
-              <template is="dom-if" if="{{queryMatches1}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-              <span class="name">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  </template>
+                  <template is="dom-if" if="{{queryMatches1}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-              </template>
-              <template is="dom-if" if="{{queryMatches2}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-                    <span class="snippet layout horizontal center justified">
-                      <span class="name">
-                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-                      </span>
-                    </span>
-
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      &nbsp;
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
-
+                  </template>
+                  <template is="dom-if" if="{{queryMatches2}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="snippet layout horizontal center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                                </span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          &nbsp;
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
+                  </template>
                 </div>
               </template>
-            </template>
+            </iron-list>
           </paper-material>
 
         </template>
@@ -592,153 +594,151 @@
             <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
                               query-matches="{{queryMatches1}}"></iron-media-query>
             <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
-            <template is="dom-repeat" items="{{reportsThisMonth}}" as="reports">
-              <template is="dom-if" if="{{queryMatches}}">
+            <iron-list items="{{reportsThisMonth}}" as="reports">
+              <template>
                 <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  <template is="dom-if" if="{{queryMatches}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-
-              </template>
-              <template is="dom-if" if="{{queryMatches1}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-              <span class="name">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  </template>
+                  <template is="dom-if" if="{{queryMatches1}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-              </template>
-              <template is="dom-if" if="{{queryMatches2}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-                    <span class="snippet layout horizontal center justified">
-                      <span class="name">
-                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-                      </span>
-                    </span>
-
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      &nbsp;
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
-
+                  </template>
+                  <template is="dom-if" if="{{queryMatches2}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="snippet layout horizontal center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                                </span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          &nbsp;
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
+                  </template>
                 </div>
               </template>
-            </template>
+            </iron-list>
           </paper-material>
-
         </template>
         <template is="dom-if" if="{{reportsLastMonth.length}}">
-
           <paper-header-panel class="daySeparator">
             <div class="paper-header">Last Month</div>
           </paper-header-panel>
@@ -747,153 +747,152 @@
             <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
                               query-matches="{{queryMatches1}}"></iron-media-query>
             <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
-            <template is="dom-repeat" items="{{reportsLastMonth}}" as="reports">
-              <template is="dom-if" if="{{queryMatches}}">
+            <iron-list items="{{reportsLastMonth}}" as="reports">
+              <template>
                 <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  <template is="dom-if" if="{{queryMatches}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-
-              </template>
-              <template is="dom-if" if="{{queryMatches1}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-              <span class="name">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  </template>
+                  <template is="dom-if" if="{{queryMatches1}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-              </template>
-              <template is="dom-if" if="{{queryMatches2}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-                    <span class="snippet layout horizontal center justified">
-                      <span class="name">
-                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-                      </span>
-                    </span>
-
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      &nbsp;
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
-
+                  </template>
+                  <template is="dom-if" if="{{queryMatches2}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="snippet layout horizontal center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                                </span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          &nbsp;
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
+                  </template>
                 </div>
               </template>
-            </template>
+            </iron-list>
           </paper-material>
 
         </template>
         <template is="dom-if" if="{{reportsOlder.length}}">
-
           <paper-header-panel class="daySeparator">
             <div class="paper-header">Older</div>
           </paper-header-panel>
@@ -902,148 +901,148 @@
             <iron-media-query query="(min-width: 622px) and (max-width: 992px)"
                               query-matches="{{queryMatches1}}"></iron-media-query>
             <iron-media-query query="(min-width: 993px)" query-matches="{{queryMatches2}}"></iron-media-query>
-            <template is="dom-repeat" items="{{reportsOlder}}" as="reports">
-              <template is="dom-if" if="{{queryMatches}}">
+            <iron-list items="{{reportsOlder}}" as="reports">
+              <template>
                 <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  <template is="dom-if" if="{{queryMatches}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-
-              </template>
-              <template is="dom-if" if="{{queryMatches1}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-            <span class="layout horizontal snippet center justified">
-              <span class="name">
-                <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-              </span>
-              <span class="name">
-                <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-              </span>
-            </span>
-                  <span class="name snippet">
-                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-              </span>
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
+                  </template>
+                  <template is="dom-if" if="{{queryMatches1}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="layout horizontal snippet center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                              </span>
+                              <span class="name snippet">
+                                <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-              </template>
-              <template is="dom-if" if="{{queryMatches2}}">
-                <div>
-                  <a href="{{computeUrl(reports._id)}}" class="no-decoration">
-                    <div class="layout horizontal border content-list">
-                      <profile-img
-                        src="[[reports.callFrom.thumbnailPhotoUrl]]"
-                        letter="[[reports.callFrom.fullName.0]]"
-                        ></profile-img>
-                      <!--<div class="avatar"><img src="../../images/female.png"></div>-->
-                      <div class="flex layout horizontal">
-                        <header class="layout vertical flex">
-                    <span class="snippet layout horizontal center justified">
-                      <span class="name">
-                        <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>to:</b> <span>{{reports.callTo.fullName}}</span>
-                      </span>
-                      <span class="name">
-                        <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
-                      </span>
-                    </span>
-
-                          <template is="dom-if" if="{{reports.transfers.length}}">
-                    <span class="layout horizontal center justified">
-                      <span class="snippet flex text-muted name"><i>transferred to:
-                        <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
-                          <span>{{transfer.callTo.fullName}}</span>
-                        </template>
-                      </i>
-                      </span>
-                    </span>
-                          </template>
-                        </header>
-                      </div>
-                      &nbsp;
-                      <div class="layout vertical right">
-                        <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
-                        </time>
-                        <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
-                        <br>
-                        <time><span>{{timeFormat(reports.callDuration)}}</span> </time>
-                      </div>
-
+                  </template>
+                  <template is="dom-if" if="{{queryMatches2}}">
+                    <div>
+                      <a href="{{computeUrl(reports._id)}}" class="no-decoration">
+                        <div class="layout horizontal border content-list">
+                          <profile-img
+                            src="[[reports.callFrom.thumbnailPhotoUrl]]"
+                            letter="[[reports.callFrom.fullName.0]]"
+                            ></profile-img>
+                          <!--<div class="avatar"><img src="../../images/female.png"></div>-->
+                          <div class="flex layout horizontal">
+                            <header class="layout vertical flex">
+                              <span class="snippet layout horizontal center justified">
+                                <span class="name">
+                                  <b>from:</b> <span>{{reports.callFrom.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>to:</b> <span>{{reports.callTo.fullName}}</span>
+                                </span>
+                                <span class="name">
+                                  <b>ans:</b> <span>{{reports.answeredBy.fullName}}</span>
+                                </span>
+                              </span>
+                              <template is="dom-if" if="{{reports.transfers.length}}">
+                                <span class="layout horizontal center justified">
+                                  <span class="snippet flex text-muted name"><i>transferred to:
+                                    <template is="dom-repeat" items="{{reports.transfers}}" as="transfer">
+                                      <span>{{transfer.callTo.fullName}}</span>
+                                    </template>
+                                  </i>
+                                  </span>
+                                </span>
+                              </template>
+                            </header>
+                          </div>
+                          &nbsp;
+                          <div class="layout vertical right">
+                            <time>{{dateFormat(reports.timeReceived, 'DD MMM')}}
+                            </time>
+                            <time>{{dateFormat(reports.timeReceived, 'hh:mm')}}</time>
+                            <br>
+                            <time><span>{{timeFormat(reports.callDuration)}}</span></time>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
+                  </template>
                 </div>
               </template>
-            </template>
+            </iron-list>
           </paper-material>
 
         </template>
@@ -1051,7 +1050,6 @@
           <paper-fab icon="search" elavation="4"></paper-fab>
         </a>
       </div>
-
 
       <div>
       </div>
@@ -1133,29 +1131,32 @@
         },
         ready: function () {
           var ajaxRequest = this.querySelector('#callRecords');
-          ajaxRequest.params = {"kind":"callRecords", "maxResults":this.maxNumber, "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl"};
+          ajaxRequest.params = {
+            "kind": "callRecords",
+            "maxResults": this.maxNumber,
+            "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl"
+          };
           ajaxRequest.generateRequest();
         },
-        dateFormat: function(date, format) {
+        dateFormat: function (date, format) {
           if (!date) {
             return '';
           }
           return moment(moment.utc(date)).format(format);
         },
-        timeFormat: function(callDuration){
+        timeFormat: function (callDuration) {
           callDuration = callDuration.split(':');
-          if(callDuration[0] > 0){
+          if (callDuration[0] > 0) {
             return callDuration[0].replace(/^0+/, '') + 'h ' + callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's'
-          } else
-          if(callDuration[0] <= 0 && callDuration[1] <= 0 && callDuration[2] > 0){
+          } else if (callDuration[0] <= 0 && callDuration[1] <= 0 && callDuration[2] > 0) {
             return callDuration[2].replace(/^0+/, '') + 's'
           } else
-          return callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's';
+            return callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's';
         },
-        computeUrl: function(id) {
-          return '/reports/call/' + id ;
+        computeUrl: function (id) {
+          return '/reports/call/' + id;
         },
-        getNumber: function(){
+        getNumber: function () {
         }
       });
     })();

@@ -1,5 +1,5 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 29/10/15.
 **/
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
@@ -304,7 +304,7 @@
                        src="[[callRecord.callFrom.thumbnailPhotoUrl]]"
                        letter="[[callRecord.callFrom.fullName.0]]"
                        selected="[[selected]]"
-                      ></profile-img>
+            ></profile-img>
           <!--<div class="avatar"><img src="../../images/female.png"></div>-->
           <div class="flex layout vertical flex">
             <header class="layout vertical flex">
@@ -324,9 +324,9 @@
         </div>
         <div class="layout horizontal content-list border">
           <profile-img
-                       src="[[callRecord.callTo.thumbnailPhotoUrl]]"
-                       letter="[[callRecord.callTo.fullName.0]]"
-                       selected="[[selected]]"
+            src="[[callRecord.callTo.thumbnailPhotoUrl]]"
+            letter="[[callRecord.callTo.fullName.0]]"
+            selected="[[selected]]"
             ></profile-img>
           <!--<div class="avatar"><img src="../../images/female.png"></div>-->
           <div class="flex layout vertical flex">
@@ -409,7 +409,8 @@
                     </span>
             </div>
             <template is="dom-if" if="{{queryMatches2}}">
-              <paper-audio-player hidden$="{{!callRecord.recordingUri}}"  class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+              <paper-audio-player hidden$="{{!callRecord.recordingUri}}" class="pt10" src="{{callRecord.recordingUri}}"
+                                  title="Recording"
                                   color="#99c75f"></paper-audio-player>
             </template>
           </div>
@@ -437,11 +438,13 @@
           </div>
         </div>
         <template is="dom-if" if="{{queryMatches}}">
-          <paper-audio-player hidden$="{{!callRecord.recordingUri}}" class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+          <paper-audio-player hidden$="{{!callRecord.recordingUri}}" class="pt10" src="{{callRecord.recordingUri}}"
+                              title="Recording"
                               color="#99c75f"></paper-audio-player>
         </template>
         <template is="dom-if" if="{{queryMatches1}}">
-          <paper-audio-player hidden$="{{!callRecord.recordingUri}}" class="pt10" src="{{callRecord.recordingUri}}" title="Recording"
+          <paper-audio-player hidden$="{{!callRecord.recordingUri}}" class="pt10" src="{{callRecord.recordingUri}}"
+                              title="Recording"
                               color="#99c75f"></paper-audio-player>
         </template>
       </paper-material>
@@ -510,8 +513,9 @@
                     </span>
                   </div>
                   <template is="dom-if" if="{{queryMatches2}}">
-                      <paper-audio-player hidden$="{{!transfer.recordingUri}}" src="{{transfer.recordingUri}}" class="pt10" title="Recording"
-                                          color="#99c75f"></paper-audio-player>
+                    <paper-audio-player hidden$="{{!transfer.recordingUri}}" src="{{transfer.recordingUri}}"
+                                        class="pt10" title="Recording"
+                                        color="#99c75f"></paper-audio-player>
 
 
                   </template>
@@ -540,11 +544,13 @@
                 </div>
               </div>
               <template is="dom-if" if="{{queryMatches}}">
-                <paper-audio-player hidden$="{{!transfer.recordingUri}}" src="{{transfer.recordingUri}}" class="pt10" title="Recording"
+                <paper-audio-player hidden$="{{!transfer.recordingUri}}" src="{{transfer.recordingUri}}" class="pt10"
+                                    title="Recording"
                                     color="#99c75f"></paper-audio-player>
               </template>
               <template is="dom-if" if="{{queryMatches1}}">
-                <paper-audio-player hidden$="{{!transfer.recordingUri}}" class="pt10" src="{{transfer.recordingUri}}" title="Recording"
+                <paper-audio-player hidden$="{{!transfer.recordingUri}}" class="pt10" src="{{transfer.recordingUri}}"
+                                    title="Recording"
                                     color="#99c75f"></paper-audio-player>
               </template>
             </paper-material>
@@ -593,7 +599,7 @@
         answeredTime: function (timeReceived, timeAnswered) {
           var a = moment(timeReceived);
           var b = moment(timeAnswered);
-          var time = b.diff(a)/1000;
+          var time = b.diff(a) / 1000;
           var h, m, s;
           h = Math.floor(time / 3600);
           time = time % 3600;
@@ -607,17 +613,17 @@
             return s + 's';
           }
         },
-        test: function(id) {
+        test: function (id) {
           var ajaxRequest = document.querySelector('#callDetail');
           ajaxRequest.url = 'http://localhost:9000/api/reporting/v2/telephony/' + id;
           ajaxRequest.generateRequest();
         }
       });
     })();
-//    addEventListener('WebComponentsReady', function () {
-//      var data = document.querySelector('dolphin-webapp-call-details');
-//      data.test();
-//    })
+    //    addEventListener('WebComponentsReady', function () {
+    //      var data = document.querySelector('dolphin-webapp-call-details');
+    //      data.test();
+    //    })
   </script>
 
 </dom-module>

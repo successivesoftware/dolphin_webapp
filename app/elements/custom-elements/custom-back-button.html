@@ -1,9 +1,10 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 16/10/15.
+* Custom back button
 **/
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../styles/app-theme.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
 <dom-module id="custom-back-button">
   <template>
     <style is="custom-style" include="shared-styles"></style>
@@ -12,18 +13,18 @@
       :host {
         display: block;
       }
+
       paper-menu {
 
       }
-      .left{
-        left:2800%
+
+      .left {
+        left: 2800%
       }
-      paper-icon-button {
-        padding: 0px;
-      }
-      @media (min-width: 0) and (max-width: 480px){
-        .left{
-          left:450%
+
+      @media (min-width: 0) and (max-width: 480px) {
+        .left {
+          left: 450%
         }
       }
     </style>
@@ -47,10 +48,10 @@
             value: true
           }
         },
-        showMenu: function(value){
+        hideMenu: function (value) {
           this.show = value;
         },
-        backButton: function(){
+        backButton: function () {
           window.history.back();
         }
       });

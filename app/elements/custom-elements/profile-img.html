@@ -1,22 +1,31 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+/**
+* Created by successive on 25/10/15.
+**/
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-icon/iron-icon.html">
 
 <dom-module id="profile-img">
   <style>
     :host {
       font-size: 2em;
     }
+
     :host([selected]) .profile {
-      transform: rotate3d(0,1,0,180deg);
+      transform: rotate3d(0, 1, 0, 180deg);
     }
+
     :host([selected]) img,
     :host([selected]) .letter {
       opacity: 0;
     }
+
     :host([selected]) iron-icon {
-      transform: rotate3d(0,1,0,-180deg) scale(1);
+      transform: rotate3d(0, 1, 0, -180deg) scale(1);
       opacity: 1;
     }
+
     .profile {
       border-radius: 50%;
       width: 50px;
@@ -27,6 +36,7 @@
       will-change: transform;
       cursor: pointer;
     }
+
     img,
     .letter {
       border-radius: inherit;
@@ -36,10 +46,11 @@
       will-change: opacity;
       text-transform: uppercase;
     }
+
     iron-icon {
       transition: transform 300ms ease-in-out 100ms;
       will-change: opacity;
-      transform: rotate3d(0,1,0,-180deg) scale(0);
+      transform: rotate3d(0, 1, 0, -180deg) scale(0);
       position: absolute !important;
       top: 20%;
       left: 20%;

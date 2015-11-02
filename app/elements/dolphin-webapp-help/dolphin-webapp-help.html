@@ -1,5 +1,5 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 19/10/15.
 **/
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
@@ -51,7 +51,6 @@
       paper-menu {
 
       }
-
 
       :host(:focus) {
         z-index: 1;
@@ -173,50 +172,64 @@
         border-radius: 2px;
         margin-right: 5px;
       }
+
       .border {
         padding: 16px;
       }
+
       .content {
         margin-top: -2px;
         padding: 0px;
       }
+
       .right {
         text-align: right;
         padding-left: 20px;
       }
+
       .snippet {
         line-height: 25px;
       }
+
       .callDetails {
         margin: 16px;
         padding-top: 0px;
         padding-left: 16px;
         padding-right: 16px;
       }
-      .right-content{
+
+      .right-content {
         align-items: flex-end;
       }
-      .left-content{
+
+      .left-content {
         align-items: flex-start;
       }
-      .left-align{
+
+      .left-align {
         text-align: left;
       }
-      .right-align{
+
+      .right-align {
         text-align: right;
       }
-      .pt10{
-        padding-top:10px;
+
+      .pt10 {
+        padding-top: 10px;
       }
+
       .pl0 {
-        padding-left:0px;
+        padding-left: 0px;
       }
+
       .center-align {
         align-self: center;
       }
+
       h3 {
         padding-bottom: 5%;
       }
+
       .offscreen {
       @apply(- -swipeable-transition);
       }
@@ -264,18 +277,21 @@
       label.purple {
       @apply(- -label-purple);
       }
-      @media (min-width: 993px){
+
+      @media (min-width: 993px) {
         :host {
           display: block;
           font-size: 1em;
         }
+
         header span.name {
           font-size: 1.5em;
         }
       }
     </style>
-    <paper-material elevation="3">
+    <paper-material elevation="3" class="content-list">
       <h2 class="page-title">Help</h2>
+
       <p>This is the help section</p>
     </paper-material>
   </template>

@@ -1,9 +1,9 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 16/10/15.
 **/
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../styles/app-theme.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
 <dom-module id="custom-toggle-button">
   <template>
     <style is="custom-style" include="shared-styles"></style>
@@ -12,12 +12,13 @@
       :host {
         display: block;
       }
+
       paper-menu {
 
       }
     </style>
     <div hidden="{{show}}">
-      <paper-icon-button  icon="menu" paper-drawer-toggle></paper-icon-button>
+      <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
     </div>
   </template>
 
@@ -34,7 +35,7 @@
             value: false
           }
         },
-        showMenu: function(value){
+        hideMenu: function (value) {
           this.show = value;
         }
       });

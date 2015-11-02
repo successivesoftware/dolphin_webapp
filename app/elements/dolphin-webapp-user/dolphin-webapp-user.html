@@ -1,5 +1,5 @@
 /**
-* Created by successive on 9/10/15.
+* Created by successive on 2/11/15.
 **/
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
@@ -11,6 +11,7 @@
       :host {
         display: block;
       }
+
       .transfers {
         border-radius: 2px;
         height: 100%;
@@ -18,6 +19,7 @@
         /*width: calc(98.66% - 16px);*/
         margin: 16px 3%;;
       }
+
       paper-fab {
         /*position: absolute;*/
         background: #99c75f;
@@ -53,30 +55,34 @@
 
       }
     </style>
-    <paper-material elevation="1" class="content-list">
-      <paper-material elevation="1">
-        <h2 class="page-title">Users</h2>
-        <p>This is the users section</p>
-        <a href="/users/Rob">Rob</a>
-      </paper-material>
-      <!--<iron-ajax auto-->
-                 <!--id="test"-->
-                 <!--url="https://www.googleapis.com/youtube/v3/search"-->
-                 <!--params='{"part":"snippet", "q":"polymer", "key": "AIzaSyAuecFZ9xJXbGDkQYWBmYrtzOGJD-iDIgI", "type": "video"}'-->
-                 <!--handle-as="json"-->
-                 <!--last-response="{{ajaxResponse}}">-->
+    <paper-tabs selected="{{selected}}">
+      <paper-tab>System Users</paper-tab>
+      <paper-tab>Groups</paper-tab>
+      <paper-tab>Global Contacts</paper-tab>
+      <paper-tab>All</paper-tab>
+    </paper-tabs>
 
-      <!--</iron-ajax>-->
-      <paper-button on-click="_handle">Click Me</paper-button>
-      <iron-ajax
-        auto
-        id="test"
-        url="http://localhost:9000/api/user"
-        handle-as="json"
-        last-response="{{ajaxResponse}}"
-        ></iron-ajax>
-    </paper-material>
+    <iron-pages selected="{{selected}}">
+      <div>
+        <paper-material elevation="1" class="content-list">
+          <h2 class="page-title">Users</h2>
+
+          <p>This is the users section</p>
+          <a href="/users/Rob">Rob</a>
+        </paper-material>
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+    </iron-pages>
   </template>
+
 
   <script>
     (function () {
@@ -85,11 +91,16 @@
       Polymer({
         is: 'dolphin-webapp-user',
 
-        properties: {},
+        properties: {
+          selected: {
+            type: Number,
+            value: 0
+          }
+        },
         ready: function () {
 
         },
-        _handle: function(e){
+        _handle: function (e) {
           var data = document.getElementById('test');
           console.log(data.lastResponse);
         }

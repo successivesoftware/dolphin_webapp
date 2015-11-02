@@ -1,0 +1,91 @@
+/**
+* Created by successive on 2/11/15.
+* Overflow menu for help.
+**/
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../styles/app-theme.html">
+<dom-module id="custom-menu-button">
+  <template>
+    <style is="custom-style" include="shared-styles"></style>
+    <style>
+
+      :host {
+        display: block;
+      }
+
+      paper-menu {
+
+      }
+
+      x-select {
+        margin: 0px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      .dropdown-content {
+        background-color: white;
+        line-height: 20px;
+        border-radius: 3px;
+        box-shadow: 0px 2px 6px #ccc;
+        display: block;
+        padding: 8px 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0px 10px;
+      }
+
+      li {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <div hidden="{{show}}">
+      <span class="flex"></span>
+      <x-select horizontal-align="right">
+        <paper-icon-button id="back-button" icon="more-vert" class="dropdown-trigger left"></paper-icon-button>
+        <div class="dropdown-content">
+          <ul>
+            <li>
+              <paper-item><a href="/reports/help">Help</a></paper-item>
+            </li>
+            <li>
+              <paper-item><a href="/reports/logs">Show Logs</a></paper-item>
+            </li>
+          </ul>
+        </div>
+      </x-select>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      'use strict';
+      Polymer({
+        is: 'custom-menu-button',
+
+        properties: {
+          show: {
+            type: Boolean,
+            value: true
+          }
+        },
+        hideMenu: function (value) {
+          this.show = value;
+        },
+        backButton: function () {
+          window.history.back();
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

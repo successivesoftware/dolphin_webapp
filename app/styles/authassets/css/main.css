@@ -5,21 +5,27 @@ html, body {
   height: 100%;
   min-height: 100%;
   font-family: roboto, sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+}
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 html [hidden] {
-  display: none !important; }
+  display: none !important;
+}
 
 .clearfix {
-  clear: both; }
+  clear: both;
+}
 
 html /deep/ .clearfix {
-  clear: both; }
+  clear: both;
+}
 
 code {
-  display: block; }
+  display: block;
+}
 
 /*# sourceMappingURL=main.css.map */
