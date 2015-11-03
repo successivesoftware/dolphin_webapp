@@ -34,6 +34,8 @@
         display: block;
         width: 100%;
         background-color: #00b6b6;
+        color: white;
+        font-weight: bolder;
       }
       .circle {
         border-radius: 50%;
@@ -58,7 +60,12 @@
         padding: 2%;
         margin: 0% 30%;
       }
-
+      .horizontal-section {
+        margin-bottom: 1em;
+      }
+      google-signin{
+        width: 100%;
+      }
       @media (max-width: 621px) {
         paper-material {
           background-color: white;
@@ -102,16 +109,15 @@
         <br>
         <br>
         <!--<paper-checkbox on-click="">Remember me</paper-checkbox>-->
-        <div class="layout horizontal">
           <paper-button raised on-click="login">Login</paper-button>
-          <google-signin brand="google"
-                         id="authSignIn"
-                         client-id="229000986068-hld1d9ovioamaaur218vg3jg5dgvf2a2.apps.googleusercontent.com"
-                         scopes="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/gmail.readonly"
-                         labelSignout="false"
-                         signedIn="{{signedIn}}"></google-signin>
-        </div>
+
       </div>
+      <google-signin width="wide" brand="google" raised
+                     id="authSignIn"
+                     client-id="229000986068-hld1d9ovioamaaur218vg3jg5dgvf2a2.apps.googleusercontent.com"
+                     scopes="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/gmail.readonly"
+                     labelSignout="false"
+                     signedIn="{{signedIn}}"></google-signin>
     </paper-material>
 
 
