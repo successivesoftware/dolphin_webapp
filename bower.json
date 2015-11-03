@@ -14,7 +14,8 @@
     "paper-audio-player": "~0.0.3",
     "polymer-cookie": "~0.1.2",
     "polymer-paper-date-picker": "~1.0.3",
-    "paper-time-picker": "~1.0.3"
+    "paper-time-picker": "~1.0.3",
+    "google-signin": "~1.2.0"
   },
   "devDependencies": {
     "web-component-tester": "*",

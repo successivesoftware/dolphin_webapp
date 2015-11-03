@@ -55,10 +55,10 @@
       paperToggle.hideMenu(false);
     });
 
-    page('/reports/call/:id', scrollToTop, function (data) {
+    page('/reports/telephony/calldetail/:callId', scrollToTop, function (data) {
       app.route = 'call-details';
       app.params = data.params;
-      callDetails.test(data.params.id);
+      callDetails.test(data.params.callId);
       mainBar.hideMenu(false);
       backButton.hideMenu(false);
       helpMenu.hideMenu(true);

@@ -5,12 +5,15 @@
 
 <link rel="import" href="..\..\..\bower_components/polymer/polymer.html">
 <link rel="import" href="..\..\..\bower_components/paper-input/paper-input.html"/>
+<link rel="import" href="..\..\..\bower_components/iron-flex-layout/classes/iron-flex-layout.html"/>
 <link rel="import" href="..\..\..\bower_components/paper-button/paper-button.html"/>
 <link rel="import" href="..\..\..\bower_components/paper-checkbox/paper-checkbox.html"/>
 <link rel="import" href="..\..\..\bower_components/paper-material/paper-material.html"/>
 <link rel="import" href="..\..\..\bower_components/iron-form/iron-form.html"/>
 <link rel="import" href="..\..\..\bower_components/iron-a11y-keys/iron-a11y-keys.html"/>
 <link rel="import" href="..\..\..\bower_components/polymer-cookie/polymer-cookie.html"/>
+<link rel="import" href="..\..\..\bower_components/google-signin/google-signin.html"/>
+<link rel="import" href="..\..\..\bower_components/google-signin/google-signin-aware.html"/>
 
 
 <dom-module id="auth-dialog">
@@ -27,6 +30,7 @@
       }
 
       paper-button {
+        height: 2.3em;
         display: block;
         width: 100%;
         background-color: #00b6b6;
@@ -64,7 +68,7 @@
       on-error="handleError"
       last-response="{{ajaxResponse}}"></iron-ajax>
     <paper-material elevation="3">
-      <h3>Dolphin Webapp Login</h3>
+      <h3>Dolphin ONE Admin Console</h3>
 
       <div class="horizontal-section">
         <paper-input id="username" label="Username" autofocus required></paper-input>
@@ -72,7 +76,19 @@
         <br>
         <br>
         <!--<paper-checkbox on-click="">Remember me</paper-checkbox>-->
-        <paper-button raised on-click="login">Login</paper-button>
+        <div class="layout horizontal">
+          <paper-button raised on-click="login">Login</paper-button>
+          <google-signin brand="google"
+                         id="authSignIn"
+                         client-id="229000986068-hld1d9ovioamaaur218vg3jg5dgvf2a2.apps.googleusercontent.com"
+                         scopes="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/gmail.readonly"
+                         labelSignout="false"
+                         signedIn="{{signedIn}}"></google-signin>
+          <!--<google-signin brand="google" client-id="1054047045356-j8pgqgls9vdef3rl09hapoicumbte0bo.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/userinfo.profile"></google-signin>-->
+          <!--<google-signin brand="google"></google-signin>-->
+        </div>
+
+        <!--<paper-button on-tap="googleHandler" tabindex="0" class="c-p f-right login-btn" >g+</paper-button>-->
 
       </div>
     </paper-material>
@@ -131,10 +147,16 @@
       },
       statusKnown: {
         type: Boolean
+      },
+      signedIn: {
+        type: Boolean,
+        value: false
       }
     },
     ready: function () {
-      console.log(this);
+      this.signedIn = false;
+      document.querySelector('auth-dialog').querySelector('google-signin').signedIn = false;
+//      document.querySelector('auth-dialog').querySelector('google-signin').signOut();
     },
     login: function () {
       var username = document.getElementById('username').value;
@@ -178,11 +200,19 @@
     },
     handleResponse: function (request) {
       var user = request.detail.response;
-      console.log(request.detail.response);
       this.createCookie("userid", user.userName, 1);
     },
     handleError: function (err) {
       alert('Invalid username or password');
     }
   });
+  document.addEventListener('google-signin-success', function(){
+      var username = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName();
+      document.querySelector('auth-dialog').createCookie("userid", username, 1);
+    document.querySelector('auth-dialog').querySelector('google-signin').signOut();
+  });
+//  document.addEventListener('google-signin-aware-success', function(){
+//    console.log('here1');
+//console.log(gapi.auth2.getAuthInstance().currentUser.get());
+//  })
   </script>

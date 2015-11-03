@@ -9,7 +9,7 @@
 
 (function (document) {
   'use strict';
-
+console.log('here');
   // Grab a reference to our auto-binding template
   // and give it some initial binding values
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
@@ -124,10 +124,10 @@ function logoutUser(e) {
   window.location.replace(loginPath);
 }
 
-function checkAuthStatus() {
 
+function checkAuthStatus() {
   if (readCookie('userid') != null && readCookie('userid') != 'undefined') {
-    // continue the flow
+
   } else {
     var loginPath = window.location.origin + '/login.html?logout=true';
     window.location.replace(loginPath);

@@ -15,8 +15,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Dolphin Webapp"/>
-  <title>Dolphin Webapp</title>
+  <meta name="generator" content="Dolphin ONE Admin Console"/>
+  <title>Dolphin ONE Admin Consolep</title>
   <!-- Place favicon.ico in the `app/` directory -->
 
   <!-- Chrome for Android theme color -->
@@ -36,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Dolphin Webapp">
+  <meta name="apple-mobile-web-app-title" content="Dolphin ONE Admin Console">
   <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
 
   <!-- Tile icon for Win8 (144x144) -->
@@ -88,6 +88,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <iron-icon icon="icons:assessment"></iron-icon>
           <span>Reports</span>
         </a>
+
+        <a data-route="login" href="javascript:void(0)" onclick="logoutUser()" title="Logout">
+          <iron-icon icon="icons:power-settings-new"></iron-icon>
+          Sign out
+        </a>
+
       </paper-menu>
     </paper-scroll-header-panel>
 
@@ -99,18 +105,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <custom-toggle-button id="paperToggle" paper-drawer-toggle></custom-toggle-button>
         <custom-back-button id="back-button"></custom-back-button>
         <span class="flex"></span>
-        <!-- Application sub title -->
-        <!--<div class="bottom bottom-container center horizontal layout">-->
-        <!--<div class="bottom-title paper-font-subhead"></div>-->
-        <!--</div>-->
-        <!--<a data-route="login" href="javascript:void(0)" onclick="logoutUser()" title="Logout"-->
-           <!--style="text-decoration:none;color:white;">-->
-          <!--<paper-icon-button icon="power-settings-new"></paper-icon-button>-->
-        <!--</a>-->
         <custom-menu-button id="mainBar"></custom-menu-button>
         <help-menu id="helpMenu"></help-menu>
         <div class="middle middle-container center horizontal layout">
-          <div class="app-name">Dolphin Webapp</div>
+          <div class="app-name">Dolphin ONE Admin Console</div>
         </div>
       </paper-toolbar>
 
@@ -129,13 +127,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </section>
 
           <section data-route="user-info">
-            <paper-material elevation="1">
-              <h2 class="page-title">
-                User:<span>{{params.name}}</span>
-              </h2>
+            <!--<paper-material elevation="1">-->
+              <!--<h2 class="page-title">-->
+                <!--User:<span>{{params.name}}</span>-->
+              <!--</h2>-->
 
-              <div>This is <span>{{params.name}}</span>'s section</div>
-            </paper-material>
+              <!--<div>This is <span>{{params.name}}</span>'s section</div>-->
+            <!--</paper-material>-->
           </section>
 
           <section data-route="reports">

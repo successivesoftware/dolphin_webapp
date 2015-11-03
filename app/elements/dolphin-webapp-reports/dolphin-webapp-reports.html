@@ -359,9 +359,6 @@
             value: 25
           }
         },
-        callDetails: function (id) {
-          window.location.href = '/#!/reports/call/' + id;
-        },
         handleResponse: function (request) {
           this.reports = request.detail.response;
           var reportsToday = [],
@@ -401,26 +398,6 @@
             "fields": "timeReceived,callDuration,callFrom.fullName,callTo.fullName,answeredBy.fullName,transfers.callTo.fullName,thumbnailPhotoUrl"
           };
           ajaxRequest.generateRequest();
-        },
-        dateFormat: function (date, format) {
-          if (!date) {
-            return '';
-          }
-          return moment(moment.utc(date)).format(format);
-        },
-        timeFormat: function (callDuration) {
-          callDuration = callDuration.split(':');
-          if (callDuration[0] > 0) {
-            return callDuration[0].replace(/^0+/, '') + 'h ' + callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's'
-          } else if (callDuration[0] <= 0 && callDuration[1] <= 0 && callDuration[2] > 0) {
-            return callDuration[2].replace(/^0+/, '') + 's'
-          } else
-            return callDuration[1].replace(/^0+/, '') + 'm ' + callDuration[2].replace(/^0+/, '') + 's';
-        },
-        computeUrl: function (id) {
-          return '/reports/call/' + id;
-        },
-        getNumber: function () {
         }
       });
     })();
