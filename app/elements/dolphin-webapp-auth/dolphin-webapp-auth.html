@@ -35,26 +35,49 @@
         width: 100%;
         background-color: #00b6b6;
       }
-
+      .circle {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+        transition: transform 350ms ease-in-out;
+        background-color: white;
+        color: white;
+        will-change: transform;
+        margin: 2% 44%;
+      }
+      img {
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
+        transition: opacity 200ms ease-in-out 100ms;
+        will-change: opacity;
+        text-transform: uppercase;
+      }
       paper-material {
         background-color: white;
-        padding: 2em;
-        margin: 13em 30em;
+        padding: 2%;
+        margin: 0% 30%;
       }
 
       @media (max-width: 621px) {
         paper-material {
           background-color: white;
-          padding: 2em;
-          margin: 15em 2em;
+          padding: 2%;
+          margin: 0% 2%;
+        }
+        .circle {
+          margin: 2% 25%;
         }
       }
 
       @media (min-width: 622px) and (max-width: 992px) {
         paper-material {
           background-color: white;
-          padding: 2em;
-          margin: 10em 15em;
+          padding: 2%;
+          margin: 0% 15%;
+        }
+        .circle {
+          margin: 2% 41%;
         }
       }
     </style>
@@ -67,6 +90,9 @@
       handle-as="json"
       on-error="handleError"
       last-response="{{ajaxResponse}}"></iron-ajax>
+    <div class="circle">
+      <img src="../../images/logo.dolphin.png">
+    </div>
     <paper-material elevation="3">
       <h3>Dolphin ONE Admin Console</h3>
 
@@ -84,12 +110,7 @@
                          scopes="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/gmail.readonly"
                          labelSignout="false"
                          signedIn="{{signedIn}}"></google-signin>
-          <!--<google-signin brand="google" client-id="1054047045356-j8pgqgls9vdef3rl09hapoicumbte0bo.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/userinfo.profile"></google-signin>-->
-          <!--<google-signin brand="google"></google-signin>-->
         </div>
-
-        <!--<paper-button on-tap="googleHandler" tabindex="0" class="c-p f-right login-btn" >g+</paper-button>-->
-
       </div>
     </paper-material>
 

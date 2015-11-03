@@ -411,9 +411,9 @@
 
         ready: function () {
           this.dateFormat = this.$.pickerFrom.dateFormat;
+          this.fromDate = moment(new Date()).subtract(1, 'days')
 //          this.toTime = this.timeFormat();
 //          this.fromTime = this.timeFormat();
-          this.maxDateFrom = this.toDate;
         },
         dateFormat: function (date, format) {
           if (!date) {
@@ -534,7 +534,7 @@
       if (allDay.checked) {
         elem.toTime = '12:00 AM';
         elem.fromTime = '12:00 AM';
-        var toTime = moment(elem.toDate).add(1, 'days').format('ddd MMM DD YYYY').toString() + ' ' + elem.toTime;
+        var toTime = moment(elem.fromDate).add(1, 'days').format('ddd MMM DD YYYY').toString() + ' ' + elem.fromTime;
         toTime = new Date(toTime);
         if (moment(toTime).isAfter(moment(new Date()))) {
           elem.fromDate = moment(elem.toDate).subtract(1, 'days');
