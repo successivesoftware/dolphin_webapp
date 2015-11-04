@@ -36,16 +36,17 @@
         background-color: #00b6b6;
         color: white;
         font-weight: bolder;
+        border: 1px solid #00b6b6;
       }
       .circle {
         border-radius: 50%;
         width: 10em;
         height: 10em;
         transition: transform 350ms ease-in-out;
-        background-color: white;
+        background: transparent;
         color: white;
         will-change: transform;
-        margin: 2% 44%;
+        margin: 2% auto;
       }
       img {
         border-radius: inherit;
@@ -72,9 +73,7 @@
           padding: 2%;
           margin: 0% 2%;
         }
-        .circle {
-          margin: 2% 25%;
-        }
+
       }
 
       @media (min-width: 622px) and (max-width: 992px) {
@@ -82,9 +81,6 @@
           background-color: white;
           padding: 2%;
           margin: 0% 15%;
-        }
-        .circle {
-          margin: 2% 41%;
         }
       }
     </style>
